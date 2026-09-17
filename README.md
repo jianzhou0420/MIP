@@ -57,6 +57,10 @@ over three replicated runs.
 | mini-SWE-agent | qwen3.5-4b (local) | 5 | 4.58 |
 | Claude Code (SDK) | fable-5, **max effort** | **78** | 65.27 |
 
+Scored with EmbodiedScore-envs **v0.0.1** (the commit the submodule names) on EmbodiedScore-habitat
+**v0.3.3-es.1** (the wheels in `requirements.txt`). A later tag of either that changes any score bumps
+its MAJOR version and says so in its changelog; these numbers stay tied to these two tags.
+
 Same loop, unchanged, on the other benchmarks (fable-5, Claude Code, default effort): RxR-CE
 `rand100` 26% SR, VLNVerse fine val-unseen 84% SR / 62.47 SPL,
 HM-EQA `mip100` 76% accuracy. Model choice dominates the variation; harness differences are modest;
