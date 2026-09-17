@@ -63,7 +63,7 @@ without bullet, with the magnum bindings inside. Off the wheel matrix, build the
 env with the fork's `build.sh` (its `BUILD.md` has the system packages and the compiler matrix):
 
 ```
-python3 -m venv envs/mip && . envs/mip/bin/activate
+python3 -m venv envs/mip && . envs/mip/bin/activate && pip install setuptools wheel   # a venv on 3.12+ ships neither; setup.py needs both
 git clone --recursive https://github.com/jianzhou0420/EmbodiedScore-habitat.git   # ~2.3 GB with submodules
 pip install -r EmbodiedScore-habitat/requirements.txt                                   # build.sh wants the runtime deps in place
 (cd EmbodiedScore-habitat && ./build.sh --python "$(command -v python)" --verify)        # ~10 min; --verify renders one EGL frame
@@ -80,4 +80,5 @@ docker present, or push a `v*` tag and its GitHub workflow builds and attaches t
 |---|---|
 | `libEGL.so.1` / `EGL context` errors | install the graphics driver; in Docker add `NVIDIA_DRIVER_CAPABILITIES=graphics` |
 | `No matching distribution found for habitat_sim` / `not a supported wheel on this platform` | off the wheel matrix (CPython 3.10 – 3.13, x86_64 Linux): go to § B |
+| on Python 3.13, `pip install` spends a minute "Building wheel for numpy" | expected: numpy < 2 has no 3.13 binary, pip compiles 1.26.4 (needs gcc); it works |
 | `claude`: `'node': No such file or directory` | node is not on PATH in this shell (nvm loads only in interactive shells) |
