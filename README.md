@@ -215,3 +215,8 @@ tests/                    the framework's tests (no GPU, no data, no keys)
 ```
 
 Jian Zhou and Xunyi Zhao contributed equally.
+
+## License
+
+MIT, see [LICENSE](LICENSE). The simulator and the environment package carry their own licenses
+(habitat-sim: MIT; EmbodiedScore-envs: MIT). Scene datasets are licensed separately by their owners.
