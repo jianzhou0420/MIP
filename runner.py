@@ -683,8 +683,8 @@ class Runner:
             # wired to SmartWay and VLNVerse HAS ITS OWN waypoint predictor. Both
             # mismatches below would degrade SILENTLY rather than fail:
             #
-            # (1) Pano convention: vlnverse numbers dir_id counter-clockwise (the
-            #     NavHarness strip convention) where habitat numbers it clockwise,
+            # (1) Pano convention: vlnverse numbers dir_id counter-clockwise where
+            #     habitat numbers it clockwise,
             #     so wp_bridge's dir_id arithmetic maps candidates to mirrored
             #     headings.
             # (2) Wrong predictor, NOT an uncalibrated one. The two descend from
@@ -695,9 +695,8 @@ class Runner:
             #     encoder, and is trained on habitat MP3D/Gibson. VLNVerse ships
             #     checkpoints trained on THESE Isaac renders
             #     (internnav/model/waypoint_predictor/checkpoints/wp-train-cv*,
-            #     over gibson-4plus-mp3d-train-val-test) — and NavHarness runs the
-            #     `_worgb` depth-only variant, which sidesteps the RGB domain gap
-            #     entirely.
+            #     over gibson-4plus-mp3d-train-val-test), with a `_worgb` depth-only
+            #     variant that sidesteps the RGB domain gap entirely.
             #
             # So the path to lifting this is NOT "recalibrate SmartWay for Isaac":
             # it is a second predictor nodeset (or a ckpt/encoder switch on the

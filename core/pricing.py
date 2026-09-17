@@ -12,7 +12,7 @@ only ever fill the first). Shapes recognised, by their keys — not by
 harness name, so a new harness needs nothing here as long as it records
 what its provider sends:
 
-- already a ledger (``{"billing": {...}}``) — mini, navh: summed per call
+- already a ledger (``{"billing": {...}}``) — mini: summed per call
   by ``add_litellm_usage`` / ``add_anthropic_usage`` as the calls happen
 - codex ``turn.completed`` totals: ``input_tokens`` (cached included),
   ``cached_input_tokens``, ``cache_write_input_tokens``, ``output_tokens``

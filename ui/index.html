@@ -206,7 +206,7 @@ function renderLog() {
       const n = r ? (r.images || (r.texts || []).filter(t => t === "<image elided>").length) : 0;
       let names = [];
       if (r && Array.isArray(r.frames)) {
-        // the result says which files it produced (navh): use them, whatever
+        // the result says which files it produced: use them, whatever
         // the image count says — a map goes to the model but not to disk, a
         // close_task writes four stop views and returns none
         names = r.frames;
@@ -236,7 +236,7 @@ function lineText(l) {
   const j = (v) => { try { return JSON.stringify(v); } catch { return String(v); } };
   switch (l.kind) {
     case "episode_meta": return { icon: "📍", text: `episode ${l.index} · ${l.instruction || ""}`, cls: "" };
-    case "session_inputs": return { icon: "📋", text: `session inputs · ${l.harness} · ${l.model} · ${(l.navh_tools || (l.tool_schemas || []).map(t => t.name)).join(", ")}`, cls: "dim" };
+    case "session_inputs": return { icon: "📋", text: `session inputs · ${l.harness} · ${l.model} · ${(l.tool_schemas || []).map(t => t.name).join(", ")}`, cls: "dim" };
     case "system_init": return { icon: "⚙", text: `session up · model=${l.model}`, cls: "dim" };
     case "bridge_status": return { icon: "🔌", text: `bridge ${l.status}`, cls: "dim" };
     case "thinking": return { icon: "🤔", text: l.text ? String(l.text) : `thinking… (${l.chars} chars)`, cls: "dim" };
@@ -247,14 +247,6 @@ function lineText(l) {
     case "driver_error": return { icon: "⚠", text: String(l.error ?? ""), cls: "err" };
     case "result": { const r = l.result || {}; return { icon: "🏁", text: `session end · turns ${r.turns ?? "?"} · cost ${r.cost_usd == null ? "—" : "$" + (+r.cost_usd).toFixed(3)}${r.error ? " · " + r.error : ""}`, cls: r.error ? "err" : "dim" }; }
     case "episode_metrics": { const m = l.metrics || {}; return { icon: "📊", text: `success ${fmt(m.success)} · spl ${fmt(m.spl)} · ndtw ${fmt(m.ndtw)} · dtg ${fmt(m.distance_to_goal)} · steps ${m.steps_taken ?? m.step_count ?? "?"}`, cls: "metric" }; }
-    // NavHarness (core/harnesses/navh): one episode is a chain of tasks
-    case "navh_episode_meta": return { icon: "🧭", text: `task ${(l.errand_index ?? l.index) + 1}${l.errand_total ? " of " + l.errand_total : ""} · ${l.modality || ""} · ${l.instruction || ""}`, cls: "" };
-    case "navh_boundary": { const v = l.verdict || {}, c = l.claim || {}; return { icon: "⚖", text: `boundary · task ${(l.index ?? 0) + 1} · claimed ${c.status ?? "?"} · verdict ${v.verdict ?? "?"} (${v.judge ?? "?"}) · ledger ${l.ledger_rows ?? "?"} rows${l.summary ? " · " + l.summary : ""}`, cls: "metric" }; }
-    case "navh_episode_metrics": { const m = l.metrics || {}, t = m.truth || {}; return { icon: "📊", text: `task ${(m.index ?? 0) + 1} · truth success ${fmt(t.success)} · spl ${fmt(t.spl)} · dtg ${fmt(t.distance_to_goal)} · steps ${m.steps ?? "?"} · turns ${m.turns ?? "?"} · ${m.end_reason ?? ""}`, cls: "metric" }; }
-    case "navh_recovery": return { icon: "🔁", text: `recovery · task ${(l.index ?? 0) + 1} · scope ${l.scope} (${l.trigger}${l.adjusted ? ", " + l.adjusted : ""}) · turn ${l.at_turn} · ${l.why || ""}`, cls: "err" };
-    case "navh_recovery_refused": return { icon: "🚫", text: `recovery refused · task ${(l.index ?? 0) + 1} · asked ${l.scope} · ${l.why || ""}`, cls: "dim" };
-    case "navh_usage": return { icon: "·", text: `usage · prompt ${l.prompt_tokens}${l.estimated ? " (est)" : ""} · completion ${l.completion_tokens ?? "?"} · ${fmt(l.latency_s, 1)}s`, cls: "dim" };
-    case "navh_warning": return { icon: "⚠", text: `warning · ${l.kind_detail || ""} ${l.error || l.text || ""}`, cls: "err" };
     default: return { icon: "·", text: `${l.kind} ${j(Object.fromEntries(Object.entries(l).filter(([k]) => k !== "kind" && k !== "t")))}`.slice(0, 400), cls: "dim" };
   }
 }

@@ -127,13 +127,10 @@ class Monitor:
 
     def roots(self) -> list[str]:
         """The harness axis, in a fixed order: one root per harness
-        (core.paths.OUTPUT_ROOTS: claudecode · codex · mini-swe-agent · navharness
-        · fake), shown whether or not it holds a run yet; the foreign ImagineVLN
-        root only when it exists. Nothing else under outputs/ (gateway logs,
-        ui.log, logs/) is a root."""
-        always = [OUTPUT_ROOTS[k].name for k in ("cc", "codex", "mini", "navh", "fake")]
-        foreign = [OUTPUT_ROOTS["imagine"].name]
-        return always + [r for r in foreign if (self.outputs / r).is_dir()]
+        (core.paths.OUTPUT_ROOTS: claudecode · codex · mini-swe-agent · fake),
+        shown whether or not it holds a run yet. Nothing else under outputs/
+        (gateway logs, ui.log, logs/) is a root."""
+        return [OUTPUT_ROOTS[k].name for k in ("cc", "codex", "mini", "fake")]
 
     def run_dir(self, root: str, run: str) -> Path:
         if not (SAFE.match(root) and SAFE.match(run)):

@@ -32,20 +32,10 @@ OUTPUT_ROOTS = {
     "mini": OUTPUTS / "mini-swe-agent",
     "codex": OUTPUTS / "codex",
     "fake": OUTPUTS / "fake",
-    # NavHarness (core/harnesses/navharness.py): the litellm seat and the
-    # stateless-SDK seat share one root — the harness is the same code
-    "navh": OUTPUTS / "navharness",
-    "navhsdk": OUTPUTS / "navharness",
-    # ImagineVLN runner (ImagineVLN/agent/run_mapgpt.py) writes the same
-    # summary.json + episode_{i}.jsonl + live_{i}/ layout into its own root;
-    # the imagine experiments point run.dir there.
-    "imagine": OUTPUTS / "imaginevln",
 }
 # the same table by harness key, for the monitor and the backend
 OUTPUT_ROOTS_BY_HARNESS = {
     "claudecode": OUTPUT_ROOTS["cc"],
     "mini-swe-agent": OUTPUT_ROOTS["mini"],
     "codex": OUTPUT_ROOTS["codex"],
-    "imagine": OUTPUT_ROOTS["imagine"],
-    "navh": OUTPUT_ROOTS["navh"],
 }

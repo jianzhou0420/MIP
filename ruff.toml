@@ -3,8 +3,6 @@ target-version = "py310"
 line-length = 100
 extend-exclude = [
     "./thirdparty", "./outputs", "./data",
-    # NavHarness (Xunyi Zhao's navharness_v4), carried byte-for-byte — core/harnesses/navh/README.md
-    "./core/harnesses/navh/harness", "./core/harnesses/navh/prompts.py", "./core/harnesses/navh/bridge.py",
 ]
 
 [lint]
