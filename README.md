@@ -20,7 +20,7 @@
 </div>
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Python 3.10–3.13](https://img.shields.io/badge/Python-3.10–3.13-green.svg)](https://www.python.org/)
+[![Python 3.10–3.13](https://img.shields.io/badge/Python-3.10%E2%80%933.13-green.svg)](https://www.python.org/)
 
 > [!IMPORTANT]
 > **Official re-implementation.** The code the paper's numbers were produced with is frozen on
