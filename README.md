@@ -1,7 +1,8 @@
 # MIP — the Minimal-Interface Probe
 
-Code for **Embodied Agents Take Control: Minimal-Interface Zero-Shot Agents Rival Industrial-Scale
-Policies in Vision-and-Language Navigation** ([arXiv:2607.26148](https://arxiv.org/abs/2607.26148)).
+The official re-implementation of **Embodied Agents Take Control: Minimal-Interface Zero-Shot
+Agents Rival Industrial-Scale Policies in Vision-and-Language Navigation**
+([arXiv:2607.26148](https://arxiv.org/abs/2607.26148)).
 
 <p align="center">
   <img src="assets/readme/teaser.svg" alt="Who directs the loop: policy, workflow, agentic. The minimal-interface probe: a coding agent handed a camera and four actions. R2R-CE success 68–78% against 55 (AgenticNav) and 72 (Qwen-RobotNav)." width="880">
@@ -13,6 +14,21 @@ handful of discrete actions. No map, no memory module, no waypoint predictor, no
 navigation training. The reasoning model directs every action itself — the paper calls this
 organization *agentic embodied control* — and is scored on R2R-CE, RxR-CE, VLNVerse and HM-EQA
 exactly as the trained systems are.
+
+## Status
+
+The code the paper's numbers were produced with lives in AgentCanvas, on the branch
+[`archive/mip-embodied-agents-take-control`](https://github.com/Embodied-Agent-Squad/AgentCanvas/tree/archive/mip-embodied-agents-take-control)
+(its `coding-agent/` directory). That branch is frozen as the record. This repository is the
+**official re-implementation** of the same experiment: the same protocol, briefing, tools, splits
+and metrics, on cleaner code with explicit semantic layers — the runner, the arm (briefing + tool
+surface), the environment served in its own process, and the environment package underneath — and
+on [EmbodiedScore](https://github.com/Embodied-Agent-Squad/EmbodiedScore-envs), the standard
+library that owns the episodes, bodies and metrics.
+
+EmbodiedScore is still under development. We will do our best to keep the benchmarks the paper
+uses — R2R-CE, RxR-CE, VLNVerse and HM-EQA — working here at all times; other lines of the
+package may move.
 
 | what | where |
 |---|---|
@@ -146,10 +162,10 @@ reference to copy from, not a program (its first line exits).
 | Appendix B | HM-EQA `mip100` | `std_hmeqa_es_bareES` |
 | Table 1 Human row, Appendix D | a human tester, a Unitree Go2 | not here |
 
-Two things to know before comparing numbers. The paper's runs were made on the lab's earlier
-driver over the same simulator, episodes and protocol; this repository is the cleaned-up runner
-on the packaged environments, so a cell run here is a new measurement of the same cell, not a
-replay of the archived one. And `rand100` is a sample: the paper's tables put our rows beside
+Two things to know before comparing numbers. The paper's runs were made on the archived
+AgentCanvas branch (see [Status](#status)) over the same simulator, episodes and protocol; a cell
+run here is a new measurement of the same cell on the re-implementation, not a replay of the
+archived one. And `rand100` is a sample: the paper's tables put our rows beside
 full val-unseen rows from the literature and say so in the captions.
 
 ## Repository layout
