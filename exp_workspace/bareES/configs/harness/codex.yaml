@@ -1,0 +1,15 @@
+# harness/codex — Codex CLI (core/harnesses/codex_cli.py): OpenAI's loop over the same bridge (auth = codex login).
+# This folder is the experiment's Hydra harness group: a file beside it picks one with `harness=<name>`
+# (defaults: - harness: ???). root = the run-name segment, output_dir = outputs/<dir>; every other key is a
+# constructor kwarg of the adapter (harness.<key>=… overrides one from the command line).
+_target_: core.harnesses.codex_cli.CodexCliAdapter
+root: codex
+output_dir: codex
+effort: medium           # what "default" means for codex: its product default (the CLI always sends one)
+model_reasoning_summary: detailed
+tools_approval_mode: approve
+project_doc_max_bytes: 0
+sandbox: read-only      # on argv: --sandbox (read-only | workspace-write | danger-full-access)
+probe_reasoning_effort: low
+probe_timeout_s: 45
+max_buffer_size: 33554432  # the JSONL stream's line limit (look_around = four images in one event)

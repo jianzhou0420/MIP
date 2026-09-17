@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>coding-agents · monitor</title>
+<style>
+  :root { --bg:#0b0f17; --panel:#111827; --line:#1f2937; --line2:#374151; --fg:#e5e7eb; --dim:#6b7280; --dim2:#4b5563;
+          --blue:#60a5fa; --blueBg:rgba(37,99,235,.3); --purple:#c084fc; --purpleBg:rgba(147,51,234,.3); --red:#f87171; --green:#4ade80; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--fg); font:12px/1.45 ui-sans-serif,system-ui,sans-serif; height:100vh; display:flex; flex-direction:column; }
+  header { display:flex; flex-wrap:wrap; align-items:center; gap:8px; padding:8px 12px; border-bottom:1px solid var(--line); background:var(--panel); }
+  header .title { font-weight:600; color:var(--dim); margin-right:6px; }
+  .seg { display:flex; overflow:hidden; border:1px solid var(--line2); border-radius:4px; }
+  .seg button { border:0; padding:2px 8px; background:#1f2937; color:#9ca3af; cursor:pointer; font:inherit; }
+  .seg button:hover { color:var(--fg); }
+  .seg button.on { background:var(--purpleBg); color:var(--purple); }
+  .seg button.on.blue { background:var(--blueBg); color:var(--blue); }
+  select, .btn { border:1px solid var(--line2); border-radius:4px; background:#1f2937; color:var(--fg); padding:2px 6px; font:inherit; cursor:pointer; max-width:46vw; }
+  .btn:hover { color:#fff; } .btn.on { border-color:#a855f7; background:rgba(147,51,234,.2); color:var(--purple); }
+  .info { color:var(--dim); } .info b { color:#9ca3af; font-weight:500; }
+  .live { color:var(--green); } .dot { display:inline-block; width:7px; height:7px; border-radius:50%; background:var(--green); margin-right:4px; animation:blink 1.2s infinite; }
+  @keyframes blink { 50% { opacity:.25; } }
+  .row { display:flex; flex-wrap:wrap; align-items:center; gap:6px; padding:6px 12px; border-bottom:1px solid var(--line); }
+  .chip { border:1px solid var(--line2); border-radius:4px; background:#1f2937; color:#9ca3af; padding:1px 7px; cursor:pointer; font:inherit; }
+  .chip:hover { color:var(--fg); } .chip.on { border-color:#3b82f6; background:var(--blueBg); color:var(--blue); }
+  .agg { color:var(--dim); font-family:ui-monospace,monospace; } .agg b { color:var(--fg); font-weight:500; }
+  main { flex:1; min-height:0; display:flex; flex-direction:column; }
+  #stats { height:60vh; border-bottom:1px solid var(--line); background:#fff; display:none; }
+  #stats iframe { width:100%; height:100%; border:0; }
+  .logbar { display:flex; justify-content:space-between; align-items:center; padding:5px 12px; border-bottom:1px solid var(--line); background:var(--panel); color:var(--dim); font-weight:600; }
+  .logbar a { color:var(--blue); font-weight:400; text-decoration:none; margin-left:10px; }
+  #log { flex:1; min-height:0; overflow:auto; padding:6px 10px; font:11.5px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace; white-space:pre-wrap; word-break:break-word; }
+  .l { padding:1px 0; } .l.dim { color:var(--dim); } .l .t { color:var(--dim2); margin-right:6px; } .l .ic { margin-right:5px; }
+  .l.err { color:var(--red); } .l.metric { color:var(--green); }
+  .tiles { display:flex; flex-wrap:wrap; align-items:flex-end; gap:4px; margin:3px 0 4px 0; }
+  .tiles img { height:224px; width:auto; max-width:100%; object-fit:contain; border:1px solid var(--line); border-radius:3px; cursor:zoom-in; display:block; }
+  .tiles.many img { height:128px; } .tiles .cap { font-size:10px; color:var(--dim2); text-align:center; }
+  .empty { color:var(--dim2); padding:16px; }
+  #box { position:fixed; inset:0; background:rgba(0,0,0,.85); display:none; align-items:center; justify-content:center; cursor:zoom-out; z-index:50; }
+  #box img { max-width:95vw; max-height:95vh; }
+  #pre { display:none; flex:1; min-height:0; overflow:auto; margin:0; padding:8px 12px; font:11.5px/1.45 ui-monospace,monospace; color:#d1d5db; white-space:pre-wrap; }
+</style>
+</head>
+<body>
+<header>
+  <span class="title">coding-agents · monitor</span>
+  <div class="seg" id="roots"></div>
+  <span class="info">run:</span>
+  <select id="run"></select>
+  <span class="info" id="runinfo"></span>
+  <button class="btn" id="refresh" title="refresh run list">↻</button>
+  <button class="btn on" id="follow" title="poll the selected run every 2 s and follow the newest episode">follow</button>
+</header>
+<div class="row" id="episodes" style="display:none"></div>
+<div class="row agg" id="agg" style="display:none"></div>
+<main>
+  <div id="stats"><iframe id="statsframe" title="stats"></iframe></div>
+  <div class="logbar">
+    <span id="logtitle">Log</span>
+    <span>
+      <button class="btn" id="statsbtn" title="stats.html — charts + tables, written at run end">stats</button>
+      <a id="f_config" target="_blank">config.yaml</a>
+      <a id="f_env" target="_blank">env_server.log</a>
+      <a id="f_summary" target="_blank">summary.json</a>
+    </span>
+  </div>
+  <div id="log"><div class="empty">pick a run</div></div>
+  <pre id="pre"></pre>
+</main>
+<div id="box"><img id="boximg" alt=""></div>
+
+<script>
+(() => {
+const $ = (id) => document.getElementById(id);
+const S = { roots: [], runs: [], root: null, run: null, ep: null, epChosen: false, follow: true,
+            summary: null, lines: [], offset: 0, frames: [], stats: false, timer: null };
+const IMG_RE = /^obs_(\d+)_/;
+
+// ── url hash: #root/run/ep ──
+function readHash() {
+  const h = decodeURIComponent(location.hash.slice(1)).split("/");
+  if (h[0]) S.root = h[0]; if (h[1]) S.run = h[1];
+  if (h[2] !== undefined && h[2] !== "") { S.ep = +h[2]; S.epChosen = true; }
+}
+function writeHash() {
+  const h = [S.root || "", S.run || "", S.ep == null ? "" : S.ep].join("/");
+  if (location.hash.slice(1) !== h) history.replaceState(null, "", "#" + h);
+}
+const api = (p) => fetch("/api/" + p).then(r => r.json());
+const runBase = () => `runs/${S.root}/${encodeURIComponent(S.run)}`;
+
+// ── runs ──
+async function loadRuns(keep = true) {
+  const d = await api("runs");
+  S.roots = d.roots; S.runs = d.runs;
+  if (!S.root || !S.roots.includes(S.root)) S.root = S.roots[0] || null;
+  const mine = S.runs.filter(r => r.root === S.root);
+  if (!keep || !S.run || !mine.some(r => r.name === S.run)) S.run = mine[0]?.name || null;
+  renderHeader();
+  await loadSummary(true);
+}
+function renderHeader() {
+  $("roots").innerHTML = S.roots.map(r =>
+    `<button class="${r === S.root ? "on" : ""}" data-root="${r}">${r}</button>`).join("");
+  $("roots").querySelectorAll("button").forEach(b => b.onclick = () => {
+    S.root = b.dataset.root; S.run = null; S.ep = null; S.epChosen = false; loadRuns(false);
+  });
+  const mine = S.runs.filter(r => r.root === S.root);
+  $("run").innerHTML = mine.map(r =>
+    `<option value="${r.name}" ${r.name === S.run ? "selected" : ""}>${r.live ? "● " : ""}${r.name}</option>`).join("");
+  const info = mine.find(r => r.name === S.run);
+  $("runinfo").innerHTML = info ? [
+    info.live ? `<span class="live"><span class="dot"></span>live</span>` : "",
+    info.harness ? `<b>${info.harness}</b>` : "", info.model || "",
+    info.dataset ? `${info.dataset}/${info.split}` : "",
+    info.success != null ? `SR <b>${info.success.toFixed(2)}</b>` : "no summary",
+    `${info.episodes.length} eps`,
+  ].filter(Boolean).join(" · ") : "";
+  ["config", "env", "summary"].forEach(k => {
+    const name = { config: "config.yaml", env: "env_server.log", summary: "summary.json" }[k];
+    const a = $("f_" + k); a.href = S.run ? `/api/${runBase()}/file/${name}` : "#";
+    a.style.display = S.summary && S.summary.files?.includes(name) ? "" : "none";
+  });
+}
+$("run").onchange = () => { S.run = $("run").value; S.ep = null; S.epChosen = false; loadSummary(true); };
+$("refresh").onclick = () => loadRuns(true);
+$("follow").onclick = () => { S.follow = !S.follow; $("follow").classList.toggle("on", S.follow); if (S.follow) tick(); };
+
+// ── summary + episodes ──
+async function loadSummary(reset) {
+  if (!S.run) { $("episodes").style.display = "none"; $("agg").style.display = "none"; $("log").innerHTML = '<div class="empty">no runs</div>'; return; }
+  S.summary = await api(runBase() + "/summary");
+  const done = new Map(S.summary.episodes.map(e => [e.index, e]));
+  const all = [...new Set([...S.summary.started_episodes, ...done.keys()])].sort((a, b) => a - b);
+  if (!S.epChosen) {
+    // follow: the newest started episode (a live run's current one)
+    const started = S.summary.started_episodes;
+    const want = started.length ? started[started.length - 1] : all[all.length - 1];
+    if (want !== undefined && want !== S.ep) { S.ep = want; reset = true; }
+  }
+  $("episodes").style.display = all.length ? "" : "none";
+  $("episodes").innerHTML = `<span class="info">episode:</span>` + all.map(i => {
+    const e = done.get(i);
+    let mark = "⏳", title = "running";
+    if (e) {
+      if (e.limit_exceeded) { mark = "⚠"; title = `excluded — ${e.error}`; }
+      else if (e.success == null) { mark = e.error ? "⚠" : "⏳"; title = e.error || "no metrics yet"; }
+      else { mark = e.success > 0 ? "✅" : "❌"; title = `success ${e.success} · spl ${fmt(e.spl)} · dtg ${fmt(e.distance_to_goal)} · ${e.env_steps ?? "?"} steps · ${e.end_reason || ""}`; if (e.error) { mark += "⚠"; title += ` · ${e.error}`; } }
+    }
+    return `<button class="chip ${i === S.ep ? "on" : ""}" data-ep="${i}" title="${esc(title)}">${i} ${mark}</button>`;
+  }).join("");
+  $("episodes").querySelectorAll(".chip").forEach(b => b.onclick = () => {
+    S.ep = +b.dataset.ep; S.epChosen = true; loadSummary(true);
+  });
+  const a = S.summary.aggregate;
+  $("agg").style.display = a ? "" : "none";
+  if (a) $("agg").innerHTML = [
+    `n <b>${a.episode_count}</b>`, a.success != null && `SR <b>${a.success.toFixed(3)}</b>`,
+    a.spl != null && `SPL <b>${a.spl.toFixed(3)}</b>`, a.ndtw != null && `nDTW <b>${a.ndtw.toFixed(3)}</b>`,
+    a.oracle_success != null && `OSR <b>${a.oracle_success.toFixed(3)}</b>`,
+    a.distance_to_goal != null && `dtg <b>${a.distance_to_goal.toFixed(2)}</b>`,
+    a.stop_rate != null && `stop <b>${a.stop_rate.toFixed(2)}</b>`,
+    S.summary.cost?.total != null && `cost <b>$${(+S.summary.cost.total).toFixed(2)}</b>`,
+  ].filter(Boolean).join(" &nbsp;·&nbsp; ");
+  renderHeader();
+  $("logtitle").textContent = `Log — ${S.run}` + (S.ep != null ? ` — episode ${S.ep}` : "");
+  if (S.stats) $("statsframe").src = `/api/${runBase()}/file/stats.html`;
+  writeHash();
+  if (reset) { S.lines = []; S.offset = 0; S.frames = []; $("log").innerHTML = ""; }
+  await loadLog();
+}
+
+// ── log + frames ──
+async function loadLog() {
+  if (S.ep == null) { $("log").innerHTML = '<div class="empty">no episodes yet</div>'; return; }
+  const [lg, fr] = await Promise.all([
+    api(`${runBase()}/episode/${S.ep}/log?offset=${S.offset}`),
+    api(`${runBase()}/episode/${S.ep}/frames`),
+  ]);
+  const grew = lg.lines.length > 0 || fr.frames.length !== S.frames.length;
+  S.lines.push(...lg.lines); S.offset = lg.next_offset; S.frames = fr.frames;
+  if (!grew && $("log").children.length) return;
+  renderLog();
+}
+function renderLog() {
+  const box = $("log");
+  const atBottom = box.scrollHeight - box.scrollTop - box.clientHeight < 40;
+  if (!S.lines.length) { box.innerHTML = '<div class="empty">no events yet</div>'; return; }
+  // frames on disk, grouped by observation index; each tool_result that
+  // carried images consumes one group, in order
+  const groups = [], at = {};
+  for (const f of S.frames) {
+    const m = f.match(IMG_RE), k = m ? m[1] : f;
+    if (!(k in at)) { at[k] = groups.length; groups.push([]); }
+    groups[at[k]].push(f);
+  }
+  let cursor = 0;
+  const resultOf = {};
+  for (const l of S.lines) if (l.kind === "tool_result" && l.tool_use_id) resultOf[l.tool_use_id] = l;
+  box.innerHTML = S.lines.map(l => {
+    const { icon, text, cls } = lineText(l);
+    let tiles = "";
+    if (l.kind === "tool_use") {
+      const r = resultOf[l.id];
+      const n = r ? (r.images || (r.texts || []).filter(t => t === "<image elided>").length) : 0;
+      let names = [];
+      if (r && Array.isArray(r.frames)) {
+        // the result says which files it produced (navh): use them, whatever
+        // the image count says — a map goes to the model but not to disk, a
+        // close_task writes four stop views and returns none
+        names = r.frames;
+      } else if (n > 0 && cursor < groups.length) {
+        // consume groups until this result's image count is covered: one
+        // frame per group on the nav arms, a group of head + wrist frames
+        // per observe() on so101
+        for (let got = 0; got < n && cursor < groups.length; ) {
+          const g = groups[cursor++];
+          names.push(...g);
+          got += g.length;
+        }
+      }
+      if (names.length) {
+        tiles = `<div class="tiles ${names.length > 1 ? "many" : ""}">` + names.map(nm => {
+          const tag = (nm.match(/^(?:obs|map)_\d+_(.+)\.[a-z]+$/i) || [])[1] || "";
+          return `<div><img src="/api/${runBase()}/episode/${S.ep}/frame/${nm}" title="${nm}" data-f="${nm}"><div class="cap">${esc(tag)}</div></div>`;
+        }).join("") + `</div>`;
+      }
+    }
+    return `<div class="l ${cls}"><span class="t">${(+l.t || 0).toFixed(1)}s</span><span class="ic">${icon}</span>${esc(text)}${tiles}</div>`;
+  }).join("");
+  box.querySelectorAll("img").forEach(im => im.onclick = () => { $("boximg").src = im.src; $("box").style.display = "flex"; });
+  if (atBottom || S.follow) box.scrollTop = box.scrollHeight;
+}
+function lineText(l) {
+  const j = (v) => { try { return JSON.stringify(v); } catch { return String(v); } };
+  switch (l.kind) {
+    case "episode_meta": return { icon: "📍", text: `episode ${l.index} · ${l.instruction || ""}`, cls: "" };
+    case "session_inputs": return { icon: "📋", text: `session inputs · ${l.harness} · ${l.model} · ${(l.navh_tools || (l.tool_schemas || []).map(t => t.name)).join(", ")}`, cls: "dim" };
+    case "system_init": return { icon: "⚙", text: `session up · model=${l.model}`, cls: "dim" };
+    case "bridge_status": return { icon: "🔌", text: `bridge ${l.status}`, cls: "dim" };
+    case "thinking": return { icon: "🤔", text: l.text ? String(l.text) : `thinking… (${l.chars} chars)`, cls: "dim" };
+    case "assistant_text": return { icon: "💬", text: String(l.text ?? ""), cls: "" };
+    case "user_text": return { icon: "👤", text: String(l.text ?? ""), cls: "dim" };
+    case "tool_use": return { icon: "🔧", text: `${String(l.name || "").split("__").pop()} ${j(l.input)}`, cls: "" };
+    case "tool_result": return { icon: "↩", text: ((l.texts || []).join(" ") + (l.images ? ` [${l.images} image${l.images > 1 ? "s" : ""}]` : "")).slice(0, 300), cls: "dim" };
+    case "driver_error": return { icon: "⚠", text: String(l.error ?? ""), cls: "err" };
+    case "result": { const r = l.result || {}; return { icon: "🏁", text: `session end · turns ${r.turns ?? "?"} · cost ${r.cost_usd == null ? "—" : "$" + (+r.cost_usd).toFixed(3)}${r.error ? " · " + r.error : ""}`, cls: r.error ? "err" : "dim" }; }
+    case "episode_metrics": { const m = l.metrics || {}; return { icon: "📊", text: `success ${fmt(m.success)} · spl ${fmt(m.spl)} · ndtw ${fmt(m.ndtw)} · dtg ${fmt(m.distance_to_goal)} · steps ${m.steps_taken ?? m.step_count ?? "?"}`, cls: "metric" }; }
+    // NavHarness (core/harnesses/navh): one episode is a chain of tasks
+    case "navh_episode_meta": return { icon: "🧭", text: `task ${(l.errand_index ?? l.index) + 1}${l.errand_total ? " of " + l.errand_total : ""} · ${l.modality || ""} · ${l.instruction || ""}`, cls: "" };
+    case "navh_boundary": { const v = l.verdict || {}, c = l.claim || {}; return { icon: "⚖", text: `boundary · task ${(l.index ?? 0) + 1} · claimed ${c.status ?? "?"} · verdict ${v.verdict ?? "?"} (${v.judge ?? "?"}) · ledger ${l.ledger_rows ?? "?"} rows${l.summary ? " · " + l.summary : ""}`, cls: "metric" }; }
+    case "navh_episode_metrics": { const m = l.metrics || {}, t = m.truth || {}; return { icon: "📊", text: `task ${(m.index ?? 0) + 1} · truth success ${fmt(t.success)} · spl ${fmt(t.spl)} · dtg ${fmt(t.distance_to_goal)} · steps ${m.steps ?? "?"} · turns ${m.turns ?? "?"} · ${m.end_reason ?? ""}`, cls: "metric" }; }
+    case "navh_recovery": return { icon: "🔁", text: `recovery · task ${(l.index ?? 0) + 1} · scope ${l.scope} (${l.trigger}${l.adjusted ? ", " + l.adjusted : ""}) · turn ${l.at_turn} · ${l.why || ""}`, cls: "err" };
+    case "navh_recovery_refused": return { icon: "🚫", text: `recovery refused · task ${(l.index ?? 0) + 1} · asked ${l.scope} · ${l.why || ""}`, cls: "dim" };
+    case "navh_usage": return { icon: "·", text: `usage · prompt ${l.prompt_tokens}${l.estimated ? " (est)" : ""} · completion ${l.completion_tokens ?? "?"} · ${fmt(l.latency_s, 1)}s`, cls: "dim" };
+    case "navh_warning": return { icon: "⚠", text: `warning · ${l.kind_detail || ""} ${l.error || l.text || ""}`, cls: "err" };
+    default: return { icon: "·", text: `${l.kind} ${j(Object.fromEntries(Object.entries(l).filter(([k]) => k !== "kind" && k !== "t")))}`.slice(0, 400), cls: "dim" };
+  }
+}
+const fmt = (v, d = 2) => (typeof v === "number" ? v.toFixed(d) : "—");
+const esc = (s) => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+
+// ── stats / lightbox / polling ──
+$("statsbtn").onclick = () => {
+  S.stats = !S.stats; $("statsbtn").classList.toggle("on", S.stats);
+  $("stats").style.display = S.stats ? "block" : "none";
+  if (S.stats && S.run) $("statsframe").src = `/api/${runBase()}/file/stats.html`;
+};
+$("box").onclick = () => { $("box").style.display = "none"; };
+async function tick() {
+  clearTimeout(S.timer);
+  if (S.follow && S.run) { try { await loadSummary(false); } catch (e) { console.warn(e); } }
+  if (S.follow) S.timer = setTimeout(tick, 2000);
+}
+readHash();
+loadRuns(true).then(tick);
+})();
+</script>
+</body>
+</html>

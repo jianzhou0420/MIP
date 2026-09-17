@@ -1,0 +1,11 @@
+# harness/mini — mini-swe-agent (core/harnesses/mini_swe.py): the open ReAct loop over the same bridge (BridgeToolSet).
+# This folder is the experiment's Hydra harness group: a file beside it picks one with `harness=<name>`
+# (defaults: - harness: ???). root = the run-name segment, output_dir = outputs/<dir>; every other key is a
+# constructor kwarg of the adapter (harness.<key>=… overrides one from the command line).
+_target_: core.harnesses.mini_swe.MiniSweAdapter
+root: mini
+output_dir: mini-swe-agent
+cost_limit: 5.0
+image_window: 0
+drop_params: true
+model_kwargs: {}  # litellm completion kwargs for every model on this seat (temperature / max_tokens / top_p …); models/models.yaml <name>: mini: {id, params} lays a model's own on top

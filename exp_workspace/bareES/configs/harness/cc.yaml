@@ -1,0 +1,16 @@
+# harness/cc — Claude Agent SDK (core/harnesses/claude_sdk.py): the vendor loop over the arm's MCP bridge.
+# This folder is the experiment's Hydra harness group: a file beside it picks one with `harness=<name>`
+# (defaults: - harness: ???). root = the run-name segment, output_dir = outputs/<dir>; every other key is a
+# constructor kwarg of the adapter (harness.<key>=… overrides one from the command line).
+_target_: core.harnesses.claude_sdk.ClaudeSdkAdapter
+root: cc
+permission_mode: bypassPermissions
+strict_mcp_config: true
+max_buffer_size: 33554432
+bridge_connect_timeout_s: 30
+betas: []
+think_budget: null
+haiku_think_budget: 4000
+judge_model: null
+judge_timeout_s: 45
+output_dir: claudecode

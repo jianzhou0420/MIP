@@ -1,0 +1,34 @@
+# models/models — the experiment's models table: model -> harness -> the harness-facing id (+ API routing params);
+# an absent harness = no seat. Every experiment file beside this folder loads it (defaults: - models: models) and
+# picks one row with `model=<name>` on the command line (agent.model = ${models[${model}][${harness.root}]}).
+# A row's key is the run-name segment. mini rows may add params: {temperature, max_tokens, …} (litellm kwargs).
+fable-5:
+  cc: {id: claude-fable-5}
+  mini: {id: claude-fable-5}
+opus-5:
+  cc: {id: claude-opus-5}
+  mini: {id: claude-opus-5}
+opus-4.8:
+  cc: {id: claude-opus-4-8}
+  mini: {id: claude-opus-4-8}
+sonnet-5:
+  cc: {id: claude-sonnet-5}
+  mini: {id: claude-sonnet-5}
+gpt-5.5:
+  codex: {id: gpt-5.5}
+  mini: {id: gpt-5.5}
+gpt-5.6:
+  codex: {id: gpt-5.6-sol, price: gpt-5.6}   # codex's name for it; price: its litellm table row
+  mini: {id: gpt-5.6}
+qwen3.5-4b:
+  mini: {id: ollama_chat/qwen3.5:4b-bf16-std}   # local ollama
+qwen3.5-9b:
+  mini: {id: ollama_chat/qwen3.5:9b-bf16-std}   # local ollama
+qwen3.5-plus:
+  mini: {id: openai/qwen3.5-plus, api_base: https://dashscope-intl.aliyuncs.com/compatible-mode/v1}   # litellm has no DashScope rates (its dashscope/ rows are empty) -> unpriced
+qwen3.6-plus:
+  mini: {id: openai/qwen3.6-plus, api_base: https://dashscope-intl.aliyuncs.com/compatible-mode/v1}   # litellm has no DashScope rates -> unpriced
+qwen3.7-plus:
+  mini: {id: openai/qwen3.7-plus, api_base: https://dashscope-intl.aliyuncs.com/compatible-mode/v1}   # litellm has no DashScope rates (its dashscope/ rows are empty) -> unpriced
+gpt-6:
+  codex: {id: gpt-6-astra}   # codex's slug for it (models_cache); run-name segment gpt-6 as in the 09-06 run
