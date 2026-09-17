@@ -4,7 +4,7 @@ Code for **Embodied Agents Take Control: Minimal-Interface Zero-Shot Agents Riva
 Policies in Vision-and-Language Navigation** ([arXiv:2607.26148](https://arxiv.org/abs/2607.26148)).
 
 <p align="center">
-  <img src="assets/readme/teaser.png" alt="Who directs the loop: policy, workflow, agentic. The minimal-interface probe: a coding agent handed a camera and four actions. R2R-CE success 68–78% against 55 (AgenticNav) and 72 (Qwen-RobotNav)." width="880">
+  <img src="assets/readme/teaser.svg" alt="Who directs the loop: policy, workflow, agentic. The minimal-interface probe: a coding agent handed a camera and four actions. R2R-CE success 68–78% against 55 (AgenticNav) and 72 (Qwen-RobotNav)." width="880">
 </p>
 
 A general-purpose coding agent (Claude Code, Codex CLI or mini-SWE-agent) is put in front of a
