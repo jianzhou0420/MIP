@@ -9,8 +9,9 @@ habitat_sim @ https://github.com/jianzhou0420/EmbodiedScore-habitat/releases/dow
 habitat_sim @ https://github.com/jianzhou0420/EmbodiedScore-habitat/releases/download/v0.3.3-es.1/habitat_sim-0.3.3-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl ; python_version == "3.12"
 habitat_sim @ https://github.com/jianzhou0420/EmbodiedScore-habitat/releases/download/v0.3.3-es.1/habitat_sim-0.3.3-cp313-cp313-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl ; python_version == "3.13"
 
-# 2. The environment package: episodes, bodies, metrics (pure Python).
-embodiedscore-envs @ git+https://github.com/jianzhou0420/EmbodiedScore-envs@v0.2.0
+# 2. The environment package: episodes, bodies, metrics (pure Python) — a submodule, installed
+#    editable so its loaders, bodies and metrics can be changed in place (git submodule update --init).
+-e ./thirdparty/EmbodiedScore-envs
 
 # 3. The runner and the three harnesses.
 hydra-core==1.3.6

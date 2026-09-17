@@ -33,7 +33,7 @@ package may move.
 | what | where |
 |---|---|
 | the runner, the three harnesses, the bare arm, the paper's cells | this repository |
-| environments, episodes, bodies, metrics | [EmbodiedScore-envs](https://github.com/jianzhou0420/EmbodiedScore-envs) (pip dependency) |
+| environments, episodes, bodies, metrics | [EmbodiedScore-envs](https://github.com/jianzhou0420/EmbodiedScore-envs), the submodule `thirdparty/EmbodiedScore-envs`, installed editable so it can be modified in place |
 | the simulator, habitat-sim 0.3.3, shipped as manylinux wheels | [EmbodiedScore-habitat](https://github.com/jianzhou0420/EmbodiedScore-habitat) (pip dependency) |
 | install: one interpreter, `pip install -r requirements.txt`, link the data, three checks | [INSTALL.md](INSTALL.md) |
 
@@ -188,6 +188,7 @@ splits/                   r2r/rand100 · rxr/rand100 · hmeqa/mip100 and their p
 scripts/                  mip_paper_cells.sh
 reporting/ · ui/          per-run statistics and the results page
 tests/                    the framework's tests (no GPU, no data, no keys)
+thirdparty/EmbodiedScore-envs   the environment package as a submodule (pip install -e): loaders, bodies, metrics
 ```
 
 ## Design rules

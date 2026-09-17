@@ -1,6 +1,7 @@
 # Install
 
-Two ways to get the simulator; everything else is the same.
+Two ways to get the simulator; everything else is the same. The environment package
+(EmbodiedScore-envs) is a submodule under `thirdparty/`, installed editable: edit it in place.
 
 | | A. Install from wheels (default) | B. Build the simulator from source |
 |---|---|---|
@@ -13,8 +14,9 @@ Two ways to get the simulator; everything else is the same.
 ### 1. Python
 
 ```
+git submodule update --init                              # thirdparty/EmbodiedScore-envs (or clone with --recurse-submodules)
 python3 -m venv envs/mip && . envs/mip/bin/activate     # or: conda create -p envs/mip python=3.11
-pip install -r requirements.txt                          # simulator wheel + env package + runner, ~2 min
+pip install -r requirements.txt                          # simulator wheel + env package (editable) + runner, ~2 min
 python -m pytest tests -q                                # no GPU, no data, no keys
 ```
 

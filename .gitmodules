@@ -1,0 +1,3 @@
+[submodule "thirdparty/EmbodiedScore-envs"]
+	path = thirdparty/EmbodiedScore-envs
+	url = https://github.com/jianzhou0420/EmbodiedScore-envs.git
