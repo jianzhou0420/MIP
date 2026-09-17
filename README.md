@@ -23,7 +23,7 @@ The code the paper's numbers were produced with lives in AgentCanvas, on the bra
 **official re-implementation** of the same experiment: the same protocol, briefing, tools, splits
 and metrics, on cleaner code with explicit semantic layers — the runner, the arm (briefing + tool
 surface), the environment served in its own process, and the environment package underneath — and
-on [EmbodiedScore](https://github.com/Embodied-Agent-Squad/EmbodiedScore-envs), the standard
+on [EmbodiedScore](https://github.com/jianzhou0420/EmbodiedScore-envs), the standard
 library that owns the episodes, bodies and metrics.
 
 EmbodiedScore is still under development. We will do our best to keep the benchmarks the paper
@@ -33,8 +33,8 @@ package may move.
 | what | where |
 |---|---|
 | the runner, the three harnesses, the bare arm, the paper's cells | this repository |
-| environments, episodes, bodies, metrics | [EmbodiedScore-envs](https://github.com/Embodied-Agent-Squad/EmbodiedScore-envs) (pip dependency) |
-| the simulator, habitat-sim 0.3.3, shipped as manylinux wheels | [EmbodiedScore-habitat](https://github.com/Embodied-Agent-Squad/EmbodiedScore-habitat) (pip dependency) |
+| environments, episodes, bodies, metrics | [EmbodiedScore-envs](https://github.com/jianzhou0420/EmbodiedScore-envs) (pip dependency) |
+| the simulator, habitat-sim 0.3.3, shipped as manylinux wheels | [EmbodiedScore-habitat](https://github.com/jianzhou0420/EmbodiedScore-habitat) (pip dependency) |
 | install: one interpreter, `pip install -r requirements.txt`, link the data, three checks | [INSTALL.md](INSTALL.md) |
 
 ## Headline numbers

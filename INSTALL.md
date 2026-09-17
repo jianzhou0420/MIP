@@ -56,13 +56,13 @@ python runner.py std_r2r_es_bareES harness=cc model=fable-5 run.episodes=0      
 ## B. Build the simulator from source
 
 The wheels are habitat-sim 0.3.3 built from the
-[EmbodiedScore-habitat](https://github.com/Embodied-Agent-Squad/EmbodiedScore-habitat) fork, headless,
+[EmbodiedScore-habitat](https://github.com/jianzhou0420/EmbodiedScore-habitat) fork, headless,
 without bullet, with the magnum bindings inside. Off the wheel matrix, build the same thing into your
 env with the fork's `build.sh` (its `BUILD.md` has the system packages and the compiler matrix):
 
 ```
 python3 -m venv envs/mip && . envs/mip/bin/activate
-git clone --recursive https://github.com/Embodied-Agent-Squad/EmbodiedScore-habitat.git   # ~2.3 GB with submodules
+git clone --recursive https://github.com/jianzhou0420/EmbodiedScore-habitat.git   # ~2.3 GB with submodules
 pip install -r EmbodiedScore-habitat/requirements.txt                                   # build.sh wants the runtime deps in place
 (cd EmbodiedScore-habitat && ./build.sh --python "$(command -v python)" --verify)        # ~10 min; --verify renders one EGL frame
 grep -v '^habitat_sim @' requirements.txt | pip install -r /dev/stdin                    # everything but the wheel lines
