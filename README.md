@@ -1,30 +1,51 @@
-# MIP — the Minimal-Interface Probe
+<div align="center">
 
-The official re-implementation of **Embodied Agents Take Control: Minimal-Interface Zero-Shot
-Agents Rival Industrial-Scale Policies in Vision-and-Language Navigation**
-([arXiv:2607.26148](https://arxiv.org/abs/2607.26148)).
+# MIP
 
-<p align="center">
-  <img src="assets/readme/teaser.svg" alt="Who directs the loop: policy, workflow, agentic. The minimal-interface probe: a coding agent handed a camera and four actions. R2R-CE success 68–78% against 55 (AgenticNav) and 72 (Qwen-RobotNav)." width="880">
+## Embodied Agents Take Control
+
+### Minimal-Interface Zero-Shot Agents Rival Industrial-Scale Policies in Vision-and-Language Navigation
+
+**Jian Zhou\* · Xunyi Zhao\* · Gengze Zhou · Zerui Li · Sihao Lin · Jiajun Liu · Qi Wu**
+
+<p>
+  <a href="https://arxiv.org/abs/2607.26148"><img src="https://img.shields.io/badge/arXiv-2607.26148-b31b1b?style=for-the-badge&logo=arxiv&logoColor=white" alt="arXiv"></a>
+  <a href="https://jianzhou0420.github.io/mip/"><img src="https://img.shields.io/badge/Project%20Page-1f6feb?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Project Page"></a>
+  <a href="https://github.com/jianzhou0420/AgentCanvas/tree/archive/mip-embodied-agents-take-control"><img src="https://img.shields.io/badge/Paper--era%20code-archive-6e7681?style=for-the-badge&logo=github&logoColor=white" alt="Paper-era code"></a>
+  <a href="#citation"><img src="https://img.shields.io/badge/BibTeX-Cite-4285F4?style=for-the-badge&logo=googlescholar&logoColor=white" alt="BibTeX"></a>
 </p>
 
-A general-purpose coding agent (Claude Code, Codex CLI or mini-SWE-agent) is put in front of a
-simulator through **two tools**, `observe()` and `step()`, with a monocular RGB camera and a
-handful of discrete actions. No map, no memory module, no waypoint predictor, no search, no
-navigation training. The reasoning model directs every action itself — the paper calls this
-organization *agentic embodied control* — and is scored on R2R-CE, RxR-CE, VLNVerse and HM-EQA
-exactly as the trained systems are.
+<img src="assets/readme/teaser.svg" alt="Who directs the loop: policy, workflow, agentic. The minimal-interface probe: a coding agent handed a camera and four actions. R2R-CE success 68–78% against 55 (AgenticNav) and 72 (Qwen-RobotNav)." width="760">
+
+</div>
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Python 3.10–3.13](https://img.shields.io/badge/Python-3.10–3.13-green.svg)](https://www.python.org/)
+
+> [!IMPORTANT]
+> **Official re-implementation.** The code the paper's numbers were produced with is frozen on
+> AgentCanvas's branch [`archive/mip-embodied-agents-take-control`](https://github.com/jianzhou0420/AgentCanvas/tree/archive/mip-embodied-agents-take-control).
+> This repository is the same experiment — same protocol, briefing, tools, splits and metrics — on
+> cleaner code with explicit semantic layers, built on the
+> [EmbodiedScore](https://github.com/jianzhou0420/EmbodiedScore-envs) standard library. Start here;
+> go to the archive when you need the exact code behind the paper's numbers.
+
+**The Minimal-Interface Probe (MIP).** A general-purpose coding agent (Claude Code, Codex CLI or
+mini-SWE-agent) is put in front of a simulator through **two tools**, `observe()` and `step()`,
+with a monocular RGB camera and a handful of discrete actions. No map, no memory module, no
+waypoint predictor, no search, no navigation training. The reasoning model directs every action
+itself — the paper calls this organization *agentic embodied control* — and is scored on R2R-CE,
+RxR-CE, VLNVerse and HM-EQA exactly as the trained systems are.
+
+---
 
 ## Status
 
-The code the paper's numbers were produced with lives in AgentCanvas, on the branch
-[`archive/mip-embodied-agents-take-control`](https://github.com/jianzhou0420/AgentCanvas/tree/archive/mip-embodied-agents-take-control)
-(its `coding-agent/` directory). That branch is frozen as the record. This repository is the
-**official re-implementation** of the same experiment: the same protocol, briefing, tools, splits
-and metrics, on cleaner code with explicit semantic layers — the runner, the arm (briefing + tool
-surface), the environment served in its own process, and the environment package underneath — and
-on [EmbodiedScore](https://github.com/jianzhou0420/EmbodiedScore-envs), the standard
-library that owns the episodes, bodies and metrics.
+The re-implementation keeps the paper's experiment and gives it explicit semantic layers: the
+runner, the arm (briefing + tool surface), the environment served in its own process, and the
+environment package underneath — [EmbodiedScore](https://github.com/jianzhou0420/EmbodiedScore-envs),
+the standard library that owns the episodes, bodies and metrics. The paper-era code stays frozen
+on the AgentCanvas archive branch (its `coding-agent/` directory) as the record.
 
 EmbodiedScore is still under development. We will do our best to keep the benchmarks the paper
 uses — R2R-CE, RxR-CE, VLNVerse and HM-EQA — working here at all times; other lines of the
