@@ -18,7 +18,7 @@ exactly as the trained systems are.
 ## Status
 
 The code the paper's numbers were produced with lives in AgentCanvas, on the branch
-[`archive/mip-embodied-agents-take-control`](https://github.com/Embodied-Agent-Squad/AgentCanvas/tree/archive/mip-embodied-agents-take-control)
+[`archive/mip-embodied-agents-take-control`](https://github.com/jianzhou0420/AgentCanvas/tree/archive/mip-embodied-agents-take-control)
 (its `coding-agent/` directory). That branch is frozen as the record. This repository is the
 **official re-implementation** of the same experiment: the same protocol, briefing, tools, splits
 and metrics, on cleaner code with explicit semantic layers — the runner, the arm (briefing + tool
