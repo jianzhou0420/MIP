@@ -39,6 +39,15 @@ RxR-CE, VLNVerse and HM-EQA exactly as the trained systems are.
 
 ---
 
+## What's New
+
+- **2026-09-17** — Code released. The official re-implementation of MIP is public:
+  the runner, the three coding-agent harnesses (Claude Code SDK, Codex CLI,
+  mini-SWE-agent), the bare two-tool arm, and the R2R-CE / RxR-CE / VLNVerse /
+  HM-EQA cells behind the paper's tables, built on
+  [EmbodiedScore](https://github.com/jianzhou0420/EmbodiedScore-envs) (v0.0.1)
+  and released under MIT.
+
 ## Status
 
 The re-implementation keeps the paper's experiment and gives it explicit semantic layers: the
