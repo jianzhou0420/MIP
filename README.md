@@ -39,6 +39,10 @@ RxR-CE, VLNVerse and HM-EQA exactly as the trained systems are.
 
 ---
 
+## TODO
+
+- [ ] **Experiment code for the October 2026 revision of the paper** — being organised and will land here; the results are already on the [leaderboard](https://jianzhou0420.github.io/mip/#leaderboard).
+
 ## What's New
 
 - **2026-09-17** — Code released. The official re-implementation of MIP is public:
