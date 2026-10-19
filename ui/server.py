@@ -1,6 +1,6 @@
 """ui.server — the run monitor: a read-only view over ``outputs/``.
 
-    python -m ui.server [--port 8130] [--outputs <dir>]     ->  http://10.12.65.19:8130 (this box's LAN address)
+    python -m ui.server [--port 8130] [--host 0.0.0.0] [--outputs <dir>]   ->  http://<this machine's LAN address>:8130
 
 Nothing in the runner knows this exists. The page polls a handful of JSON
 routes, and every route is a fresh read of the run directory the runner
@@ -14,7 +14,7 @@ live_{i}/obs_*.png per observation, stats.html at the end):
     GET /api/runs/<root>/<run>/episode/<i>/frame/<name>   the image
     GET /api/runs/<root>/<run>/file/<name>          stats.html · config.yaml · env_server.log · summary.json
 
-Scoring rule for the aggregate (frozen 2026-08-01): an episode is SCORED iff
+Scoring rule for the aggregate: an episode is SCORED iff
 ``metrics.success`` exists and it is not a limit-exceeded casualty (error
 AND zero env steps — never attempted, excluded, shown ⚠); turn-exhaustion
 navigated and counts as a failure.
@@ -38,7 +38,7 @@ HERE = Path(__file__).resolve().parent
 REPO_ROOT = HERE.parent
 if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
-from core.paths import OUTPUT_ROOTS  # noqa: E402  (after the sys.path line)
+from mip.core.paths import OUTPUT_ROOTS  # after the sys.path line
 
 DEFAULT_OUTPUTS = REPO_ROOT / "outputs"
 INDEX = HERE / "index.html"
@@ -127,9 +127,9 @@ class Monitor:
 
     def roots(self) -> list[str]:
         """The harness axis, in a fixed order: one root per harness
-        (core.paths.OUTPUT_ROOTS: claudecode · codex · mini-swe-agent · fake),
-        shown whether or not it holds a run yet. Nothing else under outputs/
-        (gateway logs, ui.log, logs/) is a root."""
+        (mip.core.paths.OUTPUT_ROOTS: claudecode · codex · mini-swe-agent · fake), shown
+        whether or not it holds a run yet. Nothing else under outputs/ (gateway logs,
+        ui.log, logs/) is a root."""
         return [OUTPUT_ROOTS[k].name for k in ("cc", "codex", "mini", "fake")]
 
     def run_dir(self, root: str, run: str) -> Path:
@@ -199,10 +199,8 @@ class Monitor:
         live = self.run_dir(root, run) / f"live_{index}"
         if not live.is_dir():
             return {"frames": []}
-        # obs_ is a camera frame, map_ is a render of the occupancy map at that
-        # moment. Both belong in the strip: a run where you can read the model's
-        # words and see its pictures but never its MAP is missing the one
-        # artefact a navigation run is actually about.
+        # obs_ is an image a tool returned (a camera frame, a map render), map_ a
+        # render of an occupancy map at that moment; both belong in the strip.
         names = sorted(p.name for p in live.iterdir()
                        if p.name.startswith(("obs_", "map_"))
                        and p.suffix.lower() in (".png", ".jpg", ".jpeg"))
@@ -243,7 +241,7 @@ def make_handler(mon: Monitor) -> type[BaseHTTPRequestHandler]:
                 self._json({"error": "not found"}, 404)
                 return
             ctype = mimetypes.guess_type(path.name)[0] or "application/octet-stream"
-            if path.suffix in (".log", ".yaml", ".json"):
+            if path.suffix in (".log", ".yaml", ".json", ".jsonl"):
                 ctype = "text/plain; charset=utf-8"
             self._send(200, path.read_bytes(), ctype)
 

@@ -1,0 +1,25 @@
+# Briefing — multiple-choice embodied QA (HM-EQA): explore, then answer(letter) ends the episode; no STOP. STANDARD actions 1-5.
+# Placeholders {instruction} (the formatted question) {budget} are filled per episode.
+first_message: "Begin exploring. Call observe() first to see where you are."
+system: |
+  ${prompts.fragments.head}
+
+  ${prompts.fragments.observe_line}
+  - step(actions): execute movement actions in order. ${prompts.fragments.actions_move}${prompts.fragments.actions_tilt}. There is no stop action.
+  - answer(letter): permanently END the episode by answering the question with "A", "B", "C" or "D".
+
+  Your task is embodied question answering: explore the building until you can answer this multiple-choice question about it:
+
+  "{instruction}"
+
+  Rules:
+  ${prompts.fragments.rule_alternate_evidence}
+  - You have a budget of {budget} movement actions. If it runs out you can still observe and answer from where you stand.
+  - You succeed only if answer() gives the correct letter. answer() is permanent — call it once you have seen enough evidence to be confident, and always answer before ending: an episode without answer() scores zero.
+  ${prompts.fragments.rule_turn_in_place_3}
+  ${prompts.fragments.rule_tilt}
+  ${prompts.fragments.rule_autonomous_answer}
+# Tool slots — each tool's description is its module's own text (mip/tools/<family>/<tool>.py); these are the task's facts it leaves open.
+tools:
+  step:
+    actions: "${prompts.fragments.actions_move}${prompts.fragments.tool_tilt}. There is NO stop action — the episode ends when you call answer()"

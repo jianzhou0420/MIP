@@ -1,0 +1,15 @@
+# harness/codex — Codex CLI (mip/harnesses/codex_cli.py): OpenAI's loop over the same bridge (auth = codex login).
+# This folder is the shared Hydra harness group (on the search path runner.compose_app sets): an experiment picks one with `harness=<name>`
+# (defaults: - harness: ???). root = the run-name segment, output_dir = outputs/<dir>; every other key is a
+# constructor kwarg of the adapter (harness.<key>=… overrides one from the command line).
+_target_: mip.harnesses.codex_cli.CodexCliAdapter
+root: codex
+output_dir: codex
+effort: null             # what the seat word `default` sends: null = nothing (key omitted; codex fills the product catalog's default for the model, recorded as agent.effort_applied); a level (low|medium|high|…) is sent as a constant
+model_reasoning_summary: detailed
+tools_approval_mode: approve
+project_doc_max_bytes: 0
+sandbox: read-only      # on argv: --sandbox (read-only | workspace-write | danger-full-access)
+probe_timeout_s: 45
+max_buffer_size: 33554432  # the JSONL stream's line limit (look_around = four images in one event)
+cli_path: null           # the codex binary (npm shim or native); null = the `codex` on PATH. Recorded with its version and native sha256

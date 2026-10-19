@@ -1,0 +1,4 @@
+# api/native — the vendor's own endpoint: Claude Code on its subscription, codex on its login, mini on the provider key.
+# This folder is the shared Hydra api group (on the search path runner.compose_app sets): an experiment picks one with `api=<name>` (defaults: - api: native).
+# Every key here lands beside the model id in agent.model (ModelSpec.extra: api_gateway / gateway_task / gateway_script).
+api_gateway: null

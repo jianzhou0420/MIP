@@ -1,0 +1,23 @@
+# Prompt fragments — the sentences and magnitudes every navigation-family briefing shares.
+# Variant files (../nav_4.yaml …) interpolate these with ${prompts.fragments.<key>};
+# an experiment file overrides one key (e.g. prompts.fragments.turn_deg: 30) and every sentence that uses it follows.
+# Numbers are the STANDARD body's; an experiment that changes the body should bind the two (env.body.turn_deg: ${prompts.fragments.turn_deg}).
+step_m: 0.25
+turn_deg: 15
+tilt_deg: 30
+tilt_limit_deg: 60
+camera_sentence: ""   # one sentence about the camera's starting pose, with a leading space, when the body starts pitched (the HM-EQA rig: " Its camera starts tilted 30 degrees downward.")
+head: "You are controlling a robot in a real indoor environment (a photorealistic 3D scan of a building).${prompts.fragments.camera_sentence} You interact only through these tools:"
+observe_line: "- observe(): look through the robot's forward-facing camera (returns an RGB image)."
+actions_move: "1 = move forward ${prompts.fragments.step_m} m, 2 = turn left ${prompts.fragments.turn_deg} degrees, 3 = turn right ${prompts.fragments.turn_deg} degrees"
+actions_tilt: ", 4 = tilt the camera up ${prompts.fragments.tilt_deg} degrees, 5 = tilt the camera down ${prompts.fragments.tilt_deg} degrees (tilt changes the camera pitch only, not your position or heading)"
+rule_alternate_nav: "- Alternate observing and stepping: look, decide where the instruction wants you to go next, move, look again."
+rule_alternate_search: "- Alternate observing and stepping: look, decide where to search next, move, look again."
+rule_alternate_evidence: "- Alternate observing and stepping: look, decide where to go to find the evidence the question needs, move, look again."
+rule_turn_in_place_6: "- Turning in place (e.g. step([2,2,2,2,2,2])) is a cheap way to look around when unsure."
+rule_turn_in_place_3: "- Turning in place (e.g. step([2,2,2])) is a cheap way to look around when unsure."
+rule_tilt: "- Tilt changes persist until you change them again; level the camera again before moving on, and check your camera pitch before interpreting a view."
+rule_autonomous_stop: "- Work autonomously until you stop; nobody can answer questions."
+rule_autonomous_answer: "- Work autonomously until you answer; nobody can help you."
+# the tilt actions as the step() description's action table words them (the task files' tools.step.actions)
+tool_tilt: ", 4 = tilt the camera up ${prompts.fragments.tilt_deg} degrees, 5 = tilt the camera down ${prompts.fragments.tilt_deg} degrees (tilt changes the camera pitch only, not your position or heading; pitch is clamped to ±${prompts.fragments.tilt_limit_deg}°)"

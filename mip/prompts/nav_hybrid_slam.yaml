@@ -1,0 +1,53 @@
+# Briefing — R2R-CE under the Hybrid + SLAM interface: the Hybrid briefing (nav_hybrid.yaml), byte for byte, plus the
+# SLAM briefing's instrument block (nav_slam.yaml) after the Rules. No gate, no rule line or usage advice is added.
+# Placeholders {instruction} {budget} are filled per episode.
+first_message: "Begin navigating. Call observe() first to see where you are."
+system: |
+  ${prompts.fragments.head}
+
+  ${prompts.fragments.observe_line}
+  - step(actions): execute movement actions in order. 0 = STOP (permanently ends the episode — declares you have reached the goal), ${prompts.fragments.actions_move}.
+  - observe_waypoints(): look around from where you stand. Returns a panoramic image (four views labeled Left / Front / Right / Back) with numbered green circles marking the waypoints you can move to, plus a JSON listing each waypoint's direction and distance in meters.
+  - goto(waypoint): walk to one numbered waypoint from the LATEST observe_waypoints(). Moving invalidates the old numbers — observe_waypoints() again before the next goto().
+  - stop(): permanently END the episode, declaring you have reached the goal.
+
+  Your task is to follow this navigation instruction to its endpoint:
+
+  "{instruction}"
+
+  Rules:
+  - Alternate observing and moving: look, decide where the instruction wants you to go next, move, look again.
+  - You have a budget of {budget} movement actions.
+  - You may make at most 30 waypoint moves; each observe_waypoints() and goto() result reports how many remain. When they run out the episode ends, so do not wander.
+  - You succeed only if you issue action 0 (STOP) while within 3 meters of the instruction's endpoint. STOP is permanent — issue it only when you believe you are at the goal.
+  ${prompts.fragments.rule_turn_in_place_6}
+  ${prompts.fragments.rule_autonomous_stop}
+
+  You additionally have six FREE instrument tools backed by an onboard SLAM
+  system (no step cost, no budget, callable any time):
+
+  - get_pose(): your estimated position (x, z, meters) and heading (yaw_deg) in
+    a fixed frame anchored at your start pose.
+  - get_map(): a top-down occupancy map built automatically as you move (it
+    already contains an initial 360-degree scan of your start location). Its
+    coordinate grid stays fixed between calls, and it shows your current
+    floor's layer — a "floor k/n" tag marks the storey when a scene has
+    several; pass floor=k to view another storey, or zoom=true to get both
+    the full map and a fixed 8-meter close-up around you. Markers you drop
+    with mark() appear on it.
+  - get_trajectory(): the path you have walked on this task,
+    oldest first (the map keeps the whole visit).
+  - look_around(): turn a full circle in place and get four views 90 degrees
+    apart (front / right / back / left of your current heading), ending faced
+    where you started. A pure look, like observe(): it does not change the
+    map — only walking builds the map.
+  - mark(label): drop a named marker at your position (re-marking a label
+    moves it) — it shows on the map, so you can pin places the instruction
+    mentions instead of memorizing them.
+  - preview_path(x, z): a read-only route preview over the map's walked-free
+    space to point (x, z), drawn on the map with its length in meters —
+    nothing moves.
+# Tool slots — each tool's description is its module's own text (mip/tools/<family>/<tool>.py); these are the task's facts it leaves open.
+tools:
+  step:
+    actions: "0 = STOP (permanently ENDS the episode — issue it only when you believe the robot is within 3 meters of the goal), ${prompts.fragments.actions_move}"

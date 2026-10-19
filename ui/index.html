@@ -205,15 +205,9 @@ function renderLog() {
       const r = resultOf[l.id];
       const n = r ? (r.images || (r.texts || []).filter(t => t === "<image elided>").length) : 0;
       let names = [];
-      if (r && Array.isArray(r.frames)) {
-        // the result says which files it produced: use them, whatever
-        // the image count says — a map goes to the model but not to disk, a
-        // close_task writes four stop views and returns none
-        names = r.frames;
-      } else if (n > 0 && cursor < groups.length) {
+      if (n > 0 && cursor < groups.length) {
         // consume groups until this result's image count is covered: one
-        // frame per group on the nav arms, a group of head + wrist frames
-        // per observe() on so101
+        // frame per group
         for (let got = 0; got < n && cursor < groups.length; ) {
           const g = groups[cursor++];
           names.push(...g);

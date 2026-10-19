@@ -1,0 +1,16 @@
+# harness/cc — Claude Agent SDK (mip/harnesses/claude_sdk.py): the vendor loop over the tool set's MCP bridge.
+# This folder is the shared Hydra harness group (on the search path runner.compose_app sets): an experiment picks one with `harness=<name>`
+# (defaults: - harness: ???). root = the run-name segment, output_dir = outputs/<dir>; every other key is a
+# constructor kwarg of the adapter (harness.<key>=… overrides one from the command line).
+_target_: mip.harnesses.claude_sdk.ClaudeSdkAdapter
+root: cc
+effort: null             # what the seat word `default` sends: null = nothing (the CLI's own per-model default applies); a level (low|medium|high|max) is sent as a constant
+permission_mode: bypassPermissions
+strict_mcp_config: true
+max_buffer_size: 33554432
+bridge_connect_timeout_s: 30
+betas: []
+think_budget: null
+haiku_think_budget: 4000
+cli_path: null   # a Claude Code CLI binary to run instead of the SDK's bundled one (null = bundled); a model newer than the bundled CLI needs one
+output_dir: claudecode

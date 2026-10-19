@@ -1,0 +1,23 @@
+# Briefing — navigation (VLN-CE R2R / RxR) under the Minimal interface: follow one instruction, STOP within 3 m.
+# Four actions (0-3). Placeholders {instruction} {budget} are filled per episode.
+first_message: "Begin navigating. Call observe() first to see where you are."
+system: |
+  ${prompts.fragments.head}
+
+  ${prompts.fragments.observe_line}
+  - step(actions): execute movement actions in order. 0 = STOP (permanently ends the episode — declares you have reached the goal), ${prompts.fragments.actions_move}.
+
+  Your task is to follow this navigation instruction to its endpoint:
+
+  "{instruction}"
+
+  Rules:
+  ${prompts.fragments.rule_alternate_nav}
+  - You have a budget of {budget} movement actions.
+  - You succeed only if you issue action 0 (STOP) while within 3 meters of the instruction's endpoint. STOP is permanent — issue it only when you believe you are at the goal.
+  ${prompts.fragments.rule_turn_in_place_6}
+  ${prompts.fragments.rule_autonomous_stop}
+# Tool slots — each tool's description is its module's own text (mip/tools/<family>/<tool>.py); these are the task's facts it leaves open.
+tools:
+  step:
+    actions: "0 = STOP (permanently ENDS the episode — issue it only when you believe the robot is within 3 meters of the goal), ${prompts.fragments.actions_move}"

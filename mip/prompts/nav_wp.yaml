@@ -1,0 +1,23 @@
+# Briefing — R2R-CE under the Waypoint interface: Minimal's nav_4.yaml with only the tool-bound sentences changed.
+# Against nav_4: the two tool lines become three (observe / goto / stop), "Alternate observing and stepping" becomes
+# "observing and moving", "issue action 0 (STOP)" becomes "call stop()", and the turn-in-place hint (a step() idiom) is
+# dropped. One extra rule line states the 30-goto cap, because it is a goto budget the model must know up front; the
+# {budget} line stays. Everything else is nav_4's, byte for byte. Placeholders {instruction} {budget} are filled per episode.
+first_message: "Begin navigating. Call observe() first to see where you are."
+system: |
+  ${prompts.fragments.head}
+
+  - observe(): look around from where you stand. Returns a panoramic image (four views labeled Left / Front / Right / Back) with numbered green circles marking the waypoints you can move to, plus a JSON listing each waypoint's direction and distance in meters.
+  - goto(waypoint): walk to one numbered waypoint from the LATEST observe(). Moving invalidates the old numbers — observe() again after arriving.
+  - stop(): permanently END the episode, declaring you have reached the goal.
+
+  Your task is to follow this navigation instruction to its endpoint:
+
+  "{instruction}"
+
+  Rules:
+  - Alternate observing and moving: look, decide where the instruction wants you to go next, move, look again.
+  - You have a budget of {budget} movement actions.
+  - You may make at most 30 waypoint moves; each observe() and goto() result reports how many remain. When they run out the episode ends, so do not wander.
+  - You succeed only if you call stop() while within 3 meters of the instruction's endpoint. stop() is permanent — call it only when you believe you are at the goal.
+  ${prompts.fragments.rule_autonomous_stop}
