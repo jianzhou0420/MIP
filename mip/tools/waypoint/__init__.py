@@ -1,5 +1,5 @@
-"""The waypoint tools (the paper's Waypoint and Hybrid interfaces): a depth-based predictor
-proposes candidate waypoints, they are drawn as numbered circles on a four-view panorama, and
+"""The waypoint tools (the paper's Waypoint and Hybrid interfaces): SmartWay's RGB-D predictor
+(predictor/) proposes candidate waypoints, they are drawn as numbered circles on a four-view panorama, and
 the model picks one by number.
 
     observe             the panorama + numbered waypoints, as the Waypoint set's only look

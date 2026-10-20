@@ -1,11 +1,8 @@
-# The waypoint predictor's interpreter (INSTALL.md § 6), pinned to the set the paper's runs used.
-# Python 3.10; torch from the CUDA 12.8 wheel index (NVIDIA driver >= 570).
+# The waypoint predictor's interpreter (INSTALL.md § 6). Python 3.10; torch from the CUDA 12.8 wheel
+# index. Pinned to the set its outputs were checked with.
 --extra-index-url https://download.pytorch.org/whl/cu128
 torch==2.11.0+cu128
-torchvision==0.26.0+cu128
 numpy==2.2.6
 pillow==12.3.0
-gym==0.26.2
-pytorch-transformers==1.2.0
 fastapi==0.141.1
 uvicorn==0.52.4

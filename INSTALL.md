@@ -145,26 +145,31 @@ Minimal needs nothing beyond the env server. The others need:
   ```
 
 - **Waypoint, Hybrid, Hybrid + SLAM** — the waypoint predictor, `mip/tools/waypoint/predictor/`:
-  the waypoint network of [SmartWay](https://github.com/sxyxs/SmartWay-Code) (vendored, MIT) behind
-  HTTP at `run.wp_server` (default `http://127.0.0.1:9210`). It runs in a third env, `.conda/ac-wp`
-  (Python 3.10, torch 2.11 for CUDA 12.8), on the GPU (under 1 GB of VRAM), with two checkpoints:
+  [SmartWay](https://github.com/sxyxs/SmartWay-Code)'s predictor (DINOv2 for each view's RGB, a
+  DD-PPO ResNet-50 for its depth, SmartWay's cross-attention transformer over the 12 views; the
+  networks are in `predictor/nets/` with their licenses) behind HTTP at `run.wp_server` (default
+  `http://127.0.0.1:9210`). It runs in a third env, `.conda/ac-wp` (Python 3.10, torch 2.11 for
+  CUDA 12.8), on the GPU (about 0.7 GB of VRAM), with three checkpoints:
 
   ```
   mamba create -y -p .conda/ac-wp python=3.10
   .conda/ac-wp/bin/pip install -r mip/tools/waypoint/predictor/requirements.txt
   mkdir -p data/waypoint
   curl -L -o data/waypoint/best.pth \
-      "https://drive.usercontent.google.com/download?id=1TsKqtdR1oir4UFIGhq15ffETz6r8-P2Q&export=download&confirm=t"   # SmartWay's waypoint checkpoint
+      "https://drive.usercontent.google.com/download?id=1TsKqtdR1oir4UFIGhq15ffETz6r8-P2Q&export=download&confirm=t"   # SmartWay's waypoint network
   curl -L -o data/waypoint/gibson-2plus-resnet50.pth \
       https://zenodo.org/record/6634113/files/gibson-2plus-resnet50.pth                                        # DD-PPO depth encoder
+  curl -L -o data/waypoint/dinov2_vits14_reg4_pretrain.pth \
+      https://dl.fbaipublicfiles.com/dinov2/dinov2_vits14/dinov2_vits14_reg4_pretrain.pth                      # DINOv2 ViT-S/14-reg
   .conda/ac-wp/bin/python mip/tools/waypoint/predictor/server.py --port 9210   # leave it running
-  curl http://127.0.0.1:9210/health                                            # {"status":"ok","name":"smartway_waypoint",…}
+  curl http://127.0.0.1:9210/health                                            # {"status":"ok","name":"smartway_waypoint","version":"2.0"}
   ```
 
-  The server checks both checkpoints against the sha256 of the files the paper used and loads the
-  model before it opens the port. The network's RGB input is zeros, as it was in the paper's runs,
-  so the candidates depend on depth alone (`predictor/engine.py`). The runner checks `/health`
-  before episode 0 and stops when it does not answer.
+  The server checks the three checkpoints against their sha256 and loads the model before it opens
+  the port; the runner checks `/health` before episode 0 and stops when it does not answer.
+  Version 2.0 is SmartWay's predictor as trained. The paper's Waypoint, Hybrid and Hybrid + SLAM
+  runs used version 1.0, which left the RGB embedding at zeros, so their candidates came from depth
+  alone and differ from 2.0's.
 
 ## 7. Verify, in order
 

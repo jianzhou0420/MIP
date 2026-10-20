@@ -4,20 +4,21 @@ not import the ``mip`` package:
 
     .conda/ac-wp/bin/python mip/tools/waypoint/predictor/server.py --port 9210
 
-    GET  /health                             {"status": "ok", "name": "smartway_waypoint", "version": "1.0"}
+    GET  /health                             {"status": "ok", "name": "smartway_waypoint", "version": "2.0"}
     POST /call/smartway_waypoint__predict    {"inputs": {"views": [{"dir_id", "rgb_base64", "depth_base64"}, ...]}}
                                              -> {"outputs": {"candidates": {"0": {"angle", "distance"}, ...},
                                                              "num_candidates": K}}
 
-The checkpoints default to ``<repo>/data/waypoint/{best.pth, gibson-2plus-resnet50.pth}``; the model
-loads before the port opens, so a healthy /health means the predictor is ready. See engine.py.
+Version 2.0 feeds each view's RGB through DINOv2, as SmartWay's predictor was trained; 1.0, the
+predictor of the paper's Waypoint / Hybrid / Hybrid + SLAM runs, left the RGB embedding at zeros.
+The checkpoints are read from ``<repo>/data/waypoint/`` (``--ckpt-dir``); the model loads before the
+port opens, so a healthy /health means the predictor is ready. See engine.py.
 """
 
 from __future__ import annotations
 
 import argparse
 import logging
-import os
 import sys
 from pathlib import Path
 
@@ -25,12 +26,8 @@ HERE = Path(__file__).resolve().parent
 REPO = HERE.parents[3]
 sys.path.insert(0, str(HERE))
 
-# best.pth and the DD-PPO checkpoint are pickles beyond plain tensors; engine.py checks their sha256
-# before torch.load reads them.
-os.environ.setdefault("TORCH_FORCE_NO_WEIGHTS_ONLY_LOAD", "1")
-
 NAME = "smartway_waypoint"
-VERSION = "1.0"
+VERSION = "2.0"
 PREDICT_FN = "smartway_waypoint__predict"
 
 
@@ -50,8 +47,7 @@ def build_app(engine):
         if function_name != PREDICT_FN:
             raise HTTPException(404, f"Unknown function: {function_name}")
         inputs = body.get("inputs", body)
-        rgb, depth = decode_views(inputs.get("views") or [])
-        candidates = engine.predict(rgb, depth)
+        candidates = engine.predict(*decode_views(inputs.get("views") or []))
         return {"outputs": {"candidates": candidates, "num_candidates": len(candidates)}}
 
     return app
@@ -61,10 +57,7 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     parser.add_argument("--host", default="127.0.0.1")
     parser.add_argument("--port", type=int, default=9210)
-    parser.add_argument("--waypoint-ckpt", type=Path, default=REPO / "data" / "waypoint" / "best.pth")
-    parser.add_argument(
-        "--ddppo-ckpt", type=Path, default=REPO / "data" / "waypoint" / "gibson-2plus-resnet50.pth"
-    )
+    parser.add_argument("--ckpt-dir", type=Path, default=REPO / "data" / "waypoint")
     args = parser.parse_args()
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(name)s: %(message)s")
 
@@ -72,8 +65,7 @@ def main() -> None:
 
     from engine import WaypointEngine
 
-    engine = WaypointEngine(args.waypoint_ckpt, args.ddppo_ckpt)
-    uvicorn.run(build_app(engine), host=args.host, port=args.port, log_level="warning")
+    uvicorn.run(build_app(WaypointEngine(args.ckpt_dir)), host=args.host, port=args.port, log_level="warning")
 
 
 if __name__ == "__main__":
