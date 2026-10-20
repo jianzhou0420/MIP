@@ -82,8 +82,18 @@ claude --version && codex --version
 
 Log in once per machine: `claude` (subscription) and `codex login`. The cc harness does not run the
 npm `claude`: `claude-agent-sdk` ships its own Claude Code binary and reads the same `~/.claude/`
-credentials, so the npm install is what gives you the login. A model newer than the bundled binary
-needs `harness.cli_path=<a newer claude binary>`. The codex harness shells out to `codex`.
+credentials, so the npm install is what gives you the login. That bundled binary is Claude Code
+2.1.191, which the API refuses for opus-5.5: every episode fails within seconds with
+`API Error: 400 Claude Code 2.1.191 does not support this model; version 2.1.280 or newer is
+required`. For real runs, point the cc harness at the npm CLI:
+
+```
+npm install -g @anthropic-ai/claude-code@2.1.289   # a version the paper's cc runs used; any >= 2.1.280 takes opus-5.5
+.conda/coding-agents/bin/python runner.py std_mip_r2r_minimal harness=cc model=opus-5.5 harness.cli_path=$(which claude)
+```
+
+Every run records the CLI it used (path, version, sha256) in its `summary.json` under
+`harness_inherent`. The codex harness shells out to `codex`.
 mini-SWE-agent reads the provider's key from the shell that launches the runner:
 `ANTHROPIC_API_KEY`, `OPENAI_API_KEY`, `DASHSCOPE_API_KEY` (qwen rows) or `OLLAMA_URL` (local rows).
 The rows are in `mip/configs/models/models.yaml`.
@@ -162,8 +172,28 @@ Minimal needs nothing beyond the env server. The others need:
 PY=.conda/coding-agents/bin/python
 $PY runner.py std_mip_r2r_minimal harness=cc model=fable-5 +run.fake=true run.episodes=0   # a scripted agent: env server + data + tools, no tokens
 $PY runner.py std_mip_r2r_minimal harness=cc model=fable-5 api=fake run.episodes=0        # the real Claude Code CLI on a scripted endpoint, no model
-$PY runner.py std_mip_r2r_minimal harness=cc model=fable-5 run.episodes=0                 # one real episode on the subscription
+$PY runner.py std_mip_r2r_minimal harness=cc model=fable-5 run.episodes=0 harness.cli_path=$(which claude)   # one real episode on the subscription (§ 4)
 $PY -m ui.server                                                                           # optional: http://<host>:8130, a read-only page over outputs/
+```
+
+A fake run exits 0 even when a tool fails: the error goes back to the scripted agent as the tool's
+result, as it would to a model. So read the run, not the exit code — `env_server.log` should hold
+no `Traceback`, and each `live_<i>/actions.log` lists what every call did. For the richer
+interfaces, with the services of § 6 up:
+
+```
+$PY runner.py std_mip_r2r_waypoint harness=cc model=fable-5 +run.fake=true run.episodes=0
+grep num_waypoints outputs/fake/fake_mip_r2r_cc_fable-5_default_waypoint/live_0/actions.log   # {"observe_wp": true, "num_waypoints": 4}
+$PY runner.py std_mip_r2r_slam harness=cc model=fable-5 +run.fake=true run.episodes=0
+grep -E 'tracking_ratio|ate_rmse_m' outputs/fake/fake_mip_r2r_cc_fable-5_default_slam/summary.json   # tracking_ratio ~1.0, ate_rmse_m ~0.01
+```
+
+`api=fake` also takes a script, which exercises both services in one episode:
+
+```
+$PY runner.py std_mip_r2r_hybrid_slam harness=cc model=fable-5 api=fake run.episodes=0 \
+    "api.gateway_script='[[\"observe_waypoints\",{}],[\"goto\",{\"waypoint\":1}],[\"get_pose\",{}],[\"stop\",{}]]'"
+cat outputs/claudecode/fakeapi_mip_r2r_cc_fable-5_default_hybrid_slam/live_0/actions.log   # num_waypoints, goto distance_m, get_pose "slam": "ok"
 ```
 
 Each step needs one more piece than the last: step 1 needs § 2, 3 and 5; step 2 a harness CLI

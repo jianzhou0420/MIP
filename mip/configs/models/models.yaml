@@ -7,11 +7,13 @@ fable-5:
   mini: {id: claude-fable-5}
 fable-5.1:
   cc: {id: claude-fable-5-1}
+  mini: {id: claude-fable-5-1}
 opus-5:
   cc: {id: claude-opus-5}
   mini: {id: claude-opus-5}
 opus-5.5:
   cc: {id: claude-opus-5-5}
+  mini: {id: claude-opus-5-5}
 opus-4.8:
   cc: {id: claude-opus-4-8}
   mini: {id: claude-opus-4-8}
@@ -20,6 +22,7 @@ sonnet-5:
   mini: {id: claude-sonnet-5}
 haiku-5.5:
   cc: {id: claude-haiku-5-5}   # Claude Haiku 5.5 (1M window, 128k output, API default effort medium)
+  mini: {id: claude-haiku-5-5}
 gpt-5.5:
   codex: {id: gpt-5.5}
   mini: {id: gpt-5.5}
@@ -46,11 +49,14 @@ gpt-6:
   codex: {id: gpt-6-astra}   # codex's slug for it (models_cache)
 gpt-6-astra:
   codex: {id: gpt-6-astra}   # same model as the gpt-6 row, named by its codex slug
+  mini: {id: openai/responses/gpt-6-astra}   # OpenAI API key through litellm's Responses API (chat/completions refuses function tools with reasoning on the gpt-6 models); litellm has no rate for the id -> unpriced, cost from tokens
 gpt-6-sol:
   codex: {id: gpt-6-sol}   # codex slug gpt-6-sol (models_cache, product default effort medium)
+  mini: {id: openai/responses/gpt-6-sol}   # as gpt-6-astra
 gpt-6.1-sol:
   codex: {id: gpt-6.1-sol}   # codex slug gpt-6.1-sol (models_cache, product default effort low)
 gpt-6-luna:
   codex: {id: gpt-6-luna}   # codex slug gpt-6-luna (models_cache: "Fast and affordable model for easier tasks", product default effort medium)
+  mini: {id: openai/responses/gpt-6-luna}   # as gpt-6-astra
 gpt-5.6-luna:
   codex: {id: gpt-5.6-luna}   # codex slug gpt-5.6-luna (models_cache: "Older fast and efficient model", product default effort medium)

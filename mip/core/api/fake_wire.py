@@ -559,6 +559,11 @@ def _build_app():
         _log("/v1/responses", body, _responses_turn(body), calls, tools)
         _dump(body)
         if not body.get("stream"):
+            # a non-streaming caller is litellm (mini's openai/responses/* rows): its bridge turns
+            # each output item into its own choice and mini reads choice 0 only, so the call goes
+            # alone; codex always streams and keeps the message item
+            if calls:
+                reply["output"] = [o for o in reply["output"] if o["type"] != "message"]
             return JSONResponse(reply)
         return StreamingResponse(iter(responses_sse(reply)), media_type="text/event-stream")
 
