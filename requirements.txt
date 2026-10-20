@@ -1,5 +1,5 @@
-# The runner's interpreter (INSTALL.md § 3), pinned to the tested set. The env
-# server is a *different* interpreter — the `ac-es` env, INSTALL.md § 4 — and
+# The runner's interpreter (INSTALL.md § 2), pinned to the tested set. The env
+# server is a *different* interpreter — the `ac-es` env, INSTALL.md § 3 — and
 # does not read this file.
 hydra-core==1.3.6
 omegaconf==2.3.1

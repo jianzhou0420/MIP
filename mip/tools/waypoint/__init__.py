@@ -7,7 +7,7 @@ the model picks one by number.
     goto(waypoint)      walk to one candidate of the LATEST look (env verb step_hightolow)
     stop()              discrete action 0; ends the episode
 
-Two servers: the ES env server, and the waypoint predictor service (``POST /call/{fn}`` with
+Two servers: the ES env server, and the waypoint predictor service (predictor/server.py, ``POST /call/{fn}`` with
 ``{"inputs": …}`` -> ``{"outputs": …}``; run.wp_server). Switches read: ``wp_max_moves`` (goto
 cap; 0 = none), ``wp_predict_fn``, ``wp_view_px``, ``auto_observe`` (goto carries the new
 panorama — the Waypoint set only), ``typed_results`` (see goto).

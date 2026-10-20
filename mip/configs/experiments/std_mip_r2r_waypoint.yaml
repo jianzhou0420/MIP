@@ -2,7 +2,7 @@
 # The agent gets observe() (a 12-view RGB-D panorama; the predictor's candidate waypoints come back as numbered
 # circles on a left / front / right / back strip), goto(k) (turn to candidate k at no step cost, then walk its
 # distance as 0.25 m forward steps) and stop(). Per episode: 200 model turns, 500 simulator steps, 30 goto calls,
-# 2400 s. The waypoint predictor must be up at run.wp_server first (README.md, Interfaces). Everything is fixed
+# 2400 s. The waypoint predictor must be up at run.wp_server first (INSTALL.md § 6). Everything is fixed
 # here except the seat, chosen on the command line:
 #   python runner.py std_mip_r2r_waypoint harness=cc model=fable-5 [effort=max]
 
@@ -61,7 +61,7 @@ run:
   dir: outputs/${harness.output_dir}/${run.name}
   episodes: 0-99
   servers: null
-  wp_server: http://127.0.0.1:9210  # the waypoint-predictor service (README.md, Services); override per machine
+  wp_server: http://127.0.0.1:9210  # the waypoint-predictor service (INSTALL.md § 6); override per machine
   resume: false
   dry_run: false
   budget_usd: null

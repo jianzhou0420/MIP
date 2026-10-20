@@ -1,14 +1,15 @@
 # Install
 
-A run is **two interpreters plus the harness CLIs**:
+A run is **two interpreters plus the harness CLIs**, and a third interpreter for the waypoint interfaces:
 
 | piece | what | interpreter |
 |---|---|---|
 | runner | `runner.py`, the framework in `mip/`, the harness SDKs, the MCP bridge | `.conda/coding-agents` (Python 3.10) |
 | env server | `EmbodiedScoreEnv`, served in its own process by `mip.core.envserver` — habitat-sim 0.3.3 + `embodiedscore_envs` | `.conda/ac-es` (Python 3.11) |
 | harness | Claude Code CLI · Codex CLI · mini-SWE-agent (a Python package, already in the runner env) | node 22, for the two CLIs |
+| waypoint predictor | the Waypoint / Hybrid interfaces only: `mip/tools/waypoint/predictor/server.py` (§ 6) | `.conda/ac-wp` (Python 3.10) |
 
-Both envs live inside the clone, under the gitignored `.conda/`, so nothing outside the clone is
+The envs live inside the clone, under the gitignored `.conda/`, so nothing outside the clone is
 consulted and an env of the same name elsewhere does not collide. The name `ac-es` is a contract:
 every cell says `env.python: ac-es`, and `mip/core/envserver.py:resolve_python` looks it up in
 `<repo>/.conda/ac-es/bin/python` first, then in `<conda root>/envs/ac-es/bin/python` of the
@@ -20,6 +21,7 @@ runner's own conda. `env.python=/abs/path/to/python` on the command line overrid
 - git, and any conda (the commands below use Miniforge's `mamba`).
 - node 22 for the two CLIs (§ 4).
 - For the SLAM interfaces only: docker, runnable by your user (§ 6).
+- For the waypoint interfaces only: a CUDA GPU (the predictor's torch is built for CUDA 12.8; tested with driver 570, § 6).
 
 ## 2. The repo and the runner env: `.conda/coding-agents`
 
@@ -87,23 +89,26 @@ source it first (`export NVM_DIR=~/.nvm; . ~/.nvm/nvm.sh`).
 ## 5. Data
 
 The env server reads `EMBODIEDSCORE_DATA_ROOT` / `EMBODIEDSCORE_SCENE_ROOT`, else
-`<repo>/data/embodiedscore/{datasets,scenes}` — a gitignored directory of symlinks. The evaluation
-splits (`rand100`, `mip100`) ship inside EmbodiedScore-envs; link only the corpora and the scenes
-the cells you run need:
+`<repo>/data/embodiedscore/{datasets,scenes}` — a gitignored directory of symlinks. The episodes of
+every evaluation split (R2R `rand100`, RxR / ObjectNav `mip100`, the HM-EQA question draw) ship
+inside EmbodiedScore-envs, so most cells need only the scenes:
 
 | cells | `datasets/` | `scenes/` |
 |---|---|---|
-| `std_mip_r2r_*` | `vlnce/R2R_VLNCE_v1-3_preprocessed/` | `mp3d/` |
-| `std_mip_rxr_minimal` | `vlnce/RxR_VLNCE_v0/` | `mp3d/` |
-| `std_mip_hm3d_minimal` · `std_mip_hm3d_v2_minimal` | `objectnav/hm3d/` | `hm3d/`, `hm3d_v0.2/` |
-| `std_mip_mp3d_minimal` | `objectnav/mp3d/` | `mp3d/` |
-| `std_mip_hmeqa_minimal` | `hmeqa/` | `hm3dsem/` |
+| `std_mip_r2r_*` · `std_mip_rxr_minimal` · `std_mip_mp3d_minimal` | — | `mp3d/` |
+| `std_mip_hm3d_minimal` | — | `hm3d/` |
+| `std_mip_hm3d_v2_minimal` | — | `hm3d_v0.2/` |
+| `std_mip_hmeqa_minimal` | `hmeqa/` (`questions.csv`, `scene_init_poses.csv`) | `hm3dsem/` |
 
 ```
 mkdir -p data/embodiedscore/{datasets,scenes}
-ln -s /path/to/vlnce data/embodiedscore/datasets/vlnce   # holds R2R_VLNCE_v1-3_preprocessed/, RxR_VLNCE_v0/
-ln -s /path/to/mp3d  data/embodiedscore/scenes/mp3d      # <scan>/<scan>.glb + .navmesh
+ln -s /path/to/mp3d data/embodiedscore/scenes/mp3d   # <scan>/<scan>.glb + .navmesh
+ln -s /path/to/hm3d data/embodiedscore/scenes/hm3d   # val/<id>/<short>.basis.glb + hm3d_annotated_basis.scene_dataset_config.json
 ```
+
+`hm3d/` needs the annotated scene-dataset config next to `val/`; HM3D v2 episodes name their scenes
+`hm3d_v0.2/val/…`, so `hm3d_v0.2/` may be the v0.2 download or a directory whose `val` links to
+`hm3d/val`.
 
 The exact files each loader reads are in its module docstring
 (`thirdparty/EmbodiedScore-envs/embodiedscore_envs/benchmarks/{vlnce,objectnav,hmeqa}.py`). MP3D
@@ -115,11 +120,36 @@ Runs land in `<repo>/outputs/`; symlink it to keep runs on another disk.
 
 Minimal needs nothing beyond the env server. The others need:
 
-- **Waypoint, Hybrid, Hybrid + SLAM** — the waypoint predictor, an HTTP service at `run.wp_server`
-  (default `http://127.0.0.1:9210`) answering `GET /health` and
-  `POST /call/smartway_waypoint__predict`. The runner refuses the run when it does not answer.
-- **SLAM, Hybrid + SLAM** — docker and the `agentcanvas/orbslam3` image; the env server starts one
-  ORB-SLAM3 container per episode (CPU only).
+- **SLAM, Hybrid + SLAM** — docker, runnable by your user, and the `mip/orbslam3` image; the
+  env server starts one ORB-SLAM3 container per episode (CPU only). Build the image once (about
+  12 minutes at `JOBS=4`; `JOBS` is the compiler parallelism; lower it on a machine short of RAM):
+
+  ```
+  docker build --build-arg JOBS=4 -t mip/orbslam3:latest mip/tools/slam/docker
+  docker run --rm mip/orbslam3:latest python3 -c "import orbslam3"   # the binding loads
+  ```
+
+- **Waypoint, Hybrid, Hybrid + SLAM** — the waypoint predictor, `mip/tools/waypoint/predictor/`:
+  the waypoint network of [SmartWay](https://github.com/sxyxs/SmartWay-Code) (vendored, MIT) behind
+  HTTP at `run.wp_server` (default `http://127.0.0.1:9210`). It runs in a third env, `.conda/ac-wp`
+  (Python 3.10, torch 2.11 for CUDA 12.8), on the GPU (under 1 GB of VRAM), with two checkpoints:
+
+  ```
+  mamba create -y -p .conda/ac-wp python=3.10
+  .conda/ac-wp/bin/pip install -r mip/tools/waypoint/predictor/requirements.txt
+  mkdir -p data/waypoint
+  curl -L -o data/waypoint/best.pth \
+      "https://drive.usercontent.google.com/download?id=1TsKqtdR1oir4UFIGhq15ffETz6r8-P2Q&export=download&confirm=t"   # SmartWay's waypoint checkpoint
+  curl -L -o data/waypoint/gibson-2plus-resnet50.pth \
+      https://zenodo.org/record/6634113/files/gibson-2plus-resnet50.pth                                        # DD-PPO depth encoder
+  .conda/ac-wp/bin/python mip/tools/waypoint/predictor/server.py --port 9210   # leave it running
+  curl http://127.0.0.1:9210/health                                            # {"status":"ok","name":"smartway_waypoint",…}
+  ```
+
+  The server checks both checkpoints against the sha256 of the files the paper used and loads the
+  model before it opens the port. The network's RGB input is zeros, as it was in the paper's runs,
+  so the candidates depend on depth alone (`predictor/engine.py`). The runner checks `/health`
+  before episode 0 and stops when it does not answer.
 
 ## 7. Verify, in order
 
@@ -131,10 +161,14 @@ $PY runner.py std_mip_r2r_minimal harness=cc model=fable-5 run.episodes=0       
 $PY -m ui.server                                                                           # optional: http://<host>:8130, a read-only page over outputs/
 ```
 
-Each step needs one more piece than the last: step 1 needs § 2, 3 and 5; step 2 the CLIs of § 4;
-step 3 the login. The runs land in `outputs/fake/fake_mip_r2r_…`,
+Each step needs one more piece than the last: step 1 needs § 2, 3 and 5; step 2 a harness CLI
+(cc runs the binary bundled in `claude-agent-sdk`, so it needs nothing from § 4; `harness=codex`
+needs `codex` on PATH); step 3 the login. Steps 1 and 2 end with `distance_to_goal` 10.2291,
+`ndtw` 0.1977 and 4 steps on every harness. The runs land in `outputs/fake/fake_mip_r2r_…`,
 `outputs/claudecode/fakeapi_mip_r2r_…` and `outputs/claudecode/test_mip_r2r_…`, each with
-`summary.json`, `episode_0.jsonl`, `live_0/`, `env_server.log` and `stats.html`.
+`summary.json`, `stats.json`, `stats.html`, `config.yaml` (the resolved cell), `episode_0.jsonl`,
+`live_0/` (every frame the model saw), `raw/` (the harness's own stream), `workdir_0/`,
+`env_server.log` and `code/` (a copy of `mip/` and `runner.py`).
 
 ## Troubleshooting
 
@@ -145,6 +179,11 @@ step 3 the login. The runs land in `outputs/fake/fake_mip_r2r_…`,
 | `build.sh`: `need CMake >= 3.12 and < 4` | CMake 4 on PATH | `--cmake /path/to/cmake-3.x` |
 | `import habitat_sim` → `CXXABI_1.3.15 not found` or `cannot retrieve OpenGL version` | a habitat build without the env RPATH (upstream's build.sh) | rebuild with the fork's `build.sh` |
 | `libEGL.so.1` / `EGL context` errors | no graphics driver; in docker, the graphics capability is missing | install the driver; in docker set `NVIDIA_DRIVER_CAPABILITIES=graphics` |
+| `500 Server Error … /configure`; `env_server.log`: `No Stage Attributes exists for requested scene` | the HM3D scene or its `scene_dataset_config.json` is not under `scenes/hm3d/` | § 5 |
+| `500 Server Error … /configure`; `env_server.log`: `FileNotFoundError … hmeqa/…` | the HM-EQA corpus is not under `datasets/hmeqa/` | § 5 |
+| `ConnectionError … port=9210 … /health` | the waypoint predictor is not running at `run.wp_server` | § 6 |
+| predictor `server.py`: `sha256 …, expected …` | a checkpoint download was cut short or is another file | download it again (§ 6) |
+| `env_server.log`: `SlamDied: slam_server closed its stdout (the container died)` | docker not runnable by your user, or no `mip/orbslam3` image | `docker run --rm mip/orbslam3:latest true`; § 6 |
 | cc harness log: `ANTHROPIC_API_KEY was set — removed` | by design: subscription auth | `CODING_AGENT_ALLOW_API_KEY=1` to bill via the API |
 | `claude`: `/usr/bin/env: 'node': No such file or directory` | node is not on PATH in this shell | § 4; check `which claude` |
 | `codex: command not found` from a script, fine in a terminal | nvm loads only in interactive shells | § 4 last paragraph |

@@ -73,7 +73,7 @@ run:
   dir: outputs/${harness.output_dir}/${run.name}
   episodes: 0-99
   servers: null
-  wp_server: http://127.0.0.1:9210  # the waypoint-predictor service (README.md, Services); override per machine
+  wp_server: http://127.0.0.1:9210  # the waypoint-predictor service (INSTALL.md § 6); override per machine
   resume: false
   dry_run: false
   budget_usd: null

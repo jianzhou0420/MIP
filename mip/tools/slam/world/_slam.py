@@ -48,7 +48,7 @@ class SlamDied(RuntimeError):
 
 
 class OrbSlam3Client:
-    def __init__(self, image: str = "agentcanvas/orbslam3:latest") -> None:
+    def __init__(self, image: str = "mip/orbslam3:latest") -> None:
         self._proc = subprocess.Popen(
             [
                 "docker", "run", "-i", "--rm",
