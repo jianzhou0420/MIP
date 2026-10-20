@@ -44,8 +44,13 @@ without bullet. On x86_64 Linux with CPython 3.11 install its wheel:
 ```
 mamba create -y -p .conda/ac-es python=3.11
 .conda/ac-es/bin/pip install https://github.com/jianzhou0420/EmbodiedScore-habitat/releases/download/v0.3.3-es.1/habitat_sim-0.3.3-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl
+.conda/ac-es/bin/pip install pillow==10.4.0
 .conda/ac-es/bin/pip install -e thirdparty/EmbodiedScore-envs
 ```
+
+Pillow is pinned because the panorama the waypoint interfaces render encodes its depth as a 16-bit
+PNG through `Image.fromarray(..., mode="I;16")`, which newer Pillow (13) refuses; 10.4.0 is what the
+paper's env server ran.
 
 Anywhere else, build it into the env with the fork's `build.sh` (its `BUILD.md` lists the system
 packages; it needs CMake ≥ 3.12 and < 4, ninja, GCC ≥ 9 and the EGL headers, about 10 minutes):
@@ -181,6 +186,7 @@ needs `codex` on PATH); step 3 the login. Steps 1 and 2 end with `distance_to_go
 | `libEGL.so.1` / `EGL context` errors | no graphics driver; in docker, the graphics capability is missing | install the driver; in docker set `NVIDIA_DRIVER_CAPABILITIES=graphics` |
 | `500 Server Error … /configure`; `env_server.log`: `No Stage Attributes exists for requested scene` | the HM3D scene or its `scene_dataset_config.json` is not under `scenes/hm3d/` | § 5 |
 | `500 Server Error … /configure`; `env_server.log`: `FileNotFoundError … hmeqa/…` | the HM-EQA corpus is not under `datasets/hmeqa/` | § 5 |
+| `observe` returns `500 Server Error … /panorama`; `env_server.log`: `ValueError: Invalid mode for data type` | Pillow in `.conda/ac-es` is too new | `.conda/ac-es/bin/pip install pillow==10.4.0` (§ 3) |
 | `ConnectionError … port=9210 … /health` | the waypoint predictor is not running at `run.wp_server` | § 6 |
 | predictor `server.py`: `sha256 …, expected …` | a checkpoint download was cut short or is another file | download it again (§ 6) |
 | `env_server.log`: `SlamDied: slam_server closed its stdout (the container died)` | docker not runnable by your user, or no `mip/orbslam3` image | `docker run --rm mip/orbslam3:latest true`; § 6 |
