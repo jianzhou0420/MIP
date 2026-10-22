@@ -63,7 +63,7 @@ split; the files are in [`splits/`](splits), at the path each would have next to
 
 | Benchmark | Subset | File |
 |---|---|---|
-| R2R-CE | `rand100` (SmartWay's subset of val_unseen) | `splits/vlnce/R2R_VLNCE_v1-3_preprocessed/rand100/` |
+| R2R-CE | `rand100` (OpenNav's subset of val_unseen) | `splits/vlnce/R2R_VLNCE_v1-3_preprocessed/rand100/` |
 | RxR-CE | `mip100` (English val_unseen) | `splits/vlnce/RxR_VLNCE_v0/mip100/` |
 | HM3D v1 ObjectNav | `mip100` | `splits/objectnav/hm3d/v1/mip100/` |
 | HM3D v2 ObjectNav | `mip100` | `splits/objectnav/hm3d/v2/mip100/` |
@@ -72,10 +72,13 @@ split; the files are in [`splits/`](splits), at the path each would have next to
 
 A `mip100` subset is a fixed function of the official files: per scene, a share of 100 by largest
 remainder, filled with the episodes whose SHA-256 of `"mip100:{scene}:{id}"` is smallest. No random
-generator is involved, so anyone with the official files can draw the same subset again.
-`splits/manifests/` lists every chosen episode with its scene, id and hash. The runner reads its own copy
-of these files from the EmbodiedScore-envs package (`embodiedscore_envs/splits/`, which also has the
-generator and the full provenance table); the two copies are byte-identical.
+generator is involved, so anyone with the official files can draw the same subset again. R2R-CE
+`rand100` is not ours: it is the 100-episode subset released by OpenNav (OpenNav-100, also used by SmartWay),
+with every episode and its ground truth replaced verbatim from the official val_unseen files.
+`splits/manifests/` lists every chosen episode with its scene and id (and, for `mip100`, its hash);
+`r2r_val_unseen_rand100.json` records the OpenNav subset's position in the official file. The runner reads
+its own copy of the split files from the EmbodiedScore-envs package (`embodiedscore_envs/splits/`, which
+also has the generator and the full provenance table); the two copies are byte-identical.
 
 **Layout.** `runner.py` is the entry point; everything else lives in `mip/`: `core/` (run loop, MCP bridge,
 env server, recorders), `harnesses/`, `tools/` (nav · waypoint · slam), `prompts/`, `configs/`, `envs/`.
