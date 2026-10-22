@@ -1,0 +1,902 @@
+[
+  {
+    "scene": "00005-yPKGKBCyYx8",
+    "floor": "0",
+    "question": "Is the outdoor grill covered?",
+    "choices": "['(Do not choose this option)', 'Yes', '(Do not choose this option)', 'No']",
+    "question_formatted": "Is the outdoor grill covered? A) (Do not choose this option) B) Yes C) (Do not choose this option) D) No. Answer:",
+    "answer": "B",
+    "label": "count"
+  },
+  {
+    "scene": "00006-HkseAnWCgqk",
+    "floor": "0",
+    "question": "Did I fold the blanket on the bed in the bedroom?",
+    "choices": "['(Do not choose this option)', 'No', 'Yes', '(Do not choose this option)']",
+    "question_formatted": "Did I fold the blanket on the bed in the bedroom? A) (Do not choose this option) B) No C) Yes D) (Do not choose this option). Answer:",
+    "answer": "B",
+    "label": "identification"
+  },
+  {
+    "scene": "00015-LPwS1aEGXBb",
+    "floor": "1",
+    "question": "Is the hallway mirror is mounted on the wall or standing on the floor?",
+    "choices": "['Mounted on the wall', '(Do not choose this option)', 'Standing on the floor', '(Do not choose this option)']",
+    "question_formatted": "Is the hallway mirror is mounted on the wall or standing on the floor? A) Mounted on the wall B) (Do not choose this option) C) Standing on the floor D) (Do not choose this option). Answer:",
+    "answer": "C",
+    "label": "state"
+  },
+  {
+    "scene": "00023-zepmXAdrpjR",
+    "floor": "1",
+    "question": "Is the kettle on the kitchen counter?",
+    "choices": "['(Do not choose this option)', 'Yes', 'No', '(Do not choose this option)']",
+    "question_formatted": "Is the kettle on the kitchen counter? A) (Do not choose this option) B) Yes C) No D) (Do not choose this option). Answer:",
+    "answer": "B",
+    "label": "existence"
+  },
+  {
+    "scene": "00025-ixTj1aTMup2",
+    "floor": "1",
+    "question": "Where did I leave the standing fan at? I moved it last week.",
+    "choices": "['In the bathroom', 'In the kitchen', 'Next to the TV', 'In the living room']",
+    "question_formatted": "Where did I leave the standing fan at? I moved it last week. A) In the bathroom B) In the kitchen C) Next to the TV D) In the living room. Answer:",
+    "answer": "D",
+    "label": "count"
+  },
+  {
+    "scene": "00033-oPj9qMxrDEa",
+    "floor": "0",
+    "question": "Where did I leave the striped towel?",
+    "choices": "['On the dining table', 'On the living room floor', 'In the bathroom', 'By the kitchen sink']",
+    "question_formatted": "Where did I leave the striped towel? A) On the dining table B) On the living room floor C) In the bathroom D) By the kitchen sink. Answer:",
+    "answer": "D",
+    "label": "state"
+  },
+  {
+    "scene": "00035-3XYAD64HpDr",
+    "floor": "0",
+    "question": "Is the kettle on the kitchen countertop?",
+    "choices": "['Yes', 'No', '(Do not choose this option)', '(Do not choose this option)']",
+    "question_formatted": "Is the kettle on the kitchen countertop? A) Yes B) No C) (Do not choose this option) D) (Do not choose this option). Answer:",
+    "answer": "A",
+    "label": "identification"
+  },
+  {
+    "scene": "00036-41FNXLAZZgC",
+    "floor": "0",
+    "question": "Is my kid on the treadmill?",
+    "choices": "['(Do not choose this option)', '(Do not choose this option)', 'No', 'Yes']",
+    "question_formatted": "Is my kid on the treadmill? A) (Do not choose this option) B) (Do not choose this option) C) No D) Yes. Answer:",
+    "answer": "C",
+    "label": "identification"
+  },
+  {
+    "scene": "00037-oKFJo8jpzRW",
+    "floor": "0",
+    "question": "I remember leaving some books in one of the rooms, on wooden shelves.",
+    "choices": "['(Do not choose this option)', 'In the room with white wall', 'In the room with green wall', 'In the room with orange wall']",
+    "question_formatted": "I remember leaving some books in one of the rooms, on wooden shelves. A) (Do not choose this option) B) In the room with white wall C) In the room with green wall D) In the room with orange wall. Answer:",
+    "answer": "C",
+    "label": "state"
+  },
+  {
+    "scene": "00051-CETmJJqkhcK",
+    "floor": "0",
+    "question": "How many red pillows did I leave on the living room sofa?",
+    "choices": "['One', 'Three', 'None', 'Two']",
+    "question_formatted": "How many red pillows did I leave on the living room sofa? A) One B) Three C) None D) Two. Answer:",
+    "answer": "D",
+    "label": "location"
+  },
+  {
+    "scene": "00052-H1D2FZ8TAv1",
+    "floor": "2",
+    "question": "Is there a bottle of shampoo inside the glass shower already?",
+    "choices": "['(Do not choose this option)', 'No', 'Yes', '(Do not choose this option)']",
+    "question_formatted": "Is there a bottle of shampoo inside the glass shower already? A) (Do not choose this option) B) No C) Yes D) (Do not choose this option). Answer:",
+    "answer": "C",
+    "label": "existence"
+  },
+  {
+    "scene": "00056-kdw2Uapns3b",
+    "floor": "2",
+    "question": "Which rug did I put at the toilet?",
+    "choices": "['Black', 'White/Gray', 'Blue', 'Red']",
+    "question_formatted": "Which rug did I put at the toilet? A) Black B) White/Gray C) Blue D) Red. Answer:",
+    "answer": "B",
+    "label": "location"
+  },
+  {
+    "scene": "00057-1UnKg1rAb8A",
+    "floor": "1",
+    "question": "Is there a fan somewhere?",
+    "choices": "['Yes, it is next to the shower', 'No, there is none', 'Yes, it is next to a bed', 'Yes, it is in the kitchen']",
+    "question_formatted": "Is there a fan somewhere? A) Yes, it is next to the shower B) No, there is none C) Yes, it is next to a bed D) Yes, it is in the kitchen. Answer:",
+    "answer": "C",
+    "label": "existence"
+  },
+  {
+    "scene": "00060-TgWKHxhJAng",
+    "floor": "0",
+    "question": "I played pool with friends last night. Is the pool table cleaned up?",
+    "choices": "['No', '(Do not choose this option)', '(Do not choose this option)', 'Yes']",
+    "question_formatted": "I played pool with friends last night. Is the pool table cleaned up? A) No B) (Do not choose this option) C) (Do not choose this option) D) Yes. Answer:",
+    "answer": "A",
+    "label": "existence"
+  },
+  {
+    "scene": "00062-ACZZiU6BXLz",
+    "floor": "0",
+    "question": "Have I already put the fruit bowl on the kitchen counter?",
+    "choices": "['No', 'There is some fruit but in a bowl', 'Yes', 'There is a bowl but no fruit']",
+    "question_formatted": "Have I already put the fruit bowl on the kitchen counter? A) No B) There is some fruit but in a bowl C) Yes D) There is a bowl but no fruit. Answer:",
+    "answer": "A",
+    "label": "existence"
+  },
+  {
+    "scene": "00069-Y8Y6ukxGMvn",
+    "floor": "0",
+    "question": "Is there a floor-standing mirror in the bedroom?",
+    "choices": "['(Do not choose this option)', 'Yes, near the bed.', 'Yes, near the door.', \"No, there isn't one.\"]",
+    "question_formatted": "Is there a floor-standing mirror in the bedroom? A) (Do not choose this option) B) Yes, near the bed. C) Yes, near the door. D) No, there isn't one.. Answer:",
+    "answer": "B",
+    "label": "state"
+  },
+  {
+    "scene": "00070-w7QyjJ3H9Bp",
+    "floor": "1",
+    "question": "I need to retrieve a book from the shelf. Which room has the large bookshelf?",
+    "choices": "['The room with the white curtains', 'The room with the yellow curtains', 'The room with the blue curtains', 'The room with the red curtains']",
+    "question_formatted": "I need to retrieve a book from the shelf. Which room has the large bookshelf? A) The room with the white curtains B) The room with the yellow curtains C) The room with the blue curtains D) The room with the red curtains. Answer:",
+    "answer": "C",
+    "label": "location"
+  },
+  {
+    "scene": "00072-t8wCA6Qe8uT",
+    "floor": "1",
+    "question": "I recently moved the silver trash can. Do you see it anywhere?",
+    "choices": "['In the bedroom', 'By the entrance door', 'In the living room', 'By the kitchen']",
+    "question_formatted": "I recently moved the silver trash can. Do you see it anywhere? A) In the bedroom B) By the entrance door C) In the living room D) By the kitchen. Answer:",
+    "answer": "D",
+    "label": "location"
+  },
+  {
+    "scene": "00074-kHvNo8x6Qoe",
+    "floor": "1",
+    "question": "Did I leave my backpack on the table at the porch?",
+    "choices": "['No', '(Do not choose this option)', '(Do not choose this option)', 'Yes']",
+    "question_formatted": "Did I leave my backpack on the table at the porch? A) No B) (Do not choose this option) C) (Do not choose this option) D) Yes. Answer:",
+    "answer": "A",
+    "label": "state"
+  },
+  {
+    "scene": "00081-5biL7VEkByM",
+    "floor": "0",
+    "question": "Did any book fall onto the floor in the hallway where the bookselves are?",
+    "choices": "['(Do not choose this option)', '(Do not choose this option)', 'No, there is none on the floor', 'Yes, there are a few on the floor']",
+    "question_formatted": "Did any book fall onto the floor in the hallway where the bookselves are? A) (Do not choose this option) B) (Do not choose this option) C) No, there is none on the floor D) Yes, there are a few on the floor. Answer:",
+    "answer": "C",
+    "label": "location"
+  },
+  {
+    "scene": "00086-315QujoX279",
+    "floor": "0",
+    "question": "Did I leave the air conditioning in the living room on?",
+    "choices": "['No, it is off', '(Do not choose this option)', 'Yes, it is on', '(Do not choose this option)']",
+    "question_formatted": "Did I leave the air conditioning in the living room on? A) No, it is off B) (Do not choose this option) C) Yes, it is on D) (Do not choose this option). Answer:",
+    "answer": "A",
+    "label": "location"
+  },
+  {
+    "scene": "00090-C8VQQtzUoqV",
+    "floor": "0",
+    "question": "I'm trying to remember where I placed my floor lamp with the multiple light fixtures.",
+    "choices": "['Near the bookshelf', 'In the corner by the window', 'Next to the sofa', 'By the main entrance']",
+    "question_formatted": "I'm trying to remember where I placed my floor lamp with the multiple light fixtures. A) Near the bookshelf B) In the corner by the window C) Next to the sofa D) By the main entrance. Answer:",
+    "answer": "B",
+    "label": "location"
+  },
+  {
+    "scene": "00094-WT4QWwXrMzs",
+    "floor": "1",
+    "question": "Which rug is there next to the refrigerator?",
+    "choices": "['Purple', 'Black', 'Gray', 'Blue']",
+    "question_formatted": "Which rug is there next to the refrigerator? A) Purple B) Black C) Gray D) Blue. Answer:",
+    "answer": "C",
+    "label": "location"
+  },
+  {
+    "scene": "00100-y3K5dmhuukt",
+    "floor": "1",
+    "question": "I'm looking for my black and white sneakers. Where are the sneaker boxes?",
+    "choices": "['Next to the bed', 'At the bottom of wardrobe', 'In the corner of bedroom', 'At the top of wardrobe']",
+    "question_formatted": "I'm looking for my black and white sneakers. Where are the sneaker boxes? A) Next to the bed B) At the bottom of wardrobe C) In the corner of bedroom D) At the top of wardrobe. Answer:",
+    "answer": "B",
+    "label": "count"
+  },
+  {
+    "scene": "00106-ZVScmfktNQ1",
+    "floor": "0",
+    "question": "Is the door to the closet next to the kitchen left open?",
+    "choices": "['(Do not choose this option)', 'Yes', '(Do not choose this option)', 'No']",
+    "question_formatted": "Is the door to the closet next to the kitchen left open? A) (Do not choose this option) B) Yes C) (Do not choose this option) D) No. Answer:",
+    "answer": "B",
+    "label": "location"
+  },
+  {
+    "scene": "00109-GTV2Y73Sn5t",
+    "floor": "0",
+    "question": "I need to water the plants. How many potted plants are on the kitchen island?",
+    "choices": "['Four', 'Two', 'Three', 'One']",
+    "question_formatted": "I need to water the plants. How many potted plants are on the kitchen island? A) Four B) Two C) Three D) One. Answer:",
+    "answer": "D",
+    "label": "location"
+  },
+  {
+    "scene": "00135-HeSYRw7eMtG",
+    "floor": "2",
+    "question": "How many table lamps are there in the bedroom?",
+    "choices": "['Three', 'Four', 'One', 'Two']",
+    "question_formatted": "How many table lamps are there in the bedroom? A) Three B) Four C) One D) Two. Answer:",
+    "answer": "D",
+    "label": "state"
+  },
+  {
+    "scene": "00148-csHQLLFPE3g",
+    "floor": "0",
+    "question": "I need to find the large gray trash can. Where is it now?",
+    "choices": "['In the storage room', 'In the bedroom', 'In the living room', 'Near the dining area']",
+    "question_formatted": "I need to find the large gray trash can. Where is it now? A) In the storage room B) In the bedroom C) In the living room D) Near the dining area. Answer:",
+    "answer": "A",
+    "label": "location"
+  },
+  {
+    "scene": "00149-UuwwmrTsfBN",
+    "floor": "1",
+    "question": "Is the patio door next to the dining table open?",
+    "choices": "['(Do not choose this option)', '(Do not choose this option)', 'Yes', 'No']",
+    "question_formatted": "Is the patio door next to the dining table open? A) (Do not choose this option) B) (Do not choose this option) C) Yes D) No. Answer:",
+    "answer": "D",
+    "label": "location"
+  },
+  {
+    "scene": "00151-D8bT1ambLFc",
+    "floor": "0",
+    "question": "I am trying to find my white suitcase.",
+    "choices": "['It is on the bedroom floor', 'It is in the bedroom storage', 'It is next to TV', 'It is in the hallway']",
+    "question_formatted": "I am trying to find my white suitcase. A) It is on the bedroom floor B) It is in the bedroom storage C) It is next to TV D) It is in the hallway. Answer:",
+    "answer": "B",
+    "label": "state"
+  },
+  {
+    "scene": "00154-2dZ1Jivh5if",
+    "floor": "0",
+    "question": "Do you see the small red stool anywhere?",
+    "choices": "['It is next to the bookcase', 'It is at the corner of kitchen', 'It is in the bedroom', 'It is in the bathroom']",
+    "question_formatted": "Do you see the small red stool anywhere? A) It is next to the bookcase B) It is at the corner of kitchen C) It is in the bedroom D) It is in the bathroom. Answer:",
+    "answer": "A",
+    "label": "location"
+  },
+  {
+    "scene": "00158-YV9M9gZG3YJ",
+    "floor": "0",
+    "question": "Did I turn off the bed lamps in the main bedroom, the one with red pillows?",
+    "choices": "['They are on', '(Do not choose this option)', '(Do not choose this option)', 'They are off']",
+    "question_formatted": "Did I turn off the bed lamps in the main bedroom, the one with red pillows? A) They are on B) (Do not choose this option) C) (Do not choose this option) D) They are off. Answer:",
+    "answer": "D",
+    "label": "existence"
+  },
+  {
+    "scene": "00159-DfUQLukPMPc",
+    "floor": "0",
+    "question": "I'm trying to remember where I placed the table tennis paddles. Are they on or near the ping pong table?",
+    "choices": "['They are not visible near the ping pong table', 'Under the ping pong table', 'Next to the ping pong table on the floor', 'On the ping pong table']",
+    "question_formatted": "I'm trying to remember where I placed the table tennis paddles. Are they on or near the ping pong table? A) They are not visible near the ping pong table B) Under the ping pong table C) Next to the ping pong table on the floor D) On the ping pong table. Answer:",
+    "answer": "D",
+    "label": "location"
+  },
+  {
+    "scene": "00161-uFCiZVVks57",
+    "floor": "0",
+    "question": "I'm trying to remember how many plates I put on the dining table.",
+    "choices": "['Four', 'Eight', 'Twelve', 'None']",
+    "question_formatted": "I'm trying to remember how many plates I put on the dining table. A) Four B) Eight C) Twelve D) None. Answer:",
+    "answer": "B",
+    "label": "count"
+  },
+  {
+    "scene": "00166-RaYrxWt5pR1",
+    "floor": "0",
+    "question": "I'm looking for my laptop. It is on the bedroom dresser?",
+    "choices": "['It is there', '(Do not choose this option)', '(Do not choose this option)', 'It is not there']",
+    "question_formatted": "I'm looking for my laptop. It is on the bedroom dresser? A) It is there B) (Do not choose this option) C) (Do not choose this option) D) It is not there. Answer:",
+    "answer": "D",
+    "label": "location"
+  },
+  {
+    "scene": "00167-yogvKWUrdnw",
+    "floor": "0",
+    "question": "I'm looking for the fruit bowl.",
+    "choices": "['On the kitchen island', 'On the dining table', 'On the coffee table', 'In the sunroom']",
+    "question_formatted": "I'm looking for the fruit bowl. A) On the kitchen island B) On the dining table C) On the coffee table D) In the sunroom. Answer:",
+    "answer": "A",
+    "label": "location"
+  },
+  {
+    "scene": "00170-S3r45BMWy6H",
+    "floor": "0",
+    "question": "Is the ironing board set up in the room with the checkered floor?",
+    "choices": "['No', '(Do not choose this option)', 'Yes', '(Do not choose this option)']",
+    "question_formatted": "Is the ironing board set up in the room with the checkered floor? A) No B) (Do not choose this option) C) Yes D) (Do not choose this option). Answer:",
+    "answer": "A",
+    "label": "count"
+  },
+  {
+    "scene": "00171-mWqBmEyXcXN",
+    "floor": "1",
+    "question": "How many of the shelves on the two bookshelves are completely empty?",
+    "choices": "['One', 'None', 'Four', 'Two']",
+    "question_formatted": "How many of the shelves on the two bookshelves are completely empty? A) One B) None C) Four D) Two. Answer:",
+    "answer": "B",
+    "label": "location"
+  },
+  {
+    "scene": "00176-wcJYziD5pmF",
+    "floor": "2",
+    "question": "I remember leaving the panama hat somewhere.",
+    "choices": "['It is on top of the bedroom door', 'It is on one of the beds', 'It is on one of the armchairs', 'It is in one of the bedroom closets']",
+    "question_formatted": "I remember leaving the panama hat somewhere. A) It is on top of the bedroom door B) It is on one of the beds C) It is on one of the armchairs D) It is in one of the bedroom closets. Answer:",
+    "answer": "A",
+    "label": "existence"
+  },
+  {
+    "scene": "00187-GCCrNuhZ9WY",
+    "floor": "0",
+    "question": "I'm expecting guests and need to check if the guest room is ready. Is the red pillow on the bed?",
+    "choices": "['(Do not choose this option)', 'No', '(Do not choose this option)', 'Yes']",
+    "question_formatted": "I'm expecting guests and need to check if the guest room is ready. Is the red pillow on the bed? A) (Do not choose this option) B) No C) (Do not choose this option) D) Yes. Answer:",
+    "answer": "D",
+    "label": "location"
+  },
+  {
+    "scene": "00193-wwX4MFiTTrt",
+    "floor": "0",
+    "question": "Did I put the fruit bar on the kitchen island?",
+    "choices": "['No, not yet', '(Do not choose this option)', '(Do not choose this option)', 'Yes, you did']",
+    "question_formatted": "Did I put the fruit bar on the kitchen island? A) No, not yet B) (Do not choose this option) C) (Do not choose this option) D) Yes, you did. Answer:",
+    "answer": "A",
+    "label": "location"
+  },
+  {
+    "scene": "00202-yVbpFay8gTU",
+    "floor": "1",
+    "question": "Did I put away the teepee or is it still on the bedroom floor?",
+    "choices": "['(Do not choose this option)', 'It is still there', '(Do not choose this option)', 'It is not seen anywhere any more']",
+    "question_formatted": "Did I put away the teepee or is it still on the bedroom floor? A) (Do not choose this option) B) It is still there C) (Do not choose this option) D) It is not seen anywhere any more. Answer:",
+    "answer": "B",
+    "label": "existence"
+  },
+  {
+    "scene": "00203-VoVGtfYrpuQ",
+    "floor": "0",
+    "question": "I'm trying to remember where I placed the decorative wooden bowl. Is it on the dining table?",
+    "choices": "['No', '(Do not choose this option)', 'Yes', '(Do not choose this option)']",
+    "question_formatted": "I'm trying to remember where I placed the decorative wooden bowl. Is it on the dining table? A) No B) (Do not choose this option) C) Yes D) (Do not choose this option). Answer:",
+    "answer": "C",
+    "label": "identification"
+  },
+  {
+    "scene": "00204-gxttMtT5ZGK",
+    "floor": "1",
+    "question": "Is my backpack on the kitchen island?",
+    "choices": "['(Do not choose this option)', 'Yes', 'No', '(Do not choose this option)']",
+    "question_formatted": "Is my backpack on the kitchen island? A) (Do not choose this option) B) Yes C) No D) (Do not choose this option). Answer:",
+    "answer": "C",
+    "label": "existence"
+  },
+  {
+    "scene": "00217-qz3829g1Lzf",
+    "floor": "1",
+    "question": "I need to find two gray bags with beddings. Is it in the room with the wooden dresser and the quilted bedspread?",
+    "choices": "['No', 'Yes', '(Do not choose this option)', '(Do not choose this option)']",
+    "question_formatted": "I need to find two gray bags with beddings. Is it in the room with the wooden dresser and the quilted bedspread? A) No B) Yes C) (Do not choose this option) D) (Do not choose this option). Answer:",
+    "answer": "A",
+    "label": "existence"
+  },
+  {
+    "scene": "00218-fQHGxvurx9L",
+    "floor": "0",
+    "question": "I forgot if there is any drawer under the bed with light-colored bedding.",
+    "choices": "['There are drawers', '(Do not choose this option)', 'There is none', '(Do not choose this option)']",
+    "question_formatted": "I forgot if there is any drawer under the bed with light-colored bedding. A) There are drawers B) (Do not choose this option) C) There is none D) (Do not choose this option). Answer:",
+    "answer": "A",
+    "label": "existence"
+  },
+  {
+    "scene": "00224-8m2Sk2sC3DR",
+    "floor": "1",
+    "question": "I'm looking for the white woven ottoman. Where it is?",
+    "choices": "['In the hallway next to dresser', 'In the bathroom', 'In the bedroom', 'Next to the coffee tabel']",
+    "question_formatted": "I'm looking for the white woven ottoman. Where it is? A) In the hallway next to dresser B) In the bathroom C) In the bedroom D) Next to the coffee tabel. Answer:",
+    "answer": "D",
+    "label": "location"
+  },
+  {
+    "scene": "00227-bvdRzJBgJyg",
+    "floor": "0",
+    "question": "Is the lamp under the wall mirror on?",
+    "choices": "['No, it is off', '(Do not choose this option)', 'Yes, it is on', '(Do not choose this option)']",
+    "question_formatted": "Is the lamp under the wall mirror on? A) No, it is off B) (Do not choose this option) C) Yes, it is on D) (Do not choose this option). Answer:",
+    "answer": "A",
+    "label": "state"
+  },
+  {
+    "scene": "00245-741Fdj7NLF9",
+    "floor": "0",
+    "question": "I was playing darts last night and can't recall where I left the board.",
+    "choices": "['It is in the bedroom', 'It is in the dining room', 'It is in the living room', 'It is at the porch']",
+    "question_formatted": "I was playing darts last night and can't recall where I left the board. A) It is in the bedroom B) It is in the dining room C) It is in the living room D) It is at the porch. Answer:",
+    "answer": "D",
+    "label": "existence"
+  },
+  {
+    "scene": "00258-2Pc8W48bu21",
+    "floor": "1",
+    "question": "I need to retrieve my pool cues. How many are on the pool table?",
+    "choices": "['Four', 'Three', 'Two', 'One']",
+    "question_formatted": "I need to retrieve my pool cues. How many are on the pool table? A) Four B) Three C) Two D) One. Answer:",
+    "answer": "B",
+    "label": "existence"
+  },
+  {
+    "scene": "00262-1xGrZPxG1Hz",
+    "floor": "0",
+    "question": "Is the wooden chair left in a room?",
+    "choices": "['Yes, bedroom', 'Yes, dining room', 'Yes, living room', 'No']",
+    "question_formatted": "Is the wooden chair left in a room? A) Yes, bedroom B) Yes, dining room C) Yes, living room D) No. Answer:",
+    "answer": "A",
+    "label": "identification"
+  },
+  {
+    "scene": "00268-mHJxL9jnCox",
+    "floor": "1",
+    "question": "Do we still have some paper towel?",
+    "choices": "['No', 'Yes, on the sofa', 'Yes, on the dining table', 'Yes, in the kitchen']",
+    "question_formatted": "Do we still have some paper towel? A) No B) Yes, on the sofa C) Yes, on the dining table D) Yes, in the kitchen. Answer:",
+    "answer": "D",
+    "label": "count"
+  },
+  {
+    "scene": "00273-8DDKELpgD99",
+    "floor": "0",
+    "question": "I need to replace the rugs. Which one is at the entrance door?",
+    "choices": "['Gray', 'Red', 'Wood', 'Brown']",
+    "question_formatted": "I need to replace the rugs. Which one is at the entrance door? A) Gray B) Red C) Wood D) Brown. Answer:",
+    "answer": "A",
+    "label": "location"
+  },
+  {
+    "scene": "00275-4dbCzNN5L5t",
+    "floor": "0",
+    "question": "Is the \"Happy Birthday\" balloon still floating in the room with the toy car?",
+    "choices": "['Yes', '(Do not choose this option)', 'No', '(Do not choose this option)']",
+    "question_formatted": "Is the \"Happy Birthday\" balloon still floating in the room with the toy car? A) Yes B) (Do not choose this option) C) No D) (Do not choose this option). Answer:",
+    "answer": "A",
+    "label": "identification"
+  },
+  {
+    "scene": "00282-8nSVqHLMRwQ",
+    "floor": "0",
+    "question": "Which soccer balls did I put in the kid's room?",
+    "choices": "['Orange ones', 'Red ones', 'Blue ones', 'White ones']",
+    "question_formatted": "Which soccer balls did I put in the kid's room? A) Orange ones B) Red ones C) Blue ones D) White ones. Answer:",
+    "answer": "A",
+    "label": "existence"
+  },
+  {
+    "scene": "00285-QKGMrurUVbk",
+    "floor": "0",
+    "question": "Where did I leave the big bag of Bounty paper towel?",
+    "choices": "['It is next to bed', 'It is in the bathroom', 'It is in the kitchen', 'It is next to TV']",
+    "question_formatted": "Where did I leave the big bag of Bounty paper towel? A) It is next to bed B) It is in the bathroom C) It is in the kitchen D) It is next to TV. Answer:",
+    "answer": "B",
+    "label": "location"
+  },
+  {
+    "scene": "00292-reHtN7VMWkg",
+    "floor": "0",
+    "question": "Is the ceiling fan light in the porch off?",
+    "choices": "['No, it is on', '(Do not choose this option)', 'Yes, it is off', '(Do not choose this option)']",
+    "question_formatted": "Is the ceiling fan light in the porch off? A) No, it is on B) (Do not choose this option) C) Yes, it is off D) (Do not choose this option). Answer:",
+    "answer": "C",
+    "label": "location"
+  },
+  {
+    "scene": "00299-bdp1XNEdvmW",
+    "floor": "1",
+    "question": "Is there any vegetable left on the cutting board?",
+    "choices": "['Potatoes', 'Lettuces', 'Some tomatos', 'None']",
+    "question_formatted": "Is there any vegetable left on the cutting board? A) Potatoes B) Lettuces C) Some tomatos D) None. Answer:",
+    "answer": "D",
+    "label": "state"
+  },
+  {
+    "scene": "00302-JFgrz9MNz4b",
+    "floor": "0",
+    "question": "I'm trying to find the dartboard for our game night.",
+    "choices": "['In the living room', 'In the dining room', 'In the bedroom', 'In the workout room']",
+    "question_formatted": "I'm trying to find the dartboard for our game night. A) In the living room B) In the dining room C) In the bedroom D) In the workout room. Answer:",
+    "answer": "A",
+    "label": "count"
+  },
+  {
+    "scene": "00303-ghWQ5kHV97i",
+    "floor": "0",
+    "question": "Is the bedroom wardrobe door closed?",
+    "choices": "['No', '(Do not choose this option)', 'Yes', '(Do not choose this option)']",
+    "question_formatted": "Is the bedroom wardrobe door closed? A) No B) (Do not choose this option) C) Yes D) (Do not choose this option). Answer:",
+    "answer": "A",
+    "label": "existence"
+  },
+  {
+    "scene": "00306-Y4L8fjz2yH7",
+    "floor": "0",
+    "question": "Where is the standing mirror?",
+    "choices": "['In the hallway', 'In the bedroom', 'Next to TV', 'Near the entrance door']",
+    "question_formatted": "Where is the standing mirror? A) In the hallway B) In the bedroom C) Next to TV D) Near the entrance door. Answer:",
+    "answer": "B",
+    "label": "existence"
+  },
+  {
+    "scene": "00315-We1N7vBtyGm",
+    "floor": "1",
+    "question": "Is there already some shampoo in the shower?",
+    "choices": "['(Do not choose this option)', 'Yes', '(Do not choose this option)', 'No']",
+    "question_formatted": "Is there already some shampoo in the shower? A) (Do not choose this option) B) Yes C) (Do not choose this option) D) No. Answer:",
+    "answer": "B",
+    "label": "location"
+  },
+  {
+    "scene": "00327-xgLmjqzoAzF",
+    "floor": "0",
+    "question": "Where did I leave the black suitcases?",
+    "choices": "['In the laundry room', 'In the bedroom', 'In the living room', 'In the hallway closet']",
+    "question_formatted": "Where did I leave the black suitcases? A) In the laundry room B) In the bedroom C) In the living room D) In the hallway closet. Answer:",
+    "answer": "D",
+    "label": "state"
+  },
+  {
+    "scene": "00330-WhNyDTnd9g5",
+    "floor": "2",
+    "question": "Is the curtain shade pulled down in the kid's room?",
+    "choices": "['Yes, it is down', 'No, it is up', '(Do not choose this option)', '(Do not choose this option)']",
+    "question_formatted": "Is the curtain shade pulled down in the kid's room? A) Yes, it is down B) No, it is up C) (Do not choose this option) D) (Do not choose this option). Answer:",
+    "answer": "A",
+    "label": "existence"
+  },
+  {
+    "scene": "00331-gGMMut83nsX",
+    "floor": "0",
+    "question": "IHow many bar stools are at the kitchen counter?",
+    "choices": "['Five', 'Four', 'Three', 'Two']",
+    "question_formatted": "IHow many bar stools are at the kitchen counter? A) Five B) Four C) Three D) Two. Answer:",
+    "answer": "C",
+    "label": "state"
+  },
+  {
+    "scene": "00333-LLecyBe5Eq2",
+    "floor": "1",
+    "question": "I'm trying to remember where I placed my decorative pine cone.",
+    "choices": "['On the bedstand', 'Next to TV in the living space', 'On the bathroom sink', 'On the small desk in the dining space']",
+    "question_formatted": "I'm trying to remember where I placed my decorative pine cone. A) On the bedstand B) Next to TV in the living space C) On the bathroom sink D) On the small desk in the dining space. Answer:",
+    "answer": "D",
+    "label": "location"
+  },
+  {
+    "scene": "00347-bwoBmU23M2N",
+    "floor": "1",
+    "question": "Which fruit is there at the top of fruit bowl?",
+    "choices": "['Banana', 'Apple', 'Orange', 'Grapes']",
+    "question_formatted": "Which fruit is there at the top of fruit bowl? A) Banana B) Apple C) Orange D) Grapes. Answer:",
+    "answer": "A",
+    "label": "location"
+  },
+  {
+    "scene": "00349-p32JzpQyhPk",
+    "floor": "0",
+    "question": "Is there any pot left on the stove?",
+    "choices": "['There is one', 'There is none', 'There are two', 'There are three']",
+    "question_formatted": "Is there any pot left on the stove? A) There is one B) There is none C) There are two D) There are three. Answer:",
+    "answer": "A",
+    "label": "identification"
+  },
+  {
+    "scene": "00359-aTf5zsbjZMb",
+    "floor": "0",
+    "question": "Which rug is there on the kitchen floor right now?",
+    "choices": "['Black one', 'Brown one', 'Gray one', 'Blue one']",
+    "question_formatted": "Which rug is there on the kitchen floor right now? A) Black one B) Brown one C) Gray one D) Blue one. Answer:",
+    "answer": "C",
+    "label": "identification"
+  },
+  {
+    "scene": "00364-tEafuWwhhwr",
+    "floor": "0",
+    "question": "What did I leave at the corner of the kitchen countertop?",
+    "choices": "['Rice cooker', 'Mixer', 'Pot', 'Microwave']",
+    "question_formatted": "What did I leave at the corner of the kitchen countertop? A) Rice cooker B) Mixer C) Pot D) Microwave. Answer:",
+    "answer": "B",
+    "label": "identification"
+  },
+  {
+    "scene": "00376-wxixLWuvLjd",
+    "floor": "0",
+    "question": "Is the black recliner chair positioned facing the window?",
+    "choices": "['Yes', 'No', '(Do not choose this option)', '(Do not choose this option)']",
+    "question_formatted": "Is the black recliner chair positioned facing the window? A) Yes B) No C) (Do not choose this option) D) (Do not choose this option). Answer:",
+    "answer": "A",
+    "label": "state"
+  },
+  {
+    "scene": "00389-d6bYiL1d9Fh",
+    "floor": "1",
+    "question": "Is the closet door in the bedroom closed?",
+    "choices": "['No', 'Yes', '(Do not choose this option)', '(Do not choose this option)']",
+    "question_formatted": "Is the closet door in the bedroom closed? A) No B) Yes C) (Do not choose this option) D) (Do not choose this option). Answer:",
+    "answer": "B",
+    "label": "state"
+  },
+  {
+    "scene": "00396-wuKkTq5GJbi",
+    "floor": "0",
+    "question": "Where exactly is the guitar in the bedroom?",
+    "choices": "['On the desk', 'Against the wall', 'At bathroom door', 'On the bed']",
+    "question_formatted": "Where exactly is the guitar in the bedroom? A) On the desk B) Against the wall C) At bathroom door D) On the bed. Answer:",
+    "answer": "D",
+    "label": "location"
+  },
+  {
+    "scene": "00410-v7DzfFFEpsD",
+    "floor": "0",
+    "question": "Which side of the front door is the plant now?",
+    "choices": "['Left side', '(Do not choose this option)', 'Right side', 'There is no plant there']",
+    "question_formatted": "Which side of the front door is the plant now? A) Left side B) (Do not choose this option) C) Right side D) There is no plant there. Answer:",
+    "answer": "C",
+    "label": "state"
+  },
+  {
+    "scene": "00411-o4tckGBtaxz",
+    "floor": "0",
+    "question": "I am going to work out. Is the air conditioning near the exercise equipment turned on already?",
+    "choices": "['Yes, it is on', '(Do not choose this option)', 'No, it is off', '(Do not choose this option)']",
+    "question_formatted": "I am going to work out. Is the air conditioning near the exercise equipment turned on already? A) Yes, it is on B) (Do not choose this option) C) No, it is off D) (Do not choose this option). Answer:",
+    "answer": "C",
+    "label": "state"
+  },
+  {
+    "scene": "00412-mDPCxA7W1WN",
+    "floor": "0",
+    "question": "Is the air conditioning in the living room plugged in or not?",
+    "choices": "['Yes', '(Do not choose this option)', 'No', '(Do not choose this option)']",
+    "question_formatted": "Is the air conditioning in the living room plugged in or not? A) Yes B) (Do not choose this option) C) No D) (Do not choose this option). Answer:",
+    "answer": "A",
+    "label": "state"
+  },
+  {
+    "scene": "00423-bEdki9cbHDG",
+    "floor": "1",
+    "question": "What did I leave on the corner office desk?",
+    "choices": "['Printer', 'Backpack', 'Laptop', 'Nothing']",
+    "question_formatted": "What did I leave on the corner office desk? A) Printer B) Backpack C) Laptop D) Nothing. Answer:",
+    "answer": "D",
+    "label": "identification"
+  },
+  {
+    "scene": "00425-SSbSnMigayt",
+    "floor": "0",
+    "question": "Is the television in the bedroom turned off?",
+    "choices": "['(Do not choose this option)', \"No, it's on.\", \"Yes, it's off.\", '(Do not choose this option)']",
+    "question_formatted": "Is the television in the bedroom turned off? A) (Do not choose this option) B) No, it's on. C) Yes, it's off. D) (Do not choose this option). Answer:",
+    "answer": "C",
+    "label": "state"
+  },
+  {
+    "scene": "00432-vCfHLVSyL21",
+    "floor": "1",
+    "question": "I'm trying to remember where I placed the round mirror.",
+    "choices": "['In the room with the single bed', '(Do not choose this option)', 'In the room with the double bed', 'In the room with the beige carpet and no furniture']",
+    "question_formatted": "I'm trying to remember where I placed the round mirror. A) In the room with the single bed B) (Do not choose this option) C) In the room with the double bed D) In the room with the beige carpet and no furniture. Answer:",
+    "answer": "A",
+    "label": "location"
+  },
+  {
+    "scene": "00436-TGVJHgmMGzi",
+    "floor": "1",
+    "question": "I want to make sure the dining area is ready for guests. How many dining chairs are there?",
+    "choices": "['Five', 'Six', 'Seven', 'Four']",
+    "question_formatted": "I want to make sure the dining area is ready for guests. How many dining chairs are there? A) Five B) Six C) Seven D) Four. Answer:",
+    "answer": "D",
+    "label": "count"
+  },
+  {
+    "scene": "00445-H81QMurNRM8",
+    "floor": "0",
+    "question": "Where is the silver trash can?",
+    "choices": "['Next to dining table', 'Next to oven', 'Next to living room TV', 'Next to kitchen island']",
+    "question_formatted": "Where is the silver trash can? A) Next to dining table B) Next to oven C) Next to living room TV D) Next to kitchen island. Answer:",
+    "answer": "D",
+    "label": "location"
+  },
+  {
+    "scene": "00479-p4ZPcGtk6Ex",
+    "floor": "0",
+    "question": "I'm looking for the fruit bowl to put some snacks. Where is it?",
+    "choices": "['On the kitchen counter near the window', 'On the kitchen island', 'Next to the refrigerator', 'On the dining table']",
+    "question_formatted": "I'm looking for the fruit bowl to put some snacks. Where is it? A) On the kitchen counter near the window B) On the kitchen island C) Next to the refrigerator D) On the dining table. Answer:",
+    "answer": "A",
+    "label": "location"
+  },
+  {
+    "scene": "00483-boHtwWDWtXh",
+    "floor": "0",
+    "question": "Is the bedroom lamp left on?",
+    "choices": "['(Do not choose this option)', 'Yes', '(Do not choose this option)', 'No']",
+    "question_formatted": "Is the bedroom lamp left on? A) (Do not choose this option) B) Yes C) (Do not choose this option) D) No. Answer:",
+    "answer": "B",
+    "label": "state"
+  },
+  {
+    "scene": "00492-panm7DRsmDn",
+    "floor": "1",
+    "question": "What did I leave on the bench at the foot of the bed?",
+    "choices": "['Backpack', 'Coat', 'Pillow', 'Laptop']",
+    "question_formatted": "What did I leave on the bench at the foot of the bed? A) Backpack B) Coat C) Pillow D) Laptop. Answer:",
+    "answer": "C",
+    "label": "identification"
+  },
+  {
+    "scene": "00510-JSgMy8tTACD",
+    "floor": "1",
+    "question": "Is there a bathrobe available in the wardrobe for the guest to use after a shower?",
+    "choices": "['(Do not choose this option)', 'Yes', '(Do not choose this option)', 'No']",
+    "question_formatted": "Is there a bathrobe available in the wardrobe for the guest to use after a shower? A) (Do not choose this option) B) Yes C) (Do not choose this option) D) No. Answer:",
+    "answer": "B",
+    "label": "existence"
+  },
+  {
+    "scene": "00512-WZDzPCybQvS",
+    "floor": "1",
+    "question": "Which rug do we have at the entrance door?",
+    "choices": "['Yellow one', 'Gray one', 'Blue one', 'White one']",
+    "question_formatted": "Which rug do we have at the entrance door? A) Yellow one B) Gray one C) Blue one D) White one. Answer:",
+    "answer": "C",
+    "label": "identification"
+  },
+  {
+    "scene": "00525-iKFn6fzyRqs",
+    "floor": "1",
+    "question": "I want to take a shower. Are there some towels by the bathrub?",
+    "choices": "['No', '(Do not choose this option)', 'Yes', '(Do not choose this option)']",
+    "question_formatted": "I want to take a shower. Are there some towels by the bathrub? A) No B) (Do not choose this option) C) Yes D) (Do not choose this option). Answer:",
+    "answer": "C",
+    "label": "existence"
+  },
+  {
+    "scene": "00535-XKqDR74W1JU",
+    "floor": "1",
+    "question": "How many towels are there at the oven?",
+    "choices": "['None', 'Two', 'One', 'More than three']",
+    "question_formatted": "How many towels are there at the oven? A) None B) Two C) One D) More than three. Answer:",
+    "answer": "A",
+    "label": "count"
+  },
+  {
+    "scene": "00573-1zDbEdygBeW",
+    "floor": "0",
+    "question": "I'm trying to locate my decorative shells.",
+    "choices": "['On the kitchen countertop', 'In the built-in living room shelves', 'On the outdoor couch', 'Near the fireplace']",
+    "question_formatted": "I'm trying to locate my decorative shells. A) On the kitchen countertop B) In the built-in living room shelves C) On the outdoor couch D) Near the fireplace. Answer:",
+    "answer": "B",
+    "label": "location"
+  },
+  {
+    "scene": "00574-bXu6SSWkJY8",
+    "floor": "1",
+    "question": "Where id the small wooden stool?",
+    "choices": "['Under the window in the bathroom', 'By the entrance door with the white panels', 'Near the bed with the white bedding', 'Next to the fireplace in the floral wallpaper room']",
+    "question_formatted": "Where id the small wooden stool? A) Under the window in the bathroom B) By the entrance door with the white panels C) Near the bed with the white bedding D) Next to the fireplace in the floral wallpaper room. Answer:",
+    "answer": "A",
+    "label": "location"
+  },
+  {
+    "scene": "00582-TYDavTf8oyy",
+    "floor": "1",
+    "question": "I'm trying to remember where I placed the candle holder. Where is it in the dining room?",
+    "choices": "['On the window sill', '(Do not choose this option)', 'On the sideboard', 'On the dining table']",
+    "question_formatted": "I'm trying to remember where I placed the candle holder. Where is it in the dining room? A) On the window sill B) (Do not choose this option) C) On the sideboard D) On the dining table. Answer:",
+    "answer": "C",
+    "label": "existence"
+  },
+  {
+    "scene": "00585-CxxHb5C8ZsP",
+    "floor": "1",
+    "question": "I'm trying to remember where I placed the decorative bowl. It is on the kitchen island?",
+    "choices": "['(Do not choose this option)', '(Do not choose this option)', 'Yes', 'No']",
+    "question_formatted": "I'm trying to remember where I placed the decorative bowl. It is on the kitchen island? A) (Do not choose this option) B) (Do not choose this option) C) Yes D) No. Answer:",
+    "answer": "C",
+    "label": "existence"
+  },
+  {
+    "scene": "00597-D8aaq3PH6dG",
+    "floor": "1",
+    "question": "How many pillows are on the single bed with white bedding?",
+    "choices": "['None', 'Two', 'One', 'Three']",
+    "question_formatted": "How many pillows are on the single bed with white bedding? A) None B) Two C) One D) Three. Answer:",
+    "answer": "B",
+    "label": "count"
+  },
+  {
+    "scene": "00600-ENhuWpDE5EB",
+    "floor": "0",
+    "question": "Is potted plant still on the kitchen island?",
+    "choices": "['No', '(Do not choose this option)', 'Yes', '(Do not choose this option)']",
+    "question_formatted": "Is potted plant still on the kitchen island? A) No B) (Do not choose this option) C) Yes D) (Do not choose this option). Answer:",
+    "answer": "C",
+    "label": "existence"
+  },
+  {
+    "scene": "00614-ki6Cu76pWzF",
+    "floor": "0",
+    "question": "Which rug is at the bathroom sink, the one next to the clock?",
+    "choices": "['Red', 'Black', 'Woven color', 'White']",
+    "question_formatted": "Which rug is at the bathroom sink, the one next to the clock? A) Red B) Black C) Woven color D) White. Answer:",
+    "answer": "C",
+    "label": "identification"
+  },
+  {
+    "scene": "00618-T4G9hTR5WSv",
+    "floor": "0",
+    "question": "Is the vacuum cleaner leaning against the wall or hanging on the wall?",
+    "choices": "['(Do not choose this option)', 'Leaning against', '(Do not choose this option)', 'Hanging']",
+    "question_formatted": "Is the vacuum cleaner leaning against the wall or hanging on the wall? A) (Do not choose this option) B) Leaning against C) (Do not choose this option) D) Hanging. Answer:",
+    "answer": "D",
+    "label": "state"
+  },
+  {
+    "scene": "00649-RiwBKy2YdQ7",
+    "floor": "1",
+    "question": "Where is ths steamer?",
+    "choices": "['In the living room', 'In the bedroom', 'In the bathroom', 'In the music room']",
+    "question_formatted": "Where is ths steamer? A) In the living room B) In the bedroom C) In the bathroom D) In the music room. Answer:",
+    "answer": "C",
+    "label": "location"
+  },
+  {
+    "scene": "00663-1Rg1SS1dRpG",
+    "floor": "0",
+    "question": "How many cues did my friends leave on the pool table?",
+    "choices": "['Two', 'One', 'Five', 'None']",
+    "question_formatted": "How many cues did my friends leave on the pool table? A) Two B) One C) Five D) None. Answer:",
+    "answer": "A",
+    "label": "count"
+  },
+  {
+    "scene": "00667-5K2dTSVihN7",
+    "floor": "0",
+    "question": "Is the curtain fully covering the entrance door?",
+    "choices": "['(Do not choose this option)', 'No', '(Do not choose this option)', 'Yes']",
+    "question_formatted": "Is the curtain fully covering the entrance door? A) (Do not choose this option) B) No C) (Do not choose this option) D) Yes. Answer:",
+    "answer": "B",
+    "label": "state"
+  },
+  {
+    "scene": "00757-LVgQNuK8vtv",
+    "floor": "0",
+    "question": "I'm trying to remember where I placed my decorative zebra-patterned stool. Where is it?",
+    "choices": "['Near the staircase', 'In the coat closet', 'In the kitchen', 'In the dining room']",
+    "question_formatted": "I'm trying to remember where I placed my decorative zebra-patterned stool. Where is it? A) Near the staircase B) In the coat closet C) In the kitchen D) In the dining room. Answer:",
+    "answer": "A",
+    "label": "location"
+  }
+]

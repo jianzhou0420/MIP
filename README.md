@@ -58,6 +58,25 @@ python runner.py std_mip_r2r_hybrid_slam harness=mini model=opus-5              
   harness's raw stream, cost, and a copy of the code. `python -m ui.server` shows them in a browser.
 - [`scripts/mip_paper_cells.sh`](scripts/mip_paper_cells.sh) lists the runner lines behind each table of the paper.
 
+**Splits.** Every number in the paper is measured on a 100-episode subset of the official validation
+split; the files are in [`splits/`](splits), at the path each would have next to the official files:
+
+| Benchmark | Subset | File |
+|---|---|---|
+| R2R-CE | `rand100` (SmartWay's subset of val_unseen) | `splits/vlnce/R2R_VLNCE_v1-3_preprocessed/rand100/` |
+| RxR-CE | `mip100` (English val_unseen) | `splits/vlnce/RxR_VLNCE_v0/mip100/` |
+| HM3D v1 ObjectNav | `mip100` | `splits/objectnav/hm3d/v1/mip100/` |
+| HM3D v2 ObjectNav | `mip100` | `splits/objectnav/hm3d/v2/mip100/` |
+| MP3D ObjectNav | `mip100` | `splits/objectnav/mp3d/v1/mip100/` |
+| HM-EQA | `mip100` | `splits/hmeqa/questions_mip100.json` |
+
+A `mip100` subset is a fixed function of the official files: per scene, a share of 100 by largest
+remainder, filled with the episodes whose SHA-256 of `"mip100:{scene}:{id}"` is smallest. No random
+generator is involved, so anyone with the official files can draw the same subset again.
+`splits/manifests/` lists every chosen episode with its scene, id and hash. The runner reads its own copy
+of these files from the EmbodiedScore-envs package (`embodiedscore_envs/splits/`, which also has the
+generator and the full provenance table); the two copies are byte-identical.
+
 **Layout.** `runner.py` is the entry point; everything else lives in `mip/`: `core/` (run loop, MCP bridge,
 env server, recorders), `harnesses/`, `tools/` (nav · waypoint · slam), `prompts/`, `configs/`, `envs/`.
 

@@ -1,0 +1,1691 @@
+{
+  "spec": "MIP-N draw v2 (hash-based): see scripts/sample_episodes.py and embodiedscore_envs/splits/README.md",
+  "generator": "EmbodiedScore-envs/scripts/sample_episodes.py",
+  "method": "scene-stratified proportional subset, integer largest-remainder quotas (ties by scene name); within a stratum the episodes with the smallest SHA-256(\"{salt}:{scene}:{id}\") hex digest; id = the benchmark's episode_id where unique within the scene, else the episode's position among its scene's episodes in file order; output in population (file) order",
+  "benchmark": "mp3d",
+  "dataset_label": "objectnav_mp3d_v1",
+  "split": "val",
+  "n": 100,
+  "salt": "mip100",
+  "population": {
+    "episodes": 2195,
+    "strata": {
+      "2azQ1b91cZZ": 200,
+      "8194nk5LbLH": 201,
+      "EU6Fwq7SyZv": 198,
+      "QUCTc6BB5sX": 197,
+      "TbHJrupSAjP": 200,
+      "X7HyMhZNoso": 200,
+      "Z6MFQCViBuw": 200,
+      "oLBMNvg9in8": 201,
+      "pLe4wQe7qrG": 200,
+      "x8F5xyUWy9e": 200,
+      "zsNo4HB9uLZ": 198
+    },
+    "categories": {
+      "bathtub": 9,
+      "bed": 48,
+      "cabinet": 180,
+      "chair": 434,
+      "chest_of_drawers": 63,
+      "clothes": 25,
+      "counter": 66,
+      "cushion": 239,
+      "fireplace": 30,
+      "gym_equipment": 44,
+      "picture": 161,
+      "plant": 87,
+      "seating": 87,
+      "shower": 70,
+      "sink": 82,
+      "sofa": 53,
+      "stool": 68,
+      "table": 340,
+      "toilet": 28,
+      "towel": 73,
+      "tv_monitor": 8
+    },
+    "filter": null
+  },
+  "sample": {
+    "strata": {
+      "2azQ1b91cZZ": 9,
+      "8194nk5LbLH": 10,
+      "EU6Fwq7SyZv": 9,
+      "QUCTc6BB5sX": 9,
+      "TbHJrupSAjP": 9,
+      "X7HyMhZNoso": 9,
+      "Z6MFQCViBuw": 9,
+      "oLBMNvg9in8": 9,
+      "pLe4wQe7qrG": 9,
+      "x8F5xyUWy9e": 9,
+      "zsNo4HB9uLZ": 9
+    },
+    "categories": {
+      "bathtub": 1,
+      "bed": 1,
+      "cabinet": 7,
+      "chair": 18,
+      "chest_of_drawers": 4,
+      "clothes": 1,
+      "counter": 3,
+      "cushion": 10,
+      "fireplace": 2,
+      "gym_equipment": 1,
+      "picture": 6,
+      "plant": 4,
+      "seating": 7,
+      "shower": 1,
+      "sink": 5,
+      "sofa": 5,
+      "stool": 2,
+      "table": 14,
+      "toilet": 4,
+      "towel": 4
+    }
+  },
+  "indices": [
+    2,
+    7,
+    46,
+    66,
+    112,
+    131,
+    151,
+    175,
+    196,
+    220,
+    250,
+    259,
+    263,
+    267,
+    276,
+    302,
+    340,
+    366,
+    369,
+    423,
+    430,
+    436,
+    474,
+    496,
+    516,
+    543,
+    590,
+    591,
+    614,
+    656,
+    665,
+    670,
+    674,
+    718,
+    736,
+    764,
+    780,
+    817,
+    820,
+    832,
+    868,
+    895,
+    935,
+    942,
+    979,
+    994,
+    997,
+    1095,
+    1098,
+    1099,
+    1142,
+    1179,
+    1181,
+    1191,
+    1193,
+    1204,
+    1215,
+    1222,
+    1224,
+    1235,
+    1237,
+    1307,
+    1325,
+    1353,
+    1407,
+    1416,
+    1435,
+    1439,
+    1489,
+    1537,
+    1568,
+    1584,
+    1596,
+    1637,
+    1639,
+    1680,
+    1692,
+    1700,
+    1743,
+    1748,
+    1776,
+    1789,
+    1811,
+    1819,
+    1876,
+    1895,
+    1897,
+    1899,
+    1930,
+    1966,
+    1968,
+    2039,
+    2080,
+    2089,
+    2099,
+    2106,
+    2127,
+    2145,
+    2155,
+    2169
+  ],
+  "episodes": [
+    {
+      "pos": 2,
+      "scene": "2azQ1b91cZZ",
+      "id": "2",
+      "key": "mip100:2azQ1b91cZZ:2",
+      "sha256": "044bf0b5254d82491048f08800367c06d5965ec0c9f3c64d55d5c24996bcba8b",
+      "scene_id": "mp3d/2azQ1b91cZZ/2azQ1b91cZZ.glb",
+      "episode_id": "2",
+      "object_category": "cabinet",
+      "start_position": [
+        4.70608,
+        0.12711,
+        -9.33665
+      ]
+    },
+    {
+      "pos": 7,
+      "scene": "2azQ1b91cZZ",
+      "id": "7",
+      "key": "mip100:2azQ1b91cZZ:7",
+      "sha256": "074a4ad35835ac5a083d770598446545221be7550ee3dec3203f7e7ae34527b6",
+      "scene_id": "mp3d/2azQ1b91cZZ/2azQ1b91cZZ.glb",
+      "episode_id": "7",
+      "object_category": "cabinet",
+      "start_position": [
+        20.03432,
+        0.12711,
+        4.79555
+      ]
+    },
+    {
+      "pos": 46,
+      "scene": "2azQ1b91cZZ",
+      "id": "46",
+      "key": "mip100:2azQ1b91cZZ:46",
+      "sha256": "0423c26d125ef38885d7855aef9fd8fb345597db93db55f67c13a0233b674393",
+      "scene_id": "mp3d/2azQ1b91cZZ/2azQ1b91cZZ.glb",
+      "episode_id": "5",
+      "object_category": "table",
+      "start_position": [
+        2.81162,
+        0.12711,
+        -6.991
+      ]
+    },
+    {
+      "pos": 66,
+      "scene": "2azQ1b91cZZ",
+      "id": "66",
+      "key": "mip100:2azQ1b91cZZ:66",
+      "sha256": "00597dcaa77307cb4639fd6ba1ea9b70e21750284038a175c753a084f8dd95c1",
+      "scene_id": "mp3d/2azQ1b91cZZ/2azQ1b91cZZ.glb",
+      "episode_id": "0",
+      "object_category": "chair",
+      "start_position": [
+        12.79771,
+        0.12711,
+        10.30463
+      ]
+    },
+    {
+      "pos": 112,
+      "scene": "2azQ1b91cZZ",
+      "id": "112",
+      "key": "mip100:2azQ1b91cZZ:112",
+      "sha256": "013ca9fba2ced77b454a064c0ddb12a53ad647ade188b133a0d8abfaa59cde37",
+      "scene_id": "mp3d/2azQ1b91cZZ/2azQ1b91cZZ.glb",
+      "episode_id": "8",
+      "object_category": "cushion",
+      "start_position": [
+        4.58036,
+        0.12711,
+        -3.3215
+      ]
+    },
+    {
+      "pos": 131,
+      "scene": "2azQ1b91cZZ",
+      "id": "131",
+      "key": "mip100:2azQ1b91cZZ:131",
+      "sha256": "0902faf193965aef39029551d40453202c7a8932c23ae6dd62476dc080d5246e",
+      "scene_id": "mp3d/2azQ1b91cZZ/2azQ1b91cZZ.glb",
+      "episode_id": "6",
+      "object_category": "plant",
+      "start_position": [
+        29.13948,
+        0.12711,
+        -0.96719
+      ]
+    },
+    {
+      "pos": 151,
+      "scene": "2azQ1b91cZZ",
+      "id": "151",
+      "key": "mip100:2azQ1b91cZZ:151",
+      "sha256": "0643eba9b706d1a98de28d85d30d6c635d448c8bf12f3cc2bbc60388eb28e3ab",
+      "scene_id": "mp3d/2azQ1b91cZZ/2azQ1b91cZZ.glb",
+      "episode_id": "6",
+      "object_category": "sink",
+      "start_position": [
+        21.17545,
+        3.52711,
+        -1.63246
+      ]
+    },
+    {
+      "pos": 175,
+      "scene": "2azQ1b91cZZ",
+      "id": "175",
+      "key": "mip100:2azQ1b91cZZ:175",
+      "sha256": "04145c0ebdadfda75a3fe3b3091ed8b28dc7047dc1517f92aab8d63009749843",
+      "scene_id": "mp3d/2azQ1b91cZZ/2azQ1b91cZZ.glb",
+      "episode_id": "0",
+      "object_category": "seating",
+      "start_position": [
+        -6.24262,
+        0.12711,
+        3.95498
+      ]
+    },
+    {
+      "pos": 196,
+      "scene": "2azQ1b91cZZ",
+      "id": "196",
+      "key": "mip100:2azQ1b91cZZ:196",
+      "sha256": "03af86aee562431511844599d0e45726293ec53b78fc9a775eb7d1499d0fe58e",
+      "scene_id": "mp3d/2azQ1b91cZZ/2azQ1b91cZZ.glb",
+      "episode_id": "1",
+      "object_category": "clothes",
+      "start_position": [
+        20.43733,
+        0.12711,
+        -3.77505
+      ]
+    },
+    {
+      "pos": 220,
+      "scene": "8194nk5LbLH",
+      "id": "20",
+      "key": "mip100:8194nk5LbLH:20",
+      "sha256": "0141ed173f5e4751eebd8dc171adbebf3e8ddf3626c1e9c073eab2f2e416cd09",
+      "scene_id": "mp3d/8194nk5LbLH/8194nk5LbLH.glb",
+      "episode_id": "20",
+      "object_category": "gym_equipment",
+      "start_position": [
+        -2.45866,
+        0.0986,
+        0.18436
+      ]
+    },
+    {
+      "pos": 250,
+      "scene": "8194nk5LbLH",
+      "id": "50",
+      "key": "mip100:8194nk5LbLH:50",
+      "sha256": "04fc424007a061a657f63c448e09c608a12908c981fdc941b00bddd640b028c1",
+      "scene_id": "mp3d/8194nk5LbLH/8194nk5LbLH.glb",
+      "episode_id": "4",
+      "object_category": "counter",
+      "start_position": [
+        8.52185,
+        1.53069,
+        4.29094
+      ]
+    },
+    {
+      "pos": 259,
+      "scene": "8194nk5LbLH",
+      "id": "59",
+      "key": "mip100:8194nk5LbLH:59",
+      "sha256": "0818ba58848a656fda9500bc9c1bb0944e41d3253a6555ab964ea7412148e811",
+      "scene_id": "mp3d/8194nk5LbLH/8194nk5LbLH.glb",
+      "episode_id": "13",
+      "object_category": "counter",
+      "start_position": [
+        6.77342,
+        2.8986,
+        1.48593
+      ]
+    },
+    {
+      "pos": 263,
+      "scene": "8194nk5LbLH",
+      "id": "63",
+      "key": "mip100:8194nk5LbLH:63",
+      "sha256": "046280fec37038600f8b59b29d37e7904b4c020548f635276fc84db7b86670d0",
+      "scene_id": "mp3d/8194nk5LbLH/8194nk5LbLH.glb",
+      "episode_id": "3",
+      "object_category": "chair",
+      "start_position": [
+        6.91133,
+        2.8986,
+        3.28907
+      ]
+    },
+    {
+      "pos": 267,
+      "scene": "8194nk5LbLH",
+      "id": "67",
+      "key": "mip100:8194nk5LbLH:67",
+      "sha256": "08f2044ab62dba0d0c8162f0086994411a8ad2936a8b7f456caa0022880a6474",
+      "scene_id": "mp3d/8194nk5LbLH/8194nk5LbLH.glb",
+      "episode_id": "7",
+      "object_category": "chair",
+      "start_position": [
+        6.81962,
+        2.8986,
+        0.87625
+      ]
+    },
+    {
+      "pos": 276,
+      "scene": "8194nk5LbLH",
+      "id": "76",
+      "key": "mip100:8194nk5LbLH:76",
+      "sha256": "01e14f310e52cc5bc1c9e5141d8411afffc6bbc291405205a29871fc63ddd5aa",
+      "scene_id": "mp3d/8194nk5LbLH/8194nk5LbLH.glb",
+      "episode_id": "16",
+      "object_category": "chair",
+      "start_position": [
+        1.22483,
+        2.8986,
+        -1.63723
+      ]
+    },
+    {
+      "pos": 302,
+      "scene": "8194nk5LbLH",
+      "id": "102",
+      "key": "mip100:8194nk5LbLH:102",
+      "sha256": "0b6fcb126a2d03987a8907cccaf11563c79c4faca6bfbdd355af272eddac777f",
+      "scene_id": "mp3d/8194nk5LbLH/8194nk5LbLH.glb",
+      "episode_id": "42",
+      "object_category": "chair",
+      "start_position": [
+        1.8108,
+        2.8986,
+        -1.31235
+      ]
+    },
+    {
+      "pos": 340,
+      "scene": "8194nk5LbLH",
+      "id": "140",
+      "key": "mip100:8194nk5LbLH:140",
+      "sha256": "07f1c9a986ea399907fdac48beeab14afeaedf927beff3b516b289e0ade9331a",
+      "scene_id": "mp3d/8194nk5LbLH/8194nk5LbLH.glb",
+      "episode_id": "6",
+      "object_category": "table",
+      "start_position": [
+        7.76145,
+        2.8986,
+        2.71644
+      ]
+    },
+    {
+      "pos": 366,
+      "scene": "8194nk5LbLH",
+      "id": "166",
+      "key": "mip100:8194nk5LbLH:166",
+      "sha256": "08527221b0ba465e52de8ea36b0c0616fd84cdb611a65da15d9d8280e6665216",
+      "scene_id": "mp3d/8194nk5LbLH/8194nk5LbLH.glb",
+      "episode_id": "18",
+      "object_category": "stool",
+      "start_position": [
+        -6.50197,
+        0.0986,
+        0.2969
+      ]
+    },
+    {
+      "pos": 369,
+      "scene": "8194nk5LbLH",
+      "id": "169",
+      "key": "mip100:8194nk5LbLH:169",
+      "sha256": "0379960abc69e273d7d2eb687d1013476727cd26d8df1b3bb15230fb7b06d6f3",
+      "scene_id": "mp3d/8194nk5LbLH/8194nk5LbLH.glb",
+      "episode_id": "21",
+      "object_category": "stool",
+      "start_position": [
+        2.01913,
+        0.0986,
+        3.99659
+      ]
+    },
+    {
+      "pos": 423,
+      "scene": "EU6Fwq7SyZv",
+      "id": "22",
+      "key": "mip100:EU6Fwq7SyZv:22",
+      "sha256": "08e3f927f3021c8e1101c79ca13a39d4fede1e4579aee02253d937f7c23f1729",
+      "scene_id": "mp3d/EU6Fwq7SyZv/EU6Fwq7SyZv.glb",
+      "episode_id": "9",
+      "object_category": "picture",
+      "start_position": [
+        7.71742,
+        0.01806,
+        9.49633
+      ]
+    },
+    {
+      "pos": 430,
+      "scene": "EU6Fwq7SyZv",
+      "id": "29",
+      "key": "mip100:EU6Fwq7SyZv:29",
+      "sha256": "05d40953e65185efb1d5d68a2633103c41c2dbcb97acc8d3f13624655a3c8985",
+      "scene_id": "mp3d/EU6Fwq7SyZv/EU6Fwq7SyZv.glb",
+      "episode_id": "0",
+      "object_category": "toilet",
+      "start_position": [
+        1.70699,
+        0.01806,
+        7.52785
+      ]
+    },
+    {
+      "pos": 436,
+      "scene": "EU6Fwq7SyZv",
+      "id": "35",
+      "key": "mip100:EU6Fwq7SyZv:35",
+      "sha256": "05fefd5add79b572d466eab4f152e64e0b96ad0e849462a42e959216578544fa",
+      "scene_id": "mp3d/EU6Fwq7SyZv/EU6Fwq7SyZv.glb",
+      "episode_id": "2",
+      "object_category": "sink",
+      "start_position": [
+        2.00066,
+        0.01806,
+        6.26383
+      ]
+    },
+    {
+      "pos": 474,
+      "scene": "EU6Fwq7SyZv",
+      "id": "73",
+      "key": "mip100:EU6Fwq7SyZv:73",
+      "sha256": "00c53a95aaa0f9ca035f7262d9ab83451e8a38af9e37b8ac7c05fac6bb80a6fc",
+      "scene_id": "mp3d/EU6Fwq7SyZv/EU6Fwq7SyZv.glb",
+      "episode_id": "20",
+      "object_category": "cushion",
+      "start_position": [
+        -1.76963,
+        0.01806,
+        6.3481
+      ]
+    },
+    {
+      "pos": 496,
+      "scene": "EU6Fwq7SyZv",
+      "id": "95",
+      "key": "mip100:EU6Fwq7SyZv:95",
+      "sha256": "091868dac1dba09a1c41db64e40f024c3185bc07b06ec90cb043ec0e5ef237ac",
+      "scene_id": "mp3d/EU6Fwq7SyZv/EU6Fwq7SyZv.glb",
+      "episode_id": "42",
+      "object_category": "cushion",
+      "start_position": [
+        1.42788,
+        -2.38194,
+        4.27185
+      ]
+    },
+    {
+      "pos": 516,
+      "scene": "EU6Fwq7SyZv",
+      "id": "115",
+      "key": "mip100:EU6Fwq7SyZv:115",
+      "sha256": "0202132c8387f113ebedecb01d1831f9f5b7be4ea3b3786d0cca013d7d85f8aa",
+      "scene_id": "mp3d/EU6Fwq7SyZv/EU6Fwq7SyZv.glb",
+      "episode_id": "17",
+      "object_category": "chair",
+      "start_position": [
+        -1.23043,
+        -1.39074,
+        10.00092
+      ]
+    },
+    {
+      "pos": 543,
+      "scene": "EU6Fwq7SyZv",
+      "id": "142",
+      "key": "mip100:EU6Fwq7SyZv:142",
+      "sha256": "05d65d5cc94839c932b8cb26c4797dface4460cf479bafcc7732979bc3bc12b0",
+      "scene_id": "mp3d/EU6Fwq7SyZv/EU6Fwq7SyZv.glb",
+      "episode_id": "44",
+      "object_category": "chair",
+      "start_position": [
+        -1.76245,
+        3.73539,
+        6.11797
+      ]
+    },
+    {
+      "pos": 590,
+      "scene": "EU6Fwq7SyZv",
+      "id": "189",
+      "key": "mip100:EU6Fwq7SyZv:189",
+      "sha256": "0405b6b328a8184cc1b6a51cdb03130e1c188476f83952e695e2994d232ce680",
+      "scene_id": "mp3d/EU6Fwq7SyZv/EU6Fwq7SyZv.glb",
+      "episode_id": "1",
+      "object_category": "sofa",
+      "start_position": [
+        -1.27362,
+        3.61806,
+        6.78666
+      ]
+    },
+    {
+      "pos": 591,
+      "scene": "EU6Fwq7SyZv",
+      "id": "190",
+      "key": "mip100:EU6Fwq7SyZv:190",
+      "sha256": "0459d1b9fb21b94b5546c49d654f4dfaed88d67a8006e8c2ce62c44980d80e6e",
+      "scene_id": "mp3d/EU6Fwq7SyZv/EU6Fwq7SyZv.glb",
+      "episode_id": "2",
+      "object_category": "sofa",
+      "start_position": [
+        0.04699,
+        0.01806,
+        0.62219
+      ]
+    },
+    {
+      "pos": 614,
+      "scene": "QUCTc6BB5sX",
+      "id": "15",
+      "key": "mip100:QUCTc6BB5sX:15",
+      "sha256": "0d34cbb7070c8bfb69c46631d7db3182d8855d73ce67c7e26806fe69229836c3",
+      "scene_id": "mp3d/QUCTc6BB5sX/QUCTc6BB5sX.glb",
+      "episode_id": "5",
+      "object_category": "chair",
+      "start_position": [
+        -8.93459,
+        -3.16524,
+        -15.94713
+      ]
+    },
+    {
+      "pos": 656,
+      "scene": "QUCTc6BB5sX",
+      "id": "57",
+      "key": "mip100:QUCTc6BB5sX:57",
+      "sha256": "04bc80dd7ea2b5219eb7c5b4d43f8b261b93bf2ebd6246d36135d0cde10cfbfc",
+      "scene_id": "mp3d/QUCTc6BB5sX/QUCTc6BB5sX.glb",
+      "episode_id": "2",
+      "object_category": "towel",
+      "start_position": [
+        -3.05377,
+        0.1548,
+        6.58246
+      ]
+    },
+    {
+      "pos": 665,
+      "scene": "QUCTc6BB5sX",
+      "id": "66",
+      "key": "mip100:QUCTc6BB5sX:66",
+      "sha256": "05463a7d4a28d55f2efd70bea80d1c5e8eb7ddc603be067ea79cc5ccf35ad2ed",
+      "scene_id": "mp3d/QUCTc6BB5sX/QUCTc6BB5sX.glb",
+      "episode_id": "0",
+      "object_category": "bathtub",
+      "start_position": [
+        -15.8925,
+        0.3548,
+        11.25956
+      ]
+    },
+    {
+      "pos": 670,
+      "scene": "QUCTc6BB5sX",
+      "id": "71",
+      "key": "mip100:QUCTc6BB5sX:71",
+      "sha256": "056d3a37f084cd6da3fa979be2568284bdc5fa6bbbacad1274d26bb782e50257",
+      "scene_id": "mp3d/QUCTc6BB5sX/QUCTc6BB5sX.glb",
+      "episode_id": "4",
+      "object_category": "sink",
+      "start_position": [
+        0.3395,
+        0.1548,
+        3.95186
+      ]
+    },
+    {
+      "pos": 674,
+      "scene": "QUCTc6BB5sX",
+      "id": "75",
+      "key": "mip100:QUCTc6BB5sX:75",
+      "sha256": "0e946d9f4370d4d1b1d7f279167baf598c31d37a37978d6cb4bb8b38150c1536",
+      "scene_id": "mp3d/QUCTc6BB5sX/QUCTc6BB5sX.glb",
+      "episode_id": "8",
+      "object_category": "sink",
+      "start_position": [
+        -7.9579,
+        -0.0452,
+        -15.60183
+      ]
+    },
+    {
+      "pos": 718,
+      "scene": "QUCTc6BB5sX",
+      "id": "119",
+      "key": "mip100:QUCTc6BB5sX:119",
+      "sha256": "09c33fc86411d621abae0c8804b9982e3a487bf50e4de0f08d055c00b742da30",
+      "scene_id": "mp3d/QUCTc6BB5sX/QUCTc6BB5sX.glb",
+      "episode_id": "3",
+      "object_category": "sofa",
+      "start_position": [
+        0.13064,
+        0.1548,
+        -2.02122
+      ]
+    },
+    {
+      "pos": 736,
+      "scene": "QUCTc6BB5sX",
+      "id": "137",
+      "key": "mip100:QUCTc6BB5sX:137",
+      "sha256": "0fea63bd9881fda402d991bf7c183a16b920e593f3d577b249d01eb05c8a0eef",
+      "scene_id": "mp3d/QUCTc6BB5sX/QUCTc6BB5sX.glb",
+      "episode_id": "6",
+      "object_category": "plant",
+      "start_position": [
+        -4.57638,
+        0.1548,
+        -25.17633
+      ]
+    },
+    {
+      "pos": 764,
+      "scene": "QUCTc6BB5sX",
+      "id": "165",
+      "key": "mip100:QUCTc6BB5sX:165",
+      "sha256": "01b2972a20af19a9855b1f9a3413bd123de96c44c43adddc989da23d5f14c8d0",
+      "scene_id": "mp3d/QUCTc6BB5sX/QUCTc6BB5sX.glb",
+      "episode_id": "5",
+      "object_category": "picture",
+      "start_position": [
+        -8.79099,
+        0.1548,
+        -25.73212
+      ]
+    },
+    {
+      "pos": 780,
+      "scene": "QUCTc6BB5sX",
+      "id": "181",
+      "key": "mip100:QUCTc6BB5sX:181",
+      "sha256": "0b2b290d0e469e166e010056ce345a12bb1df4709bbb6b9bd4e1e206789125de",
+      "scene_id": "mp3d/QUCTc6BB5sX/QUCTc6BB5sX.glb",
+      "episode_id": "0",
+      "object_category": "seating",
+      "start_position": [
+        -8.09737,
+        0.1548,
+        -25.35498
+      ]
+    },
+    {
+      "pos": 817,
+      "scene": "TbHJrupSAjP",
+      "id": "21",
+      "key": "mip100:TbHJrupSAjP:21",
+      "sha256": "03f5e5d700f25db58f89f396a2d263388127cc6b7f44b30c9c43d76e572f32aa",
+      "scene_id": "mp3d/TbHJrupSAjP/TbHJrupSAjP.glb",
+      "episode_id": "0",
+      "object_category": "cabinet",
+      "start_position": [
+        -0.40774,
+        -2.5756,
+        -10.15028
+      ]
+    },
+    {
+      "pos": 820,
+      "scene": "TbHJrupSAjP",
+      "id": "24",
+      "key": "mip100:TbHJrupSAjP:24",
+      "sha256": "03b434b14873b2d536f1826999e439a06810aa548d2b6ba4331cd0f52451d99c",
+      "scene_id": "mp3d/TbHJrupSAjP/TbHJrupSAjP.glb",
+      "episode_id": "3",
+      "object_category": "cabinet",
+      "start_position": [
+        -2.47761,
+        -2.5756,
+        -1.11687
+      ]
+    },
+    {
+      "pos": 832,
+      "scene": "TbHJrupSAjP",
+      "id": "36",
+      "key": "mip100:TbHJrupSAjP:36",
+      "sha256": "0cf7d8b7fa4ef2986484af7961295aac28788645afe8aabbd8dd9174c495ca8a",
+      "scene_id": "mp3d/TbHJrupSAjP/TbHJrupSAjP.glb",
+      "episode_id": "15",
+      "object_category": "cabinet",
+      "start_position": [
+        0.88037,
+        3.43024,
+        -6.95564
+      ]
+    },
+    {
+      "pos": 868,
+      "scene": "TbHJrupSAjP",
+      "id": "72",
+      "key": "mip100:TbHJrupSAjP:72",
+      "sha256": "0552b40584252106c845701240b611817fdea4443f2d5670089a65b04e0c4c89",
+      "scene_id": "mp3d/TbHJrupSAjP/TbHJrupSAjP.glb",
+      "episode_id": "15",
+      "object_category": "chair",
+      "start_position": [
+        2.36961,
+        3.51984,
+        -4.17957
+      ]
+    },
+    {
+      "pos": 895,
+      "scene": "TbHJrupSAjP",
+      "id": "99",
+      "key": "mip100:TbHJrupSAjP:99",
+      "sha256": "0a3318a94248ef99832e7f9ee3b193b1169dda7b902dced36d2facff1ce72393",
+      "scene_id": "mp3d/TbHJrupSAjP/TbHJrupSAjP.glb",
+      "episode_id": "5",
+      "object_category": "cushion",
+      "start_position": [
+        -0.54946,
+        -2.5756,
+        -4.37813
+      ]
+    },
+    {
+      "pos": 935,
+      "scene": "TbHJrupSAjP",
+      "id": "139",
+      "key": "mip100:TbHJrupSAjP:139",
+      "sha256": "0645ca7a33fa157ebb039505a64451305082eca8d74408500342a37f0540436c",
+      "scene_id": "mp3d/TbHJrupSAjP/TbHJrupSAjP.glb",
+      "episode_id": "10",
+      "object_category": "table",
+      "start_position": [
+        6.00882,
+        3.6244,
+        -7.90066
+      ]
+    },
+    {
+      "pos": 942,
+      "scene": "TbHJrupSAjP",
+      "id": "146",
+      "key": "mip100:TbHJrupSAjP:146",
+      "sha256": "05b86423f266d782f70309ff1d8006faed893f8dffe23b617f63e58a1f732b20",
+      "scene_id": "mp3d/TbHJrupSAjP/TbHJrupSAjP.glb",
+      "episode_id": "0",
+      "object_category": "picture",
+      "start_position": [
+        6.07193,
+        3.51243,
+        -2.76192
+      ]
+    },
+    {
+      "pos": 979,
+      "scene": "TbHJrupSAjP",
+      "id": "183",
+      "key": "mip100:TbHJrupSAjP:183",
+      "sha256": "01f07c223aef62686bf68bcdc92a664c6c2c4d186f08e7866c06e75f554616b3",
+      "scene_id": "mp3d/TbHJrupSAjP/TbHJrupSAjP.glb",
+      "episode_id": "4",
+      "object_category": "toilet",
+      "start_position": [
+        -3.03382,
+        0.0244,
+        -3.18614
+      ]
+    },
+    {
+      "pos": 994,
+      "scene": "TbHJrupSAjP",
+      "id": "198",
+      "key": "mip100:TbHJrupSAjP:198",
+      "sha256": "03919df133d8bd277528fa2fae97a277ad229ea8cb13f9af476eec5b38af24a5",
+      "scene_id": "mp3d/TbHJrupSAjP/TbHJrupSAjP.glb",
+      "episode_id": "0",
+      "object_category": "fireplace",
+      "start_position": [
+        2.16628,
+        0.0244,
+        -0.18106
+      ]
+    },
+    {
+      "pos": 997,
+      "scene": "X7HyMhZNoso",
+      "id": "1",
+      "key": "mip100:X7HyMhZNoso:1",
+      "sha256": "0d47b61c3bc4513b02385036285c59e092276ebcacb901901373341fcbde8712",
+      "scene_id": "mp3d/X7HyMhZNoso/X7HyMhZNoso.glb",
+      "episode_id": "1",
+      "object_category": "bed",
+      "start_position": [
+        -3.46758,
+        3.26426,
+        5.70403
+      ]
+    },
+    {
+      "pos": 1095,
+      "scene": "X7HyMhZNoso",
+      "id": "99",
+      "key": "mip100:X7HyMhZNoso:99",
+      "sha256": "023167d62550aab12e6fecda7429832bc6e911dc31440f6003dc59338d84aec7",
+      "scene_id": "mp3d/X7HyMhZNoso/X7HyMhZNoso.glb",
+      "episode_id": "0",
+      "object_category": "chest_of_drawers",
+      "start_position": [
+        2.12968,
+        3.26426,
+        -0.76259
+      ]
+    },
+    {
+      "pos": 1098,
+      "scene": "X7HyMhZNoso",
+      "id": "102",
+      "key": "mip100:X7HyMhZNoso:102",
+      "sha256": "0fd6b3bcfead077d7d82d2b654ba3179927105d66001f82374ae62bd138cea3c",
+      "scene_id": "mp3d/X7HyMhZNoso/X7HyMhZNoso.glb",
+      "episode_id": "3",
+      "object_category": "chest_of_drawers",
+      "start_position": [
+        1.13323,
+        3.26426,
+        7.57805
+      ]
+    },
+    {
+      "pos": 1099,
+      "scene": "X7HyMhZNoso",
+      "id": "103",
+      "key": "mip100:X7HyMhZNoso:103",
+      "sha256": "14ad1e5895bc456e15dfee7235a668144ab873c26a1a14ed36ef9ef3608d98ef",
+      "scene_id": "mp3d/X7HyMhZNoso/X7HyMhZNoso.glb",
+      "episode_id": "4",
+      "object_category": "chest_of_drawers",
+      "start_position": [
+        0.22572,
+        2.05745,
+        7.13592
+      ]
+    },
+    {
+      "pos": 1142,
+      "scene": "X7HyMhZNoso",
+      "id": "146",
+      "key": "mip100:X7HyMhZNoso:146",
+      "sha256": "1330e5d60d70059579298dfee9b1252560a2d514c219088d94c20240c84a63d6",
+      "scene_id": "mp3d/X7HyMhZNoso/X7HyMhZNoso.glb",
+      "episode_id": "0",
+      "object_category": "toilet",
+      "start_position": [
+        2.26619,
+        -1.33574,
+        25.10436
+      ]
+    },
+    {
+      "pos": 1179,
+      "scene": "X7HyMhZNoso",
+      "id": "183",
+      "key": "mip100:X7HyMhZNoso:183",
+      "sha256": "021d32633e46c1f34d65ac760327bfe0c8f513b8f1fb43a51c00c7ee3c5d9b56",
+      "scene_id": "mp3d/X7HyMhZNoso/X7HyMhZNoso.glb",
+      "episode_id": "6",
+      "object_category": "table",
+      "start_position": [
+        1.93104,
+        -1.33574,
+        25.98018
+      ]
+    },
+    {
+      "pos": 1181,
+      "scene": "X7HyMhZNoso",
+      "id": "185",
+      "key": "mip100:X7HyMhZNoso:185",
+      "sha256": "001763e65b19a91c90607a3538cd20116687597d49a878bad728b08407ef51f3",
+      "scene_id": "mp3d/X7HyMhZNoso/X7HyMhZNoso.glb",
+      "episode_id": "8",
+      "object_category": "table",
+      "start_position": [
+        -0.71044,
+        3.26426,
+        4.1706
+      ]
+    },
+    {
+      "pos": 1191,
+      "scene": "X7HyMhZNoso",
+      "id": "195",
+      "key": "mip100:X7HyMhZNoso:195",
+      "sha256": "05f34301c3238265ce7e4362d87ff9a750cb7247ce2f897327bba4f14ad86258",
+      "scene_id": "mp3d/X7HyMhZNoso/X7HyMhZNoso.glb",
+      "episode_id": "4",
+      "object_category": "sofa",
+      "start_position": [
+        1.95838,
+        3.29403,
+        2.48554
+      ]
+    },
+    {
+      "pos": 1193,
+      "scene": "X7HyMhZNoso",
+      "id": "197",
+      "key": "mip100:X7HyMhZNoso:197",
+      "sha256": "0cb1dd8c2b2d0f17c07ef75ce838d4cf8782598f40f8f85f0dd264d483d60921",
+      "scene_id": "mp3d/X7HyMhZNoso/X7HyMhZNoso.glb",
+      "episode_id": "6",
+      "object_category": "sofa",
+      "start_position": [
+        -1.35071,
+        -1.26968,
+        23.96541
+      ]
+    },
+    {
+      "pos": 1204,
+      "scene": "Z6MFQCViBuw",
+      "id": "8",
+      "key": "mip100:Z6MFQCViBuw:8",
+      "sha256": "026504388ae5f15bf23b36798484a58594657dc61be37e7849a7b3cbb36056f0",
+      "scene_id": "mp3d/Z6MFQCViBuw/Z6MFQCViBuw.glb",
+      "episode_id": "8",
+      "object_category": "chest_of_drawers",
+      "start_position": [
+        -1.28663,
+        0.00953,
+        1.76013
+      ]
+    },
+    {
+      "pos": 1215,
+      "scene": "Z6MFQCViBuw",
+      "id": "19",
+      "key": "mip100:Z6MFQCViBuw:19",
+      "sha256": "06710ee3f73eeb7cd18ebf4689bf9a6d80411cacfaeb57a38624a3282edc898c",
+      "scene_id": "mp3d/Z6MFQCViBuw/Z6MFQCViBuw.glb",
+      "episode_id": "5",
+      "object_category": "chair",
+      "start_position": [
+        35.42219,
+        0.00953,
+        2.63239
+      ]
+    },
+    {
+      "pos": 1222,
+      "scene": "Z6MFQCViBuw",
+      "id": "26",
+      "key": "mip100:Z6MFQCViBuw:26",
+      "sha256": "0118edae0c49a2372cc16a7f12b903c9a92768b5304d92066ebd4d786799b878",
+      "scene_id": "mp3d/Z6MFQCViBuw/Z6MFQCViBuw.glb",
+      "episode_id": "12",
+      "object_category": "chair",
+      "start_position": [
+        0.51591,
+        0.01941,
+        -0.92878
+      ]
+    },
+    {
+      "pos": 1224,
+      "scene": "Z6MFQCViBuw",
+      "id": "28",
+      "key": "mip100:Z6MFQCViBuw:28",
+      "sha256": "005845628d276c4e9ba3bb192be885ab09727e5d819a255b8f168905682fd6b8",
+      "scene_id": "mp3d/Z6MFQCViBuw/Z6MFQCViBuw.glb",
+      "episode_id": "14",
+      "object_category": "chair",
+      "start_position": [
+        29.46669,
+        0.04543,
+        -11.22318
+      ]
+    },
+    {
+      "pos": 1235,
+      "scene": "Z6MFQCViBuw",
+      "id": "39",
+      "key": "mip100:Z6MFQCViBuw:39",
+      "sha256": "02e3e60a73ff74a3c61c7750404a09ec7904c3af3436ed9771243e90db3af610",
+      "scene_id": "mp3d/Z6MFQCViBuw/Z6MFQCViBuw.glb",
+      "episode_id": "25",
+      "object_category": "chair",
+      "start_position": [
+        26.31527,
+        0.20953,
+        -12.18786
+      ]
+    },
+    {
+      "pos": 1237,
+      "scene": "Z6MFQCViBuw",
+      "id": "41",
+      "key": "mip100:Z6MFQCViBuw:41",
+      "sha256": "04f866aa22faa72576663050b60267d2532b533c9a9d9f69e793797c366f5428",
+      "scene_id": "mp3d/Z6MFQCViBuw/Z6MFQCViBuw.glb",
+      "episode_id": "27",
+      "object_category": "chair",
+      "start_position": [
+        17.59868,
+        0.00953,
+        5.15642
+      ]
+    },
+    {
+      "pos": 1307,
+      "scene": "Z6MFQCViBuw",
+      "id": "111",
+      "key": "mip100:Z6MFQCViBuw:111",
+      "sha256": "0167910c23046f04ec971d1803721cc6689f4d169821dc6238e90035162bbe8d",
+      "scene_id": "mp3d/Z6MFQCViBuw/Z6MFQCViBuw.glb",
+      "episode_id": "97",
+      "object_category": "chair",
+      "start_position": [
+        33.48885,
+        0.02558,
+        1.65035
+      ]
+    },
+    {
+      "pos": 1325,
+      "scene": "Z6MFQCViBuw",
+      "id": "129",
+      "key": "mip100:Z6MFQCViBuw:129",
+      "sha256": "06214f1ead76aac557ec7ffcd004346ef685b3697d5ea2e08a6eae7275086f50",
+      "scene_id": "mp3d/Z6MFQCViBuw/Z6MFQCViBuw.glb",
+      "episode_id": "8",
+      "object_category": "picture",
+      "start_position": [
+        4.88679,
+        0.00953,
+        -2.0765
+      ]
+    },
+    {
+      "pos": 1353,
+      "scene": "Z6MFQCViBuw",
+      "id": "157",
+      "key": "mip100:Z6MFQCViBuw:157",
+      "sha256": "059cbb22f7bbf0dc9095804f64881ac0509680fa6f9657b4ec8b5dd54735b1b7",
+      "scene_id": "mp3d/Z6MFQCViBuw/Z6MFQCViBuw.glb",
+      "episode_id": "27",
+      "object_category": "table",
+      "start_position": [
+        32.35429,
+        0.00953,
+        -0.55054
+      ]
+    },
+    {
+      "pos": 1407,
+      "scene": "oLBMNvg9in8",
+      "id": "11",
+      "key": "mip100:oLBMNvg9in8:11",
+      "sha256": "078274e7759ff6149c9d16cb292f9e42d52f4445121503727ff7ec2fdce9faf6",
+      "scene_id": "mp3d/oLBMNvg9in8/oLBMNvg9in8.glb",
+      "episode_id": "11",
+      "object_category": "cabinet",
+      "start_position": [
+        3.48625,
+        5.95009,
+        0.88654
+      ]
+    },
+    {
+      "pos": 1416,
+      "scene": "oLBMNvg9in8",
+      "id": "20",
+      "key": "mip100:oLBMNvg9in8:20",
+      "sha256": "0489c1c8f067e378a940e0c4fc3b9929c893f2c968b3e9ac3c2dc837a52a90d1",
+      "scene_id": "mp3d/oLBMNvg9in8/oLBMNvg9in8.glb",
+      "episode_id": "0",
+      "object_category": "table",
+      "start_position": [
+        -0.42575,
+        0.01,
+        0.92612
+      ]
+    },
+    {
+      "pos": 1435,
+      "scene": "oLBMNvg9in8",
+      "id": "39",
+      "key": "mip100:oLBMNvg9in8:39",
+      "sha256": "05355bb48cc4b3d3bdbfdd6827824846d985d7858a3f059eb59a3a2a8c6a62db",
+      "scene_id": "mp3d/oLBMNvg9in8/oLBMNvg9in8.glb",
+      "episode_id": "19",
+      "object_category": "table",
+      "start_position": [
+        3.88532,
+        3.01,
+        4.06112
+      ]
+    },
+    {
+      "pos": 1439,
+      "scene": "oLBMNvg9in8",
+      "id": "43",
+      "key": "mip100:oLBMNvg9in8:43",
+      "sha256": "054f120ee708fb58430ceb6316f210e763bb8b9d77da28a5bb18312aaab83314",
+      "scene_id": "mp3d/oLBMNvg9in8/oLBMNvg9in8.glb",
+      "episode_id": "0",
+      "object_category": "chair",
+      "start_position": [
+        -2.20184,
+        4.53877,
+        -0.40999
+      ]
+    },
+    {
+      "pos": 1489,
+      "scene": "oLBMNvg9in8",
+      "id": "93",
+      "key": "mip100:oLBMNvg9in8:93",
+      "sha256": "047168d1cd0ea45d4df5608216a597603f5ab159ec87c93dd44f48befd27a7e9",
+      "scene_id": "mp3d/oLBMNvg9in8/oLBMNvg9in8.glb",
+      "episode_id": "19",
+      "object_category": "picture",
+      "start_position": [
+        -2.08378,
+        -0.89655,
+        -0.21781
+      ]
+    },
+    {
+      "pos": 1537,
+      "scene": "oLBMNvg9in8",
+      "id": "141",
+      "key": "mip100:oLBMNvg9in8:141",
+      "sha256": "03891f7d0aac0f5957169c0959fd4ca4595e65ce23675f72769873af2e3fd7bc",
+      "scene_id": "mp3d/oLBMNvg9in8/oLBMNvg9in8.glb",
+      "episode_id": "2",
+      "object_category": "cushion",
+      "start_position": [
+        -0.41769,
+        0.01,
+        -2.17782
+      ]
+    },
+    {
+      "pos": 1568,
+      "scene": "oLBMNvg9in8",
+      "id": "172",
+      "key": "mip100:oLBMNvg9in8:172",
+      "sha256": "00bbcc7ff63c8fc9c8a5a5176164d16584dcfc326710efc2a1b0c323a950dd8b",
+      "scene_id": "mp3d/oLBMNvg9in8/oLBMNvg9in8.glb",
+      "episode_id": "20",
+      "object_category": "fireplace",
+      "start_position": [
+        2.75178,
+        0.1586,
+        0.47696
+      ]
+    },
+    {
+      "pos": 1584,
+      "scene": "oLBMNvg9in8",
+      "id": "188",
+      "key": "mip100:oLBMNvg9in8:188",
+      "sha256": "01b04a6d5b0a4b1e25ab4b2472099c1a5a1a57f81b7a664599a5fd41d555df84",
+      "scene_id": "mp3d/oLBMNvg9in8/oLBMNvg9in8.glb",
+      "episode_id": "2",
+      "object_category": "toilet",
+      "start_position": [
+        4.1275,
+        3.01,
+        -3.54632
+      ]
+    },
+    {
+      "pos": 1596,
+      "scene": "oLBMNvg9in8",
+      "id": "200",
+      "key": "mip100:oLBMNvg9in8:200",
+      "sha256": "0126105a1706391e36b43bb8f9489d9aad4f3723b70c81675ffbb606a0c2d743",
+      "scene_id": "mp3d/oLBMNvg9in8/oLBMNvg9in8.glb",
+      "episode_id": "1",
+      "object_category": "towel",
+      "start_position": [
+        2.55659,
+        5.90108,
+        3.10976
+      ]
+    },
+    {
+      "pos": 1637,
+      "scene": "pLe4wQe7qrG",
+      "id": "40",
+      "key": "mip100:pLe4wQe7qrG:40",
+      "sha256": "003f485a5b80db0bb6241e2ec6d6ca3e2e04886ea7b1fa6375667e3c5e81b9f8",
+      "scene_id": "mp3d/pLe4wQe7qrG/pLe4wQe7qrG.glb",
+      "episode_id": "11",
+      "object_category": "table",
+      "start_position": [
+        1.25263,
+        0.07522,
+        1.77607
+      ]
+    },
+    {
+      "pos": 1639,
+      "scene": "pLe4wQe7qrG",
+      "id": "42",
+      "key": "mip100:pLe4wQe7qrG:42",
+      "sha256": "0100db4087332cee9eab06085c45519e1b3b104a133cc32d3cc57fa407876933",
+      "scene_id": "mp3d/pLe4wQe7qrG/pLe4wQe7qrG.glb",
+      "episode_id": "13",
+      "object_category": "table",
+      "start_position": [
+        1.40059,
+        0.07522,
+        1.66749
+      ]
+    },
+    {
+      "pos": 1680,
+      "scene": "pLe4wQe7qrG",
+      "id": "83",
+      "key": "mip100:pLe4wQe7qrG:83",
+      "sha256": "050058992d47100cdc3f4cbc1f741a4071968a5f109ae51ca4f554967c8f2534",
+      "scene_id": "mp3d/pLe4wQe7qrG/pLe4wQe7qrG.glb",
+      "episode_id": "54",
+      "object_category": "table",
+      "start_position": [
+        -0.16593,
+        0.07522,
+        -2.71911
+      ]
+    },
+    {
+      "pos": 1692,
+      "scene": "pLe4wQe7qrG",
+      "id": "95",
+      "key": "mip100:pLe4wQe7qrG:95",
+      "sha256": "039672a34058f1b775567cbfe3e796b0377dadaf6059f00231862206278000b9",
+      "scene_id": "mp3d/pLe4wQe7qrG/pLe4wQe7qrG.glb",
+      "episode_id": "66",
+      "object_category": "table",
+      "start_position": [
+        1.31884,
+        0.07522,
+        1.96628
+      ]
+    },
+    {
+      "pos": 1700,
+      "scene": "pLe4wQe7qrG",
+      "id": "103",
+      "key": "mip100:pLe4wQe7qrG:103",
+      "sha256": "042059b55855344eb91a5385f26f65a47fad42e1de507c5885c788f390f0e305",
+      "scene_id": "mp3d/pLe4wQe7qrG/pLe4wQe7qrG.glb",
+      "episode_id": "74",
+      "object_category": "table",
+      "start_position": [
+        -1.65491,
+        0.07522,
+        2.13407
+      ]
+    },
+    {
+      "pos": 1743,
+      "scene": "pLe4wQe7qrG",
+      "id": "146",
+      "key": "mip100:pLe4wQe7qrG:146",
+      "sha256": "02c53ba939bdcbf320652d6135b5b8c749443f3d9c797bc5ed83232602f09217",
+      "scene_id": "mp3d/pLe4wQe7qrG/pLe4wQe7qrG.glb",
+      "episode_id": "3",
+      "object_category": "seating",
+      "start_position": [
+        0.18136,
+        0.23379,
+        -3.10524
+      ]
+    },
+    {
+      "pos": 1748,
+      "scene": "pLe4wQe7qrG",
+      "id": "151",
+      "key": "mip100:pLe4wQe7qrG:151",
+      "sha256": "047fed44e8ea95be3855062437558aca5506e9bf253d37b5e991840141ed2ce5",
+      "scene_id": "mp3d/pLe4wQe7qrG/pLe4wQe7qrG.glb",
+      "episode_id": "8",
+      "object_category": "seating",
+      "start_position": [
+        0.21616,
+        0.07522,
+        -1.43368
+      ]
+    },
+    {
+      "pos": 1776,
+      "scene": "pLe4wQe7qrG",
+      "id": "179",
+      "key": "mip100:pLe4wQe7qrG:179",
+      "sha256": "021673c96efdc17de455004c00073cda95beb9af7c3c289e1d22f1d8af126d55",
+      "scene_id": "mp3d/pLe4wQe7qrG/pLe4wQe7qrG.glb",
+      "episode_id": "36",
+      "object_category": "seating",
+      "start_position": [
+        -1.65181,
+        0.07522,
+        -0.14952
+      ]
+    },
+    {
+      "pos": 1789,
+      "scene": "pLe4wQe7qrG",
+      "id": "192",
+      "key": "mip100:pLe4wQe7qrG:192",
+      "sha256": "040cdb847ea6133cb3822db9a0c1d5da7bc20e6eceb9bfbf217f799bf3219473",
+      "scene_id": "mp3d/pLe4wQe7qrG/pLe4wQe7qrG.glb",
+      "episode_id": "49",
+      "object_category": "seating",
+      "start_position": [
+        0.05893,
+        0.07522,
+        1.19049
+      ]
+    },
+    {
+      "pos": 1811,
+      "scene": "x8F5xyUWy9e",
+      "id": "14",
+      "key": "mip100:x8F5xyUWy9e:14",
+      "sha256": "00518f937692607b1921d476d1e2c825903e85b1532445db1dca9255c92ed976",
+      "scene_id": "mp3d/x8F5xyUWy9e/x8F5xyUWy9e.glb",
+      "episode_id": "14",
+      "object_category": "plant",
+      "start_position": [
+        3.23168,
+        0.04611,
+        -8.24004
+      ]
+    },
+    {
+      "pos": 1819,
+      "scene": "x8F5xyUWy9e",
+      "id": "22",
+      "key": "mip100:x8F5xyUWy9e:22",
+      "sha256": "02d43a514f6e7a800aaacbe12d4e921c0dbe0746bf60243d87584cd33cd6c096",
+      "scene_id": "mp3d/x8F5xyUWy9e/x8F5xyUWy9e.glb",
+      "episode_id": "4",
+      "object_category": "table",
+      "start_position": [
+        -6.58269,
+        1.04611,
+        -4.37451
+      ]
+    },
+    {
+      "pos": 1876,
+      "scene": "x8F5xyUWy9e",
+      "id": "79",
+      "key": "mip100:x8F5xyUWy9e:79",
+      "sha256": "0591492846cf9a8d91193fec4c43c22ff1eed39312ce93618ee7c92f51469825",
+      "scene_id": "mp3d/x8F5xyUWy9e/x8F5xyUWy9e.glb",
+      "episode_id": "16",
+      "object_category": "cabinet",
+      "start_position": [
+        -5.77461,
+        1.04611,
+        -0.63518
+      ]
+    },
+    {
+      "pos": 1895,
+      "scene": "x8F5xyUWy9e",
+      "id": "98",
+      "key": "mip100:x8F5xyUWy9e:98",
+      "sha256": "00ad12ca1234be7acd12d2a49f16397178f16c7c1584294d8396a38f8c9a5fbe",
+      "scene_id": "mp3d/x8F5xyUWy9e/x8F5xyUWy9e.glb",
+      "episode_id": "12",
+      "object_category": "seating",
+      "start_position": [
+        -6.61301,
+        1.04611,
+        -2.70653
+      ]
+    },
+    {
+      "pos": 1897,
+      "scene": "x8F5xyUWy9e",
+      "id": "100",
+      "key": "mip100:x8F5xyUWy9e:100",
+      "sha256": "0601d431c51925a6572a2c7838c6572942c582d3fe948eb3eb14c91162c023ae",
+      "scene_id": "mp3d/x8F5xyUWy9e/x8F5xyUWy9e.glb",
+      "episode_id": "0",
+      "object_category": "towel",
+      "start_position": [
+        -7.52271,
+        1.04611,
+        -4.41263
+      ]
+    },
+    {
+      "pos": 1899,
+      "scene": "x8F5xyUWy9e",
+      "id": "102",
+      "key": "mip100:x8F5xyUWy9e:102",
+      "sha256": "028616adbca95b2b54b72f8fa8db98d11c5e1cd74140b172e1782449463d5672",
+      "scene_id": "mp3d/x8F5xyUWy9e/x8F5xyUWy9e.glb",
+      "episode_id": "2",
+      "object_category": "towel",
+      "start_position": [
+        -4.44968,
+        1.04611,
+        -2.02771
+      ]
+    },
+    {
+      "pos": 1930,
+      "scene": "x8F5xyUWy9e",
+      "id": "133",
+      "key": "mip100:x8F5xyUWy9e:133",
+      "sha256": "02dd2eb3299fe89ed68c9304818dbc015f34be35c3b0c6a2fca6d97054b9ef8c",
+      "scene_id": "mp3d/x8F5xyUWy9e/x8F5xyUWy9e.glb",
+      "episode_id": "1",
+      "object_category": "shower",
+      "start_position": [
+        0.24746,
+        0.04611,
+        7.16039
+      ]
+    },
+    {
+      "pos": 1966,
+      "scene": "x8F5xyUWy9e",
+      "id": "169",
+      "key": "mip100:x8F5xyUWy9e:169",
+      "sha256": "05faa989f08508185ad9dacd5dd257a2835e2b40c63d9c64efc1731416223c15",
+      "scene_id": "mp3d/x8F5xyUWy9e/x8F5xyUWy9e.glb",
+      "episode_id": "5",
+      "object_category": "chair",
+      "start_position": [
+        -4.02872,
+        0.04611,
+        2.13479
+      ]
+    },
+    {
+      "pos": 1968,
+      "scene": "x8F5xyUWy9e",
+      "id": "171",
+      "key": "mip100:x8F5xyUWy9e:171",
+      "sha256": "04e5a968bec8ed46215599627648e0b1a533f50f2cfbb8dc890111937b057f1e",
+      "scene_id": "mp3d/x8F5xyUWy9e/x8F5xyUWy9e.glb",
+      "episode_id": "7",
+      "object_category": "chair",
+      "start_position": [
+        -6.99384,
+        1.04611,
+        -4.37256
+      ]
+    },
+    {
+      "pos": 2039,
+      "scene": "zsNo4HB9uLZ",
+      "id": "42",
+      "key": "mip100:zsNo4HB9uLZ:42",
+      "sha256": "01a78679a6f8f6ecb3ed445c7c90101704b20b2593e6c9298b905ff0de362813",
+      "scene_id": "mp3d/zsNo4HB9uLZ/zsNo4HB9uLZ.glb",
+      "episode_id": "19",
+      "object_category": "picture",
+      "start_position": [
+        14.92399,
+        0.17163,
+        -5.11926
+      ]
+    },
+    {
+      "pos": 2080,
+      "scene": "zsNo4HB9uLZ",
+      "id": "83",
+      "key": "mip100:zsNo4HB9uLZ:83",
+      "sha256": "0e31e1a10fcb0aa9651829778649161a01f48459bcd5e3c6582c67a20990a407",
+      "scene_id": "mp3d/zsNo4HB9uLZ/zsNo4HB9uLZ.glb",
+      "episode_id": "15",
+      "object_category": "cushion",
+      "start_position": [
+        6.31338,
+        0.17163,
+        -6.30707
+      ]
+    },
+    {
+      "pos": 2089,
+      "scene": "zsNo4HB9uLZ",
+      "id": "92",
+      "key": "mip100:zsNo4HB9uLZ:92",
+      "sha256": "0b1ff6a4373fe95ee9aaa5770ecd5c3650565f718009c0d21165ef5b4c77e122",
+      "scene_id": "mp3d/zsNo4HB9uLZ/zsNo4HB9uLZ.glb",
+      "episode_id": "24",
+      "object_category": "cushion",
+      "start_position": [
+        3.07935,
+        0.17163,
+        -2.04681
+      ]
+    },
+    {
+      "pos": 2099,
+      "scene": "zsNo4HB9uLZ",
+      "id": "102",
+      "key": "mip100:zsNo4HB9uLZ:102",
+      "sha256": "09a09c7f48d99639c692b098a431450a6b5ad7fe927a3c0208bd6a723c59bc97",
+      "scene_id": "mp3d/zsNo4HB9uLZ/zsNo4HB9uLZ.glb",
+      "episode_id": "34",
+      "object_category": "cushion",
+      "start_position": [
+        9.53268,
+        0.17163,
+        -2.18241
+      ]
+    },
+    {
+      "pos": 2106,
+      "scene": "zsNo4HB9uLZ",
+      "id": "109",
+      "key": "mip100:zsNo4HB9uLZ:109",
+      "sha256": "0290f22a34cac0555aca0d7ac96195f4f358f5715aa39f64cdf3878c791cdf3e",
+      "scene_id": "mp3d/zsNo4HB9uLZ/zsNo4HB9uLZ.glb",
+      "episode_id": "41",
+      "object_category": "cushion",
+      "start_position": [
+        11.1874,
+        0.17163,
+        -5.34417
+      ]
+    },
+    {
+      "pos": 2127,
+      "scene": "zsNo4HB9uLZ",
+      "id": "130",
+      "key": "mip100:zsNo4HB9uLZ:130",
+      "sha256": "0a6bb2de8f36ba2e7d615edc746c90f96b7ec5f5086143503abffd1e84557db1",
+      "scene_id": "mp3d/zsNo4HB9uLZ/zsNo4HB9uLZ.glb",
+      "episode_id": "62",
+      "object_category": "cushion",
+      "start_position": [
+        5.38839,
+        0.17163,
+        -2.24018
+      ]
+    },
+    {
+      "pos": 2145,
+      "scene": "zsNo4HB9uLZ",
+      "id": "148",
+      "key": "mip100:zsNo4HB9uLZ:148",
+      "sha256": "04d34b0027ab8dff4d61f8070e3b31929b4a43a26c528d5b8aa9f3b7bc8fdde3",
+      "scene_id": "mp3d/zsNo4HB9uLZ/zsNo4HB9uLZ.glb",
+      "episode_id": "0",
+      "object_category": "sink",
+      "start_position": [
+        9.23296,
+        0.17163,
+        -7.30782
+      ]
+    },
+    {
+      "pos": 2155,
+      "scene": "zsNo4HB9uLZ",
+      "id": "158",
+      "key": "mip100:zsNo4HB9uLZ:158",
+      "sha256": "0ef0c0eca9492cb3dbb0c185f2aaa5f19c0645180b91eb488d3bb095f6afdcda",
+      "scene_id": "mp3d/zsNo4HB9uLZ/zsNo4HB9uLZ.glb",
+      "episode_id": "1",
+      "object_category": "counter",
+      "start_position": [
+        -0.69165,
+        0.17163,
+        -3.89693
+      ]
+    },
+    {
+      "pos": 2169,
+      "scene": "zsNo4HB9uLZ",
+      "id": "172",
+      "key": "mip100:zsNo4HB9uLZ:172",
+      "sha256": "0c5380a64b5c1e33bb752b8269ea2f60ccda627283d37f8f3a0e3ad370fa611f",
+      "scene_id": "mp3d/zsNo4HB9uLZ/zsNo4HB9uLZ.glb",
+      "episode_id": "6",
+      "object_category": "plant",
+      "start_position": [
+        0.30232,
+        0.17163,
+        -6.15632
+      ]
+    }
+  ]
+}
